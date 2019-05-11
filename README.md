@@ -9,7 +9,7 @@
     Juegos de estrategia.
 
 #### Prototipo a implementar:
-    Damas.
+    Go.
 
 Cronograma de actividades: En esta sección se detallan las fechas en las que se trabajarán las historias de usuario del proyecto.
 
