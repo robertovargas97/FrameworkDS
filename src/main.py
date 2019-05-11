@@ -8,6 +8,7 @@ def main():
     proximo_en_jugar = 1
     tableroGo = TableroGo()  # Instancia de la clase Tablero
     tableroGo.crear_tablero()
+    tableroGo.mostrar_tablero()
 
     jugador1 = JugadorGo(1)
     #print(jugador1.obt_piezas_restantes())
@@ -28,18 +29,18 @@ def main():
                     
                 if (jugador1.colocar_ficha(fila, columna, tableroGo) == False):
                         print("No\n")
-                    
-                proximo_en_jugar = 2
+                else: 
+                    proximo_en_jugar = 2
             
             else:
-                print("Jugador 1 en turno")
+                print("Jugador 2 en turno")
                 fila = int(input("Ingrese la fila en la que desea colocar la ficha: "))
                 columna = int(input("Ingrese la columna en la que desea colocar la ficha: "))
 
                 if (jugador2.colocar_ficha(fila, columna, tableroGo) == False):
                     print("No\n")
-                        
-                proximo_en_jugar = 1
+                else:    
+                    proximo_en_jugar = 1
                     
             tableroGo.mostrar_tablero()
                     
