@@ -9,6 +9,7 @@ def main():
     tableroGo = TableroGo()  # Instancia de la clase Tablero
     tableroGo.crear_tablero()
     tableroGo.mostrar_tablero()
+    print("Jugador  1  ha perdido:  0 piezas \n")
 
     jugador1 = JugadorGo(1)
     #print(jugador1.obt_piezas_restantes())
@@ -43,6 +44,11 @@ def main():
                     proximo_en_jugar = 1
                     
             tableroGo.mostrar_tablero()
+            
+            if(proximo_en_jugar == 1):
+                jugador2.analizar_jugada(jugador1)
+            else:
+                jugador1.analizar_jugada(jugador2)    
                     
         except ValueError : 
             print("Debe ingresar un valor de celda correcto")

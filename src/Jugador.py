@@ -40,3 +40,11 @@ class Jugador(ABC):
     def eliminar_pieza(self):
         """Disminuye en una las piezas del jugador"""
         pass
+    @abc.abstractmethod
+    def desplegar_piezas_perdidas(self):
+        """Despliega piezas perdidas"""
+        pass
+    @abc.abstractmethod
+    def analizar_jugada(self,Contrincante):
+        """Despliega piezas perdidas"""
+        pass          

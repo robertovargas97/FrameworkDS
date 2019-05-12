@@ -11,6 +11,7 @@ class JugadorGo(Jugador):
         self.piezas = PiezasGo()  # Objeto de tipo piezas que contiene la cantidad de piezas que posee el jugador
         self.tipo_piezas = []
         self.tipo_piezas.append(self.piezas.get_tipo()) #Arreglo con el tipo de piezas que hay en Go
+        self.piezas_perdidas=0
 
     def obt_id(self):
         """Retorna una string que representa el identificador del jugador"""
@@ -48,3 +49,11 @@ class JugadorGo(Jugador):
     def eliminar_pieza(self):
         """Disminuye en una las piezas del jugador"""
         self.piezas.set_cantidad_piezas(self.piezas.cantidad_piezas - 1)
+ 
+    def desplegar_piezas_perdidas(self):
+        print("Jugador ",self.id_jugador, " ha perdido: ",self.piezas_perdidas,end=" piezas \n\n\n\n")
+
+
+    def analizar_jugada(self,Contrincante):
+        Contrincante.piezas_perdidas+=1
+        Contrincante.desplegar_piezas_perdidas()
