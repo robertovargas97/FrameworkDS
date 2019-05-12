@@ -26,8 +26,8 @@ def main():
        
         else:
             print("\n\nEl jugador 1 juega con las fichas blancas")
-            jugador1 = JugadorGo(2)
-            jugador2 = JugadorGo(1)
+            jugador1 = JugadorGo(1)
+            jugador2 = JugadorGo(2)
             proximo_en_jugar = 2
         
         print("Inicia el jugador con las fichas negras\n\n") #Este print puede omitirse una vez que tengamos las reglas
