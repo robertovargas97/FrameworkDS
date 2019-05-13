@@ -50,10 +50,10 @@ class JugadorGo(Jugador):
         """Disminuye en una las piezas del jugador"""
         self.piezas.set_cantidad_piezas(self.piezas.cantidad_piezas - 1)
  
-    def desplegar_piezas_perdidas(self):
-        print("Jugador ",self.id_jugador, " ha perdido: ",self.piezas_perdidas,end=" piezas \n\n\n\n")
+    def retornar_piezas_perdidas(self):
+        return self.piezas_perdidas
 
 
-    def analizar_jugada(self,Contrincante):
-        Contrincante.piezas_perdidas+=1
-        Contrincante.desplegar_piezas_perdidas()
+    def analizar_jugada(self,contrincante):
+        contrincante.piezas_perdidas+=1
+        print("Jugador: ",contrincante.id_jugador,"ha perdido ",contrincante.piezas_perdidas,"piezas\n")
