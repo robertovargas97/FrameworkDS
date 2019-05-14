@@ -5,7 +5,7 @@ from PiezaGo import PiezaGo
 class JugadorGo(Jugador):
     """Representa un jugador de Go"""
 
-    def __init__(self, id, color_pieza):
+    def __init__(self, id, color_pieza,nombre):
         """Se construye un jugador con identificador y un objeto de tipo piezas"""
         self.id_jugador = str(id)  # Identificador del jugador
         self.piezas_perdidas = 0
@@ -14,11 +14,16 @@ class JugadorGo(Jugador):
         self.cantidad_piezas = 41
         if( color_pieza == 2):
             self.cantidad_piezas = 40
+        self.nombre = nombre
         
        
     def get_id(self):
         """Retorna una string que representa el identificador del jugador"""
         return self.id_jugador
+    
+    def get_nombre(self):
+        """Retorna una string que representa el identificador del jugador"""
+        return self.nombre
 
     def validar_posicion(self, fila, columna, tablero):
         """fila , columna : posicion en el tablero\n

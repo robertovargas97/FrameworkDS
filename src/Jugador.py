@@ -11,10 +11,16 @@ class Jugador(ABC):
         self.piezas_perdidas  = 0 # representa una instancia que tendra la cantidad de piezas que posee un jugador
         self.piezas = [] #Representara la piezas que tiene un jugador
         self.cantidad_piezas = 0
+        self.nombre = ""
         
     # Se deben definir los siguientes metodos en el tipo de jugador especifico para el juego
     @abc.abstractmethod
     def get_id(self):
+        """Retorna una string que representa el identificador del jugador"""
+        pass
+    
+    @abc.abstractmethod
+    def get_nombre(self):
         """Retorna una string que representa el identificador del jugador"""
         pass
 
