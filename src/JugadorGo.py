@@ -1,19 +1,22 @@
 from Jugador import Jugador
-from PiezasGo import PiezasGo
+from PiezaGo import PiezaGo
 
 
 class JugadorGo(Jugador):
     """Representa un jugador de Go"""
 
-    def __init__(self, id):
+    def __init__(self, id, color_pieza):
         """Se construye un jugador con identificador y un objeto de tipo piezas"""
         self.id_jugador = str(id)  # Identificador del jugador
-        self.piezas = PiezasGo()  # Objeto de tipo piezas que contiene la cantidad de piezas que posee el jugador
-        self.tipo_piezas = []
-        self.tipo_piezas.append(self.piezas.get_tipo()) #Arreglo con el tipo de piezas que hay en Go
-        self.piezas_perdidas=0
-
-    def obt_id(self):
+        self.piezas_perdidas = 0
+        self.piezas = []
+        self.color_pieza = color_pieza
+        self.cantidad_piezas = 41
+        if( color_pieza == 2):
+            self.cantidad_piezas = 40
+        
+       
+    def get_id(self):
         """Retorna una string que representa el identificador del jugador"""
         return self.id_jugador
 
@@ -37,23 +40,26 @@ class JugadorGo(Jugador):
         jugada_valida = False
         # Si la posicion es valida
         if (self.validar_posicion(fila, columna, tablero)):
+            pieza_nueva = PiezaGo(self.color_pieza,fila,columna)
+            self.piezas.append(pieza_nueva)
             # Coloca la ficha en el tablero
-            tablero.tablero_juego[fila][columna] = self.id_jugador
+            tablero.tablero_juego[fila][columna] = pieza_nueva.get_tipo()
             jugada_valida = True
         return jugada_valida
 
-    def obt_piezas_restantes(self):
+    def get_piezas_restantes(self):
         """Retorna la cantidad de piezas que le quedan al jugador"""
-        return self.piezas.get_piezas()
+        return self.cantidad_piezas
 
     def eliminar_pieza(self):
         """Disminuye en una las piezas del jugador"""
-        self.piezas.set_cantidad_piezas(self.piezas.cantidad_piezas - 1)
+        self.cantidad_piezas -= 1
  
     def retornar_piezas_perdidas(self):
         return self.piezas_perdidas
 
-
     def analizar_jugada(self,contrincante):
-        contrincante.piezas_perdidas+=1
+        
+        contrincante.piezas_perdidas += 1
+
         print("Jugador: ",contrincante.id_jugador,"ha perdido ",contrincante.piezas_perdidas,"piezas\n")
