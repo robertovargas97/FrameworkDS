@@ -33,6 +33,7 @@ def colocar_ficha(matrix,x,y,val, lista_de_listas):
     lista.append(ficha)
     lista_de_listas.append(lista)
     verifica_vecinos(matrix,ficha,lista_de_listas)
+    
     for i in range(len(lista_de_listas)):
         print(len(lista_de_listas[i]),"\n")  
 
@@ -45,20 +46,24 @@ def verifica_vecinos(matrix,ficha,lista_de_listas):
     #si la posicion de arriba es valida y el color de es igual
     if posicion_valida((ficha.x)-1,ficha.y) and matrix[ficha.x-1][ficha.y].color == ficha.color: 
         fichaArr = matrix[ficha.x-1][ficha.y]
-        agrupar(lista_de_listas[ficha.indice_lista],lista_de_listas[fichaArr.indice_lista],lista_de_listas)
+        if ficha.indice_lista != fichaArr.indice_lista:
+            agrupar(lista_de_listas[ficha.indice_lista],lista_de_listas[fichaArr.indice_lista],lista_de_listas)
     
-    #si la abajo de arriba es valida y el color de es igual
+    #si la pos de abajo es valida y el color de es igual
     if posicion_valida((ficha.x)+1,ficha.y) and matrix[ficha.x+1][ficha.y].color == ficha.color:
         fichaAbj = matrix[ficha.x+1][ficha.y]
-        agrupar(lista_de_listas[ficha.indice_lista],lista_de_listas[fichaAbj.indice_lista],lista_de_listas)
+        if ficha.indice_lista != fichaAbj.indice_lista:
+            agrupar(lista_de_listas[ficha.indice_lista],lista_de_listas[fichaAbj.indice_lista],lista_de_listas)
     #der
     if posicion_valida((ficha.x),ficha.y+1) and matrix[ficha.x][ficha.y+1].color == ficha.color:
         fichaDer = matrix[ficha.x][ficha.y+1]
-        agrupar(lista_de_listas[ficha.indice_lista],lista_de_listas[fichaDer.indice_lista],lista_de_listas)
+        if ficha.indice_lista != fichaDer.indice_lista:
+            agrupar(lista_de_listas[ficha.indice_lista],lista_de_listas[fichaDer.indice_lista],lista_de_listas)
     #izq
     if posicion_valida((ficha.x),ficha.y-1) and matrix[ficha.x][ficha.y-1].color == ficha.color:
         fichaIzq = matrix[ficha.x][ficha.y-1]
-        agrupar(lista_de_listas[ficha.indice_lista],lista_de_listas[fichaIzq.indice_lista],lista_de_listas)    
+        if ficha.indice_lista != fichaIzq.indice_lista:
+            agrupar(lista_de_listas[ficha.indice_lista],lista_de_listas[fichaIzq.indice_lista],lista_de_listas)    
 
 
 def agrupar(grupoA,grupoB,lista_de_listas):
@@ -104,7 +109,7 @@ def libertades_ficha(matrix,ficha):
 
 def eliminar_agrupamiento(agrupamiento):
     for i in range(len(agrupamiento)):
-        agrupamiento[i].color = -1
+        agrupamiento[i].color = 0
 
 def main():
     lista_de_listas = []
@@ -117,7 +122,10 @@ def main():
         c = int(input("Digite columna\n"))
         tipo = int(input("Digite color 1 o 2\n"))
         colocar_ficha(matrix,r,c,tipo, lista_de_listas)
+        print("====al colocar la ficha=======\n")
+        imp_matriz(matrix,9,9)
         analizar_libertades_grupos(matrix, lista_de_listas)
+        print("====matriz resultante(puede que haya capturado o no =====\n")
         imp_matriz(matrix,9,9)
 
 
