@@ -10,7 +10,7 @@ class Jugador(ABC):
         self.id_jugador = '0'  # identificara al numero de jugador
         # representa una instancia que tendra la cantidad de piezas que posee un jugador
         self.piezas_perdidas = 0
-        self.piezas_colocadas = []  # Representara la piezas que tiene un jugador
+        self.piezas_colocadas = []  # Representara la piezas que un jugador tiene en el tablero
         self.cantidad_piezas = 0  # Esto se podria representar con len(piezas)
         self.nombre = ""  # Nombre del jugador
 
@@ -32,12 +32,12 @@ class Jugador(ABC):
 
     @abc.abstractmethod
     def eliminar_pieza(self, cantidad_a_eliminar):
-        """Disminuye en cantidad_a_eliminar a  las piezas del jugador"""
+        """Disminuye en cantidad_a_eliminar las piezas del jugador"""
         pass
 
     @abc.abstractmethod
     def obt_piezas_perdidas(self):
-        """Despliega piezas perdidas"""
+        """Retorna la cantidad de piezas perdidas del jugador"""
         pass
 
     @abc.abstractmethod

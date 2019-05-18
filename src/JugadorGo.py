@@ -4,8 +4,8 @@ class JugadorGo(Jugador):
     """Representa un jugador de Go"""
 
     def __init__(self, id, color_pieza, nombre):
-        """Se construye un jugador con identificador y un objeto de tipo piezas"""
-        self.id_jugador = str(id)  # Identificador del jugador
+        """Se construye un jugador"""
+        self.id_jugador = str(id)
         self.piezas_perdidas = 0
         self.piezas_colocadas = []
         self.color_pieza = color_pieza
@@ -19,27 +19,27 @@ class JugadorGo(Jugador):
         return self.id_jugador
 
     def obt_nombre(self):
-        """Retorna una string que representa el identificador del jugador"""
+        """Retorna una string que representa el nombre del jugador"""
+
         return self.nombre
 
     def obt_piezas_restantes(self):
         """Retorna la cantidad de piezas que le quedan al jugador"""
-        return self.cantidad_piezas
+        return (self.cantidad_piezas - self.piezas_perdidas)
 
     def eliminar_pieza(self, cantidad_a_eliminar):
-        """Disminuye en una las piezas del jugador"""
+        """Disminuye en cantidad_a_eliminar las piezas del jugador"""
         self.cantidad_piezas -= cantidad_a_eliminar
 
     def obt_piezas_perdidas(self):
-        """Despliega piezas perdidas"""
+        """Retorna la cantidad de piezas perdidas"""
         return self.piezas_perdidas
     
     def obt_color_pieza(self):
-        """Despliega piezas perdidas"""
+        """Retorna el color de pieza del jugador"""
         return self.color_pieza
 
-        print("Jugador: ",contrincante.id_jugador,"ha perdido ",contrincante.piezas_perdidas,"piezas\n")
-
+###############################################################################################
     def esta_conectada(self, pieza):
         x = pieza.get_fila()
         y = pieza.get_columna()

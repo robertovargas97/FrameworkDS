@@ -6,9 +6,8 @@ class PiezaGo(Pieza):
 
 
     def __init__(self,id,fila,columna):
-        # Atributo de clase que podran usar las clases hijas
         if(id == 1):
-            self.tipo_pieza = "N"   # String con el tipo de pieza que tiene un jugador
+            self.tipo_pieza = "N"   # String con el tipo de pieza que tiene un jugador N para pieza Negra, B para pieza Blanca
         elif(id == 2 ):
             self.tipo_pieza = "B" 
         self.fila = fila
@@ -17,11 +16,11 @@ class PiezaGo(Pieza):
         
 
     def get_fila(self):
-        """ """
+        """Retorna la fila donde se encuentra la pieza"""
         return self.fila
 
     def get_columna(self):
-        """ """
+        """Retorna la columna donde se encuentra la pieza"""
         return self.columna
 
     def get_id(self):

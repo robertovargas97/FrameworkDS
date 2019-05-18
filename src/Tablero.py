@@ -22,26 +22,14 @@ class Tablero(ABC):
         pass
 
     @abc.abstractmethod
-    def validar_posicion(self, fila, columna, tablero_jugador):
+    def colocar_ficha(self, fila, columna, jugador):
         """fila , columna : posicion en el tablero\n
-            tablero : objeto de tipo tablero donde se colocara la ficha\n
-            Retorno : True en caso de que la posicion para colocar la ficha exista y este libre,False en caso contrario"""
+        jugador: instancia del jugador que coloca la pieza\n
+        Retorno: True si se puede colocar la pieza, False en caso contrario"""
         pass
 
     @abc.abstractmethod
-    def colocar_ficha(self, fila, columna, jugador,color_pieza):
+    def validar_posicion(self, fila, columna):
         """fila , columna : posicion en el tablero\n
-            tablero : objeto de tipo tablero donde se colocara la ficha\n
-            Retorno : True en caso de que se haya colocado una ficha en el tablero, False en caso contrario"""
+        Retorno : True en caso de que la posicion para colocar la ficha exista y este libre,False en caso contrario"""
         pass
-     
-    # @abc.abstractmethod
-    # def analizar_jugada(self,contrincante):
-    #     """Despliega piezas perdidas"""
-    #     pass     
-    
-    
-def n():
-    return "b","a",1
-
-print(n())
