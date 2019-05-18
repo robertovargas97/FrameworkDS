@@ -59,8 +59,8 @@ def main():
 
             else:
                 print("\n\nEl jugador 1 juega con las fichas blancas")
-                jugador1 = JugadorGo(1, blanco,nombre1)
-                jugador2 = JugadorGo(2, negro,nombre2)
+                jugador1 = JugadorGo(1, blanco, nombre1)
+                jugador2 = JugadorGo(2, negro, nombre2)
                 proximo_en_jugar = 2
 
             
