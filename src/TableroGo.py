@@ -66,7 +66,7 @@ class TableroGo(Tablero):
             pieza_nueva = PiezaGo(jugador.obt_color_pieza(), fila, columna)
             jugador.piezas_colocadas.append(pieza_nueva)
             # Coloca la ficha en el tablero
-            self.tablero_juego[fila][columna] = pieza_nueva#.get_tipo()
+            self.tablero_juego[fila][columna] = pieza_nueva
             posicion_valida = True 
         
         return posicion_valida
