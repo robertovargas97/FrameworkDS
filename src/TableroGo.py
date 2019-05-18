@@ -14,10 +14,9 @@ class TableroGo(Tablero):
 
     def crear_tablero(self):
         """Crea el tablero del juego especifico con las respectivas dimensiones"""
-        self.tablero_juego = ['-'] * self.filas  # Crea las filas del tablero
+        self.tablero_juego = [PiezaGo(-1,-1,-1)] * self.filas  # Crea las filas del tablero
         for fila in range(self.filas):
-            self.tablero_juego[fila] = ['-'] * \
-                self.columnas  # Crea las columnas del tablero
+            self.tablero_juego[fila] = [PiezaGo(-1, -1,-1)] * self.columnas  # Crea las columnas del tablero
         # return self.tablero_juego
 
     def mostrar_tablero(self):
@@ -36,9 +35,9 @@ class TableroGo(Tablero):
             for columna in range(self.columnas):
                 if(columna == 0):
                     print(
-                        fila, " ", self.tablero_juego[fila][columna], " ", end="")
+                        fila, " ", self.tablero_juego[fila][columna].get_tipo(), " ", end="")
                 else:
-                    print(self.tablero_juego[fila][columna], " ", end="")
+                    print(self.tablero_juego[fila][columna].get_tipo(), " ", end="")
             print()
         print()
 
@@ -52,8 +51,10 @@ class TableroGo(Tablero):
         """fila , columna : posicion en el tablero\n
         Retorno : True en caso de que la posicion para colocar la ficha este libre,False en caso contrario"""
         posicion_valida = True
-        if (self.tablero_juego[fila][columna] != '-'):
+        if (self.tablero_juego[fila][columna].get_tipo() != '-'):
             posicion_valida = False
+            
+            
         return posicion_valida
                 
     def colocar_ficha(self, fila, columna, jugador):
@@ -65,7 +66,7 @@ class TableroGo(Tablero):
             pieza_nueva = PiezaGo(jugador.obt_color_pieza(), fila, columna)
             jugador.piezas_colocadas.append(pieza_nueva)
             # Coloca la ficha en el tablero
-            self.tablero_juego[fila][columna] = pieza_nueva.get_tipo()
+            self.tablero_juego[fila][columna] = pieza_nueva#.get_tipo()
             posicion_valida = True 
         
         return posicion_valida

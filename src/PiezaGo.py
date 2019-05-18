@@ -10,6 +10,8 @@ class PiezaGo(Pieza):
             self.tipo_pieza = "N"   # String con el tipo de pieza que tiene un jugador N para pieza Negra, B para pieza Blanca
         elif(id == 2 ):
             self.tipo_pieza = "B" 
+        else:
+            self.tipo_pieza = "-"
         self.fila = fila
         self.columna = columna
         self.id = id
