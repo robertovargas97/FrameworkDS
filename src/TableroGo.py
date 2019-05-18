@@ -99,7 +99,7 @@ class TableroGo(Tablero):
                 if (self.validar_fila(fila) == True):
                     salir = True
                 else:
-                    print("Fila invalida.")
+                    raise ValueError
             except ValueError:
                 print("Fila invalida.")
                 
@@ -116,7 +116,7 @@ class TableroGo(Tablero):
                 if (self.validar_columna(columna) == True):
                     salir = True
                 else:
-                    print("Columna invalida.")
+                    raise ValueError
             except ValueError:
                 print("Columna invalida.")
                 
