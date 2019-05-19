@@ -44,3 +44,6 @@ class Jugador(ABC):
     def obt_color_pieza(self):
         """Retorna el color de pieza del jugador"""
         pass
+    @abc.abstractmethod    
+    def set_piezas_perdidas(self,piezas_perdidas):
+        pass    

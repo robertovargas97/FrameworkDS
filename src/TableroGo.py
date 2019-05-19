@@ -70,14 +70,9 @@ class TableroGo(Tablero):
             #con otras agrupaciones
             nuevo_agrupamiento = []
             nuevo_agrupamiento.append(pieza_nueva)
+            
             self.agrupaciones.append(nuevo_agrupamiento)
-            print("agrupacion pieza: ",pieza_nueva.get_agrupacion(),"\n")
             self.verificar_agrupamientos_vecinos(pieza_nueva)
-
-            print("\n(")
-            for i in range(len(self.agrupaciones)):
-                print(len(self.agrupaciones[i]),",")
-            print(")\n")    
 
             posicion_valida = True 
         
@@ -167,8 +162,6 @@ class TableroGo(Tablero):
     
     def agrupar(self,indiceA,indiceB):
 
-        print("A: ",indiceA," B:",indiceB,"\n")
-        
         agrupA = self.agrupaciones[indiceA]
         agrupB = self.agrupaciones[indiceB]
         inicio_corrimiento = indiceB+1
@@ -195,6 +188,8 @@ class TableroGo(Tablero):
         for index in range(len(self.agrupaciones)):
             if self.libertades_agrupamiento(self.agrupaciones[index]) == 0:
                 fichas_eliminadas+=self.eliminar_agrupamiento(self.agrupaciones[index])
+        
+        return fichas_eliminadas        
 
     def libertades_agrupamiento(self,agrupamiento):
         for index in range(len(agrupamiento)):

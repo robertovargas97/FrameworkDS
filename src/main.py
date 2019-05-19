@@ -37,9 +37,10 @@ def pedir_cantidad_piedras():
 
 def mostrar_jugador_en_turno(jugador):
     print(jugador.obt_nombre(), "en turno.")
+    print(jugador.obt_nombre()," tiene: ",jugador.obt_piezas_restantes()," piezas\n")
 
 
-def realizar_jugada(tablero,jugador):
+def realizar_jugada(tablero,jugador,contrincante):
     movimiento_jugador = False
     while(movimiento_jugador == False):
         fila, columna = tablero.pedir_posicion()            
@@ -47,7 +48,9 @@ def realizar_jugada(tablero,jugador):
             print("\nNo puede colocar una ficha en esta posicion!!!\n")
         else:
             movimiento_jugador = True
-            tablero.revisar_eliminar_agrupamientos()
+            jugador.set_cant_piezas(-1)
+            contrincante.set_piezas_perdidas(tablero.revisar_eliminar_agrupamientos())
+            
             
 
 def main():
@@ -93,12 +96,12 @@ def main():
 
                     if(proximo_en_jugar == 1):
                         mostrar_jugador_en_turno(jugador1)
-                        realizar_jugada(tableroGo,jugador1)
+                        realizar_jugada(tableroGo,jugador1,jugador2)
                         proximo_en_jugar = 2
                 
                     elif (proximo_en_jugar == 2):
                         mostrar_jugador_en_turno(jugador2)
-                        realizar_jugada(tableroGo,jugador2)
+                        realizar_jugada(tableroGo,jugador2,jugador1)
                         proximo_en_jugar = 1
  
             elif (opcion == 2):

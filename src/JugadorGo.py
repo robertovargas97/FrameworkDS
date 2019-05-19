@@ -38,22 +38,8 @@ class JugadorGo(Jugador):
     def obt_color_pieza(self):
         """Retorna el color de pieza del jugador"""
         return self.color_pieza
-
-###############################################################################################
-    def esta_conectada(self, pieza):
-        x = pieza.get_fila()
-        y = pieza.get_columna()
-        color = pieza.get_id()
-        for i in range (0, len(self.piezas)):
-            if(self.piezas[i].get_id() == color):
-                if(self.piezas[i].get_fila() == x-1 and self.piezas[i].get_columna() == y): # se pueden meter todos en una condicion, pero se ve muy feo
-                    return True
-                elif(self.piezas[i].get_fila() == x+1 and self.piezas[i].get_columna() == y):
-                    return True
-                elif(self.piezas[i].get_fila() == x and self.piezas[i].get_columna() == y-1):
-                    return True
-                elif(self.piezas[i].get_fila() == x and self.piezas[i].get_columna() == y+1):
-                    return True
-                else:
-                    return False
-        
+    def set_piezas_perdidas(self,piezas_perdidas):
+        self.piezas_perdidas += piezas_perdidas
+    
+    def set_cant_piezas(self,valor):
+        self.cantidad_piezas += valor
