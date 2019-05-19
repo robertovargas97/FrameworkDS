@@ -1,7 +1,6 @@
 from TableroGo import TableroGo  # Se importa la clase como tal y no como modulo
 from JugadorGo import JugadorGo
 
-
 def mostrar_menu_inicial():
     print("\nBienvenido al juego de Go.\n")  # Menu inicial
     print("1. Jugar.")
@@ -48,6 +47,7 @@ def realizar_jugada(tablero,jugador):
             print("\nNo puede colocar una ficha en esta posicion!!!\n")
         else:
             movimiento_jugador = True
+            tablero.revisar_eliminar_agrupamientos()
             
 
 def main():

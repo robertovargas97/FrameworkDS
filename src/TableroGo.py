@@ -11,12 +11,13 @@ class TableroGo(Tablero):
         self.filas = filas
         self.columnas = columnas
         self.tablero_juego = []
+        self.agrupaciones = []
 
     def crear_tablero(self):
         """Crea el tablero del juego especifico con las respectivas dimensiones"""
-        self.tablero_juego = [PiezaGo(-1,-1,-1)] * self.filas  # Crea las filas del tablero
+        self.tablero_juego = [PiezaGo(-1,-1,-1,-1)] * self.filas  # Crea las filas del tablero
         for fila in range(self.filas):
-            self.tablero_juego[fila] = [PiezaGo(-1, -1,-1)] * self.columnas  # Crea las columnas del tablero
+            self.tablero_juego[fila] = [PiezaGo(-1, -1,-1,-1)] * self.columnas  # Crea las columnas del tablero
         # return self.tablero_juego
 
     def mostrar_tablero(self):
@@ -52,9 +53,7 @@ class TableroGo(Tablero):
         Retorno : True en caso de que la posicion para colocar la ficha este libre,False en caso contrario"""
         posicion_valida = True
         if (self.tablero_juego[fila][columna].get_tipo() != '-'):
-            posicion_valida = False
-            
-            
+            posicion_valida = False       
         return posicion_valida
                 
     def colocar_ficha(self, fila, columna, jugador):
@@ -63,10 +62,23 @@ class TableroGo(Tablero):
         Retorno: True si se puede colocar la pieza, False en caso contrario"""
         posicion_valida = False
         if(self.validar_posicion(fila,columna) == True):
-            pieza_nueva = PiezaGo(jugador.obt_color_pieza(), fila, columna)
+            pieza_nueva = PiezaGo(jugador.obt_color_pieza(), fila, columna,len(self.agrupaciones))
             jugador.piezas_colocadas.append(pieza_nueva)
             # Coloca la ficha en el tablero
             self.tablero_juego[fila][columna] = pieza_nueva
+            #cada ficha agregada se agrupa sola para posteriormente ver si se puede agrupar
+            #con otras agrupaciones
+            nuevo_agrupamiento = []
+            nuevo_agrupamiento.append(pieza_nueva)
+            self.agrupaciones.append(nuevo_agrupamiento)
+            print("agrupacion pieza: ",pieza_nueva.get_agrupacion(),"\n")
+            self.verificar_agrupamientos_vecinos(pieza_nueva)
+
+            print("\n(")
+            for i in range(len(self.agrupaciones)):
+                print(len(self.agrupaciones[i]),",")
+            print(")\n")    
+
             posicion_valida = True 
         
         return posicion_valida
@@ -128,6 +140,86 @@ class TableroGo(Tablero):
         fila = self.pedir_fila()
         columna = self.pedir_columna()
         return fila,columna
+    
+    def verificar_agrupamientos_vecinos(self,ficha):
+        fila = ficha.get_fila()
+        columna = ficha.get_columna()
+
+        if self.existe_posicion(fila-1,columna) and self.tablero_juego[fila-1][columna].get_tipo() == ficha.get_tipo():
+            ficha_arriba = self.tablero_juego[fila-1][columna]
+            if ficha.get_agrupacion() != ficha_arriba.get_agrupacion():
+                self.agrupar(ficha.get_agrupacion(),ficha_arriba.get_agrupacion())
+        
+        if self.existe_posicion(fila+1,columna) and self.tablero_juego[fila+1][columna].get_tipo() == ficha.get_tipo():
+            ficha_abajo = self.tablero_juego[fila+1][columna]
+            if ficha.get_agrupacion() != ficha_abajo.get_agrupacion():
+                self.agrupar(ficha.get_agrupacion(),ficha_abajo.get_agrupacion())
+        
+        if self.existe_posicion(fila,columna+1) and self.tablero_juego[fila][columna+1].get_tipo() == ficha.get_tipo():
+            ficha_der = self.tablero_juego[fila][columna+1]
+            if ficha.get_agrupacion() != ficha_der.get_agrupacion():
+                self.agrupar(ficha.get_agrupacion(),ficha_der.get_agrupacion())
+            
+        if self.existe_posicion(fila,columna-1) and self.tablero_juego[fila][columna-1].get_tipo() == ficha.get_tipo():
+            ficha_izq = self.tablero_juego[fila][columna-1]
+            if ficha.get_agrupacion() != ficha_izq.get_agrupacion():
+                self.agrupar(ficha.get_agrupacion(),ficha_izq.get_agrupacion())
+    
+    def agrupar(self,indiceA,indiceB):
+
+        print("A: ",indiceA," B:",indiceB,"\n")
+        
+        agrupA = self.agrupaciones[indiceA]
+        agrupB = self.agrupaciones[indiceB]
+        inicio_corrimiento = indiceB+1
+
+        for i in range(inicio_corrimiento,len(self.agrupaciones)):
+            self.actualizar_indice_agrupamiento(self.agrupaciones[i],i-1)
+        
+        self.actualizar_indice_agrupamiento(agrupB,indiceA-1)
+
+        agrupA.extend(agrupB)
+        self.agrupaciones.remove(agrupB)
+    
+    def existe_posicion(self,filas,columnas):
+        if filas < 0 or filas >= 9 or columnas < 0 or columnas >= 9:
+            return False
+        return True
+    
+    def actualizar_indice_agrupamiento(self,agrupamiento,indice_nuevo):
+        for i in range(len(agrupamiento)):
+            agrupamiento[i].indice_agrupacion = indice_nuevo
+    
+    def revisar_eliminar_agrupamientos(self):
+        fichas_eliminadas=0
+        for index in range(len(self.agrupaciones)):
+            if self.libertades_agrupamiento(self.agrupaciones[index]) == 0:
+                fichas_eliminadas+=self.eliminar_agrupamiento(self.agrupaciones[index])
+
+    def libertades_agrupamiento(self,agrupamiento):
+        for index in range(len(agrupamiento)):
+            if self.libertades_ficha(agrupamiento[index]) >=1:
+                return 1
+        return 0
+
+    def libertades_ficha(self,ficha):
+        fila = ficha.get_fila()
+        columna = ficha.get_columna()
+
+        if self.existe_posicion(fila-1,columna) and  self.tablero_juego[fila-1][columna].get_tipo() == "-":
+            return 1  
+        if self.existe_posicion(fila+1,columna) and  self.tablero_juego[fila+1][columna].get_tipo() == "-":
+            return 1
+        if self.existe_posicion(fila,columna+1) and  self.tablero_juego[fila][columna+1].get_tipo() == "-":
+            return 1
+        if self.existe_posicion(fila,columna-1) and  self.tablero_juego[fila][columna-1].get_tipo() == "-":
+            return 1 
+        return 0
+    
+    def eliminar_agrupamiento(self,agrupamiento):
+        for index in range(len(agrupamiento)):
+            agrupamiento[index].set_tipo("-") 
+        return len(agrupamiento)       
 
     def nigiri(self, piezasj1, piezasj2):
         """Manera en la que se decide que jugador va primero,el jugador 1 elige una cantidad de piedras sin ensenarlas y\n\
