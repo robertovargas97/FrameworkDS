@@ -34,8 +34,22 @@ class Tablero(ABC):
         Retorno : True en caso de que la posicion para colocar la ficha este libre,False en caso contrario"""
         pass
     
+    @abc.abstractmethod
     def validar_posicion(self,fila,columna):
         """Valida si la posicion ingresada existe\n
         fila: fila en el tablero\n
         columna: columna en el tablero\n"""
         pass
+    
+    @abc.abstractmethod
+    def validar_fila(self,fila):
+        """fila: fila en el tablero\n
+        retorno : True si la fila es valida, False en caso contrario"""
+        pass
+    
+    @abc.abstractmethod
+    def validar_columna(self,columna):
+        """columna: columna en el tablero\n
+        retorno : True si la columna es valida, False en caso contrario"""
+        pass
+    

@@ -12,21 +12,27 @@ class Pieza(ABC):
         self.id = id
 
     @abc.abstractmethod
-    def get_fila(self):
+    def obt_fila(self):
         """Retorna la fila donde se encuentra la pieza"""
         pass
 
     @abc.abstractmethod    
-    def get_columna(self):
+    def obt_columna(self):
         """Retorna la columna donde se encuentra la pieza"""
         pass
     
     @abc.abstractmethod    
-    def get_id(self):
+    def obt_id(self):
         """Retorna un entero con el identificador de la pieza"""
         pass
     
     @abc.abstractmethod    
-    def get_tipo(self):
+    def obt_tipo(self):
         """Retorna un string con el tipo de pieza a la que corresponde"""
         pass
+
+    @abc.abstractmethod
+    def asignar_tipo(self,tipo):
+        """Retorna un string con el tipo de pieza a la que corresponde"""
+        pass
+     

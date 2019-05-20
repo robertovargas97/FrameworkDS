@@ -1,5 +1,6 @@
 from Jugador import Jugador
 
+
 class JugadorGo(Jugador):
     """Representa un jugador de Go"""
 
@@ -34,12 +35,15 @@ class JugadorGo(Jugador):
     def obt_piezas_perdidas(self):
         """Retorna la cantidad de piezas perdidas"""
         return self.piezas_perdidas
-    
+
     def obt_color_pieza(self):
         """Retorna el color de pieza del jugador"""
         return self.color_pieza
-    def set_piezas_perdidas(self,piezas_perdidas):
+
+    def asignar_piezas_perdidas(self, piezas_perdidas):
+        """Asigna la cantidad de piezas perdidas por turno al jugador"""
         self.piezas_perdidas += piezas_perdidas
-    
-    def set_cant_piezas(self,valor):
+
+    def asignar_cant_piezas(self, valor):
+        """Asigna la cantidad de piezas al jugador"""
         self.cantidad_piezas += valor

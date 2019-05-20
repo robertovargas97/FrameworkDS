@@ -18,29 +18,30 @@ class PiezaGo(Pieza):
         self.indice_agrupacion = agrupacion
         
 
-    def get_fila(self):
+    def obt_fila(self):
         """Retorna la fila donde se encuentra la pieza"""
         return self.fila
 
-    def get_columna(self):
+    def obt_columna(self):
         """Retorna la columna donde se encuentra la pieza"""
         return self.columna
 
-    def get_id(self):
+    def obt_id(self):
         """Retorna un entero con el identificador de la pieza"""
         return self.id
     
-    def get_tipo(self):
+    def obt_tipo(self):
         """Retorna un string con el tipo de pieza a la que corresponde"""
         return self.tipo_pieza
     
-    def set_tipo(self,tipo):
+    def asignar_tipo(self,tipo):
         """Retorna un string con el tipo de pieza a la que corresponde"""
         self.tipo_pieza = tipo
     
-    def get_agrupacion(self):
+    def obt_agrupacion(self):
         """Retorna un entero con el indice de la agrupacion"""
         return self.indice_agrupacion    
     
-    def set_indice_agrupacion(self,indice):
+    def asignar_indice_agrupacion(self,indice):
+        """Asigna el indice del agrupamiento al que pertenece"""
         self.indice_agrupacion = indice

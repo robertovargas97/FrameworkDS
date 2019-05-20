@@ -44,6 +44,13 @@ class Jugador(ABC):
     def obt_color_pieza(self):
         """Retorna el color de pieza del jugador"""
         pass
+    
+    @abc.abstractmethod
+    def asignar_piezas_perdidas(self, piezas_perdidas):
+        """Asigna la cantidad de piezas perdidas por turno al jugador"""
+        pass  
+    
     @abc.abstractmethod    
-    def set_piezas_perdidas(self,piezas_perdidas):
+    def asignar_piezas_perdidas(self,piezas_perdidas):
+        """Asigna la cantidad de piezas al jugador"""
         pass    
