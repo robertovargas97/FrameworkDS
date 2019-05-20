@@ -29,7 +29,13 @@ class Tablero(ABC):
         pass
 
     @abc.abstractmethod
-    def validar_posicion(self, fila, columna):
+    def esta_libre(self, fila, columna):
         """fila , columna : posicion en el tablero\n
-        Retorno : True en caso de que la posicion para colocar la ficha exista y este libre,False en caso contrario"""
+        Retorno : True en caso de que la posicion para colocar la ficha este libre,False en caso contrario"""
+        pass
+    
+    def validar_posicion(self,fila,columna):
+        """Valida si la posicion ingresada existe\n
+        fila: fila en el tablero\n
+        columna: columna en el tablero\n"""
         pass

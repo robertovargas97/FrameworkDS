@@ -48,7 +48,7 @@ class TableroGo(Tablero):
             for columna in range(self.columnas):
                 self.tablero_juego[fila][columna] = '-'
                 
-    def validar_posicion(self, fila, columna):
+    def esta_libre(self, fila, columna):
         """fila , columna : posicion en el tablero\n
         Retorno : True en caso de que la posicion para colocar la ficha este libre,False en caso contrario"""
         posicion_valida = True
@@ -61,7 +61,7 @@ class TableroGo(Tablero):
         jugador: instancia del jugador que coloca la pieza\n
         Retorno: True si se puede colocar la pieza, False en caso contrario"""
         posicion_valida = False
-        if(self.validar_posicion(fila,columna) == True):
+        if(self.esta_libre(fila,columna) == True):
             pieza_nueva = PiezaGo(jugador.obt_color_pieza(), fila, columna,len(self.agrupaciones))
             jugador.piezas_colocadas.append(pieza_nueva)
             # Coloca la ficha en el tablero
@@ -95,6 +95,15 @@ class TableroGo(Tablero):
         if ((columna < 0) or (columna >= self.columnas)):
             posicion_valida = False
         return posicion_valida    
+    
+    def validar_posicion(self,fila,columna):
+        """Valida si la posicion ingresada existe\n
+        fila: fila en el tablero\n
+        columna: columna en el tablero\n"""
+        pos_valida = True 
+        if (self.validar_fila(fila) == False)  or (self.validar_columna(columna) == False):
+            pos_valida = False
+        return pos_valida
        
     def pedir_fila(self):
         """Pide la fila donde se quiere colocar la pieza\n
@@ -137,31 +146,35 @@ class TableroGo(Tablero):
         return fila,columna
     
     def verificar_agrupamientos_vecinos(self,ficha):
+        """Verifica si es posible agruparse con grupos vecinos\n
+        ficha: instancia de ficha que se va a colocar en el tablero"""
         fila = ficha.get_fila()
         columna = ficha.get_columna()
 
-        if self.existe_posicion(fila-1,columna) and self.tablero_juego[fila-1][columna].get_tipo() == ficha.get_tipo():
+        if self.validar_posicion(fila-1,columna) and self.tablero_juego[fila-1][columna].get_tipo() == ficha.get_tipo():
             ficha_arriba = self.tablero_juego[fila-1][columna]
             if ficha.get_agrupacion() != ficha_arriba.get_agrupacion():
                 self.agrupar(ficha.get_agrupacion(),ficha_arriba.get_agrupacion())
         
-        if self.existe_posicion(fila+1,columna) and self.tablero_juego[fila+1][columna].get_tipo() == ficha.get_tipo():
+        if self.validar_posicion(fila+1,columna) and self.tablero_juego[fila+1][columna].get_tipo() == ficha.get_tipo():
             ficha_abajo = self.tablero_juego[fila+1][columna]
             if ficha.get_agrupacion() != ficha_abajo.get_agrupacion():
                 self.agrupar(ficha.get_agrupacion(),ficha_abajo.get_agrupacion())
         
-        if self.existe_posicion(fila,columna+1) and self.tablero_juego[fila][columna+1].get_tipo() == ficha.get_tipo():
+        if self.validar_posicion(fila,columna+1) and self.tablero_juego[fila][columna+1].get_tipo() == ficha.get_tipo():
             ficha_der = self.tablero_juego[fila][columna+1]
             if ficha.get_agrupacion() != ficha_der.get_agrupacion():
                 self.agrupar(ficha.get_agrupacion(),ficha_der.get_agrupacion())
             
-        if self.existe_posicion(fila,columna-1) and self.tablero_juego[fila][columna-1].get_tipo() == ficha.get_tipo():
+        if self.validar_posicion(fila,columna-1) and self.tablero_juego[fila][columna-1].get_tipo() == ficha.get_tipo():
             ficha_izq = self.tablero_juego[fila][columna-1]
             if ficha.get_agrupacion() != ficha_izq.get_agrupacion():
                 self.agrupar(ficha.get_agrupacion(),ficha_izq.get_agrupacion())
     
     def agrupar(self,indiceA,indiceB):
-
+        """Agrupa las fichas vecinas en caso de que sea posible,puede agrupar agrupamientos\n
+        indiceA : indice del agrupamiento de la ficha recien colocada\n
+        indiceB : indice del agrupamiento que va a anadir"""
         agrupA = self.agrupaciones[indiceA]
         agrupB = self.agrupaciones[indiceB]
         inicio_corrimiento = indiceB+1
@@ -174,44 +187,48 @@ class TableroGo(Tablero):
         agrupA.extend(agrupB)
         self.agrupaciones.remove(agrupB)
     
-    def existe_posicion(self,filas,columnas):
-        if filas < 0 or filas >= 9 or columnas < 0 or columnas >= 9:
-            return False
-        return True
-    
     def actualizar_indice_agrupamiento(self,agrupamiento,indice_nuevo):
+        """Actualiza el indice del agrupamiento de la ficha que se acaba de colocar\n
+        agrupamiento : agrupamiento al que se le actualiza el indice\n
+        indice_nuevo : nuevo valor de indice del agrupamiento"""
         for i in range(len(agrupamiento)):
             agrupamiento[i].indice_agrupacion = indice_nuevo
     
     def revisar_eliminar_agrupamientos(self):
+        """Verifica si algun agrupamiento tiene inidice invalido para eliminarlo del tablero"""
         fichas_eliminadas=0
         for index in range(len(self.agrupaciones)):
             if self.libertades_agrupamiento(self.agrupaciones[index]) == 0:
-                fichas_eliminadas+=self.eliminar_agrupamiento(self.agrupaciones[index])
+                fichas_eliminadas+=self.invalidar_agrupamiento(self.agrupaciones[index])
         
         return fichas_eliminadas        
 
     def libertades_agrupamiento(self,agrupamiento):
+        """Retorna si un grupo tiene grados de libertad"""
         for index in range(len(agrupamiento)):
             if self.libertades_ficha(agrupamiento[index]) >=1:
                 return 1
         return 0
 
     def libertades_ficha(self,ficha):
+        """Retorna si una ficha tiene grados de libertad\n
+        ficha : la ficha a la que se le revisan los grados de libertad"""
         fila = ficha.get_fila()
         columna = ficha.get_columna()
 
-        if self.existe_posicion(fila-1,columna) and  self.tablero_juego[fila-1][columna].get_tipo() == "-":
+        if self.validar_posicion(fila-1,columna) and  self.tablero_juego[fila-1][columna].get_tipo() == "-":
             return 1  
-        if self.existe_posicion(fila+1,columna) and  self.tablero_juego[fila+1][columna].get_tipo() == "-":
+        if self.validar_posicion(fila+1,columna) and  self.tablero_juego[fila+1][columna].get_tipo() == "-":
             return 1
-        if self.existe_posicion(fila,columna+1) and  self.tablero_juego[fila][columna+1].get_tipo() == "-":
+        if self.validar_posicion(fila,columna+1) and  self.tablero_juego[fila][columna+1].get_tipo() == "-":
             return 1
-        if self.existe_posicion(fila,columna-1) and  self.tablero_juego[fila][columna-1].get_tipo() == "-":
+        if self.validar_posicion(fila,columna-1) and  self.tablero_juego[fila][columna-1].get_tipo() == "-":
             return 1 
         return 0
     
-    def eliminar_agrupamiento(self,agrupamiento):
+    def invalidar_agrupamiento(self,agrupamiento):
+        """Invalida un agrupamiento\n
+        agrupamiento : agrupamiento que se invalidara"""
         for index in range(len(agrupamiento)):
             agrupamiento[index].set_tipo("-") 
         return len(agrupamiento)       
