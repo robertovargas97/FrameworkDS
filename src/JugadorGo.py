@@ -6,7 +6,7 @@ class JugadorGo(Jugador):
 
     def __init__(self, id, color_pieza, nombre):
         """Se construye un jugador"""
-        self.id_jugador = str(id)
+        self.id_jugador = id
         self.piezas_perdidas = 0
         self.piezas_colocadas = []
         self.color_pieza = color_pieza
