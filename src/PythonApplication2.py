@@ -174,21 +174,31 @@ def main():
 
                     if(proximo_en_jugar == 1):
                         mostrar_jugador_en_turno(jugador1)
-                        saltar = int(input("Digite una opcion: "))
-                        if(saltar == 1):
-                            proximo_en_jugar = tableroGo.saltar_turno(jugador1)
-                        else:
-                            realizar_jugada(tableroGo, jugador1, jugador2)
-                            proximo_en_jugar = 2
+                        try:
+                            saltar = int(input("Digite una opcion: "))
+                            if(saltar == 1):
+                                proximo_en_jugar = tableroGo.saltar_turno(jugador1)
+                            elif(saltar == 2):
+                                realizar_jugada(tableroGo, jugador1, jugador2)
+                                proximo_en_jugar = 2
+                            else:
+                                raise ValueError
+                        except ValueError:
+                            print("Ingrese una opcion valida.")
 
                     elif (proximo_en_jugar == 2):
                         mostrar_jugador_en_turno(jugador2)
-                        saltar = int(input("Digite una opcion: "))
-                        if(saltar == 1):
-                            proximo_en_jugar = tableroGo.saltar_turno(jugador2)
-                        else:
-                            realizar_jugada(tableroGo, jugador2, jugador1)
-                            proximo_en_jugar = 1
+                        try:
+                            saltar = int(input("Digite una opcion: "))
+                            if(saltar == 1):
+                                proximo_en_jugar = tableroGo.saltar_turno(jugador2)
+                            elif(saltar == 2):
+                                realizar_jugada(tableroGo, jugador2, jugador1)
+                                proximo_en_jugar = 1
+                            else:
+                                raise ValueError
+                        except ValueError:
+                            print("Ingrese una opcion valida.")
 
             elif (opcion == 2):
                 return 0
