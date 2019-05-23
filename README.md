@@ -1,7 +1,7 @@
 ## Planificación de entrega para las fases del proyecto
 
 #### Integrantes:
-    Aaron Gutierrez 	B63241
+    Aaron Gutierrez B63241
     Denisee Alfaro	B50220
     Roberto Vargas 	B57617
 
