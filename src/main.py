@@ -169,6 +169,7 @@ def main():
                     proximo_en_jugar = 2
 
                 continuar_jugando = 1
+                turnos_saltados = 0
                 while(continuar_jugando == 1):
                     tableroGo.mostrar_tablero()
 
@@ -178,9 +179,11 @@ def main():
                             saltar = int(input("Digite una opcion: "))
                             if(saltar == 1):
                                 proximo_en_jugar = tableroGo.saltar_turno(jugador1)
+                                turnos_saltados = turnos_saltados + 1
                             elif(saltar == 2):
                                 realizar_jugada(tableroGo, jugador1, jugador2)
                                 proximo_en_jugar = 2
+                                turnos_saltados = 0
                             else:
                                 raise ValueError
                         except ValueError:
@@ -192,13 +195,17 @@ def main():
                             saltar = int(input("Digite una opcion: "))
                             if(saltar == 1):
                                 proximo_en_jugar = tableroGo.saltar_turno(jugador2)
+                                turnos_saltados = turnos_saltados + 1
                             elif(saltar == 2):
                                 realizar_jugada(tableroGo, jugador2, jugador1)
                                 proximo_en_jugar = 1
+                                turnos_saltados = 0
                             else:
                                 raise ValueError
                         except ValueError:
                             print("Ingrese una opcion valida.")
+                    if(tableroGo.terminar_juego(turnos_saltados)):
+                        continuar_jugando = 0
 
             elif (opcion == 2):
                 return 0

@@ -189,7 +189,7 @@ class TableroGo(Tablero):
         """Invalida un agrupamiento\n
         agrupamiento : agrupamiento que se invalidara"""
         for index in range(len(agrupamiento)):
-            agrupamiento[index].asignar_tipo("-") 
+            agrupamiento[index].asignar_tipo("x") 
         return len(agrupamiento)       
 
     def saltar_turno(self, jugador):
@@ -202,6 +202,23 @@ class TableroGo(Tablero):
         else:
             proximo_en_jugar = 1
         return proximo_en_jugar
+
+    def tablero_lleno(self):
+        lleno = True
+        for fila in range(self.filas):
+            for columna in range(self.columnas):
+                if(self.tablero_juego[fila][columna] == "-"):
+                    lleno = True
+        return lleno
+
+    def terminar_juego(self, turnos_saltados):
+        if(turnos_saltados == 2):
+            print("terminado")
+            return True
+        else:
+            return False
+        
+       # elif():
 
 
 
