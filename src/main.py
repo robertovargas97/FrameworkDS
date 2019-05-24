@@ -136,6 +136,7 @@ def main():
     negro = 1
     blanco = 2
     opc_correcta = False
+    turnos_saltados = 0
     # Se muestran las opciones iniciales
     mostrar_menu_inicial()
 
@@ -169,7 +170,6 @@ def main():
                     proximo_en_jugar = 2
 
                 continuar_jugando = 1
-                turnos_saltados = 0
                 while(continuar_jugando == 1):
                     tableroGo.mostrar_tablero()
 
@@ -204,19 +204,21 @@ def main():
                                 raise ValueError
                         except ValueError:
                             print("Ingrese una opcion valida.")
+
                     if(tableroGo.terminar_juego(turnos_saltados)):
                         continuar_jugando = 0
+                        opc_correcta = True
 
             elif (opcion == 2):
                 return 0
             else:
                 raise ValueError
-
         except ValueError:
             print("Debe ingresar un valor correcto.")
         except KeyboardInterrupt:
             print("Se interrumpio el programa con Ctrl + C. ")
             return 0
+        print("El juego ha terminado\n")
 
 
 if __name__ == "__main__":

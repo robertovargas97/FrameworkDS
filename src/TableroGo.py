@@ -204,21 +204,23 @@ class TableroGo(Tablero):
         return proximo_en_jugar
 
     def tablero_lleno(self):
+        """Verifica si ya no hay espacios en el tablero"""
         lleno = True
         for fila in range(self.filas):
             for columna in range(self.columnas):
-                if(self.tablero_juego[fila][columna] == "-"):
-                    lleno = True
+                if(self.tablero_juego[fila][columna].obt_tipo() == "-"):
+                    lleno = False
         return lleno
 
     def terminar_juego(self, turnos_saltados):
-        if(turnos_saltados == 2):
-            print("terminado")
+        """Verifica si el juego ya acabo\n
+        turnos_saltados : la cantidad de turnos saltados en una ronda. Si ambos jugadores saltan turno en la misma ronda, el juego acaba"""
+        if(turnos_saltados == 2 or self.tablero_lleno() == True):
             return True
         else:
             return False
         
-       # elif():
+      
 
 
 
