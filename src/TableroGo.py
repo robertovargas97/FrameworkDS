@@ -251,9 +251,6 @@ class TableroGo(Tablero):
         
         return j_suicida
         
-
-
-
     def terminar_juego(self, turnos_saltados):
         """Verifica si el juego ya acabo\n
         turnos_saltados : la cantidad de turnos saltados en una ronda. Si ambos jugadores saltan turno en la misma ronda, el juego acaba"""
@@ -261,6 +258,12 @@ class TableroGo(Tablero):
             return True
         else:
             return False
+    
+    def contar_puntos(self, jugador):
+        puntos_jugador = 0
+        for i in range(0, len(jugador.piezas_colocadas)):
+            puntos_jugador = puntos_jugador + 1
+        return puntos_jugador
         
       
 

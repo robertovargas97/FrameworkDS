@@ -210,9 +210,24 @@ def main():
                             print("Ingrese una opcion valida.")
 
                     if(tableroGo.terminar_juego(turnos_saltados)):
+                        puntos_jugador1 = 0
+                        puntos_jugador2 = 0
                         continuar_jugando = 0
                         opc_correcta = True
-
+                        puntos_jugador1 = tableroGo.contar_puntos(jugador1)
+                        puntos_jugador2 = tableroGo.contar_puntos(jugador2)
+                        if(puntos_jugador1 > puntos_jugador2):
+                            print("\n")
+                            print(jugador1.obt_nombre(), " ha ganado el juego con ", puntos_jugador1, " punto(s)\n")
+                            print(jugador2.obt_nombre(), "obtuvo ", puntos_jugador2, " punto(s)\n")
+                        elif(puntos_jugador2 > puntos_jugador1):
+                            print("\n")
+                            print(jugador2.obt_nombre(), " ha ganado el juego con ", puntos_jugador2, " punto(s)\n")
+                            print(jugador1.obt_nombre(), "obtuvo ", puntos_jugador1, " punto(s)\n")
+                        else:
+                            print("\n")
+                            print("Ha ocurrido un empate\n")
+                            print("Ambos jugadores obtuvieron ", puntos_jugador1, " punto(s)\n")
             elif (opcion == 2):
                 return 0
             else:
