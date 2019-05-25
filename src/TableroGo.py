@@ -12,6 +12,8 @@ class TableroGo(Tablero):
         self.columnas = columnas
         self.tablero_juego = []
         self.agrupaciones = []
+        self.copia_tablero = []
+        self.copia_agrupaciones = []
 
     def crear_tablero(self):
         """Crea el tablero del juego especifico con las respectivas dimensiones"""
@@ -65,6 +67,8 @@ class TableroGo(Tablero):
             pieza_nueva = PiezaGo(jugador.obt_color_pieza(), fila, columna,len(self.agrupaciones))
             jugador.piezas_colocadas.append(pieza_nueva)
             # Coloca la ficha en el tablero
+            self.copia_tablero = self.copiar_tablero()
+            self.copia_agrupaciones = self.copiar_agrupciones()
             self.tablero_juego[fila][columna] = pieza_nueva
             #cada ficha agregada se agrupa sola para posteriormente ver si se puede agrupar
             #con otras agrupaciones
@@ -175,13 +179,13 @@ class TableroGo(Tablero):
         fila = ficha.obt_fila()
         columna = ficha.obt_columna()
 
-        if self.validar_posicion(fila-1,columna) and  self.tablero_juego[fila-1][columna].obt_tipo() == "-":
+        if self.validar_posicion(fila-1,columna) and (self.tablero_juego[fila-1][columna].obt_tipo() == "-" or self.tablero_juego[fila-1][columna].obt_tipo() == "x"):
             return 1  
-        if self.validar_posicion(fila+1,columna) and  self.tablero_juego[fila+1][columna].obt_tipo() == "-":
+        if self.validar_posicion(fila+1,columna) and (self.tablero_juego[fila+1][columna].obt_tipo() == "-" or self.tablero_juego[fila+1][columna].obt_tipo() == "x"):
             return 1
-        if self.validar_posicion(fila,columna+1) and  self.tablero_juego[fila][columna+1].obt_tipo() == "-":
+        if self.validar_posicion(fila,columna+1) and (self.tablero_juego[fila][columna+1].obt_tipo() == "-" or self.tablero_juego[fila][columna+1].obt_tipo() == "x"):
             return 1
-        if self.validar_posicion(fila,columna-1) and  self.tablero_juego[fila][columna-1].obt_tipo() == "-":
+        if self.validar_posicion(fila,columna-1) and (self.tablero_juego[fila][columna-1].obt_tipo() == "-" or self.tablero_juego[fila][columna-1].obt_tipo() == "x"):
             return 1 
         return 0
     
@@ -211,6 +215,44 @@ class TableroGo(Tablero):
                 if(self.tablero_juego[fila][columna].obt_tipo() == "-"):
                     lleno = False
         return lleno
+
+    def copiar_tablero(self):
+        tablero_copia = [[PiezaGo(-1,-1,-1,-1) for j in range(self.columnas)] for i in range(self.filas)]
+
+        for fil in range(self.filas):
+            for col in range(self.columnas):
+                if self.tablero_juego[fil][col].obt_agrupacion() != -1:
+                    tablero_copia[fil][col] = self.tablero_juego[fil][col].copiar_pieza()
+        return tablero_copia    
+
+    def copiar_agrupciones(self):
+        copia_agrups = []
+        for i in range(len(self.agrupaciones)):
+            lista = []
+            for j in range(len(self.agrupaciones[i])):
+                #tengo que llenar la copia de las agrupaciones
+                #con referencias al tablero copiado
+                fila = self.agrupaciones[i][j].obt_fila()
+                col = self.agrupaciones[i][j].obt_columna()
+                lista.append(self.copia_tablero[fila][col])
+
+            copia_agrups.append(lista)
+
+        return copia_agrups
+
+    def jugada_suicida(self,fila,col):
+        j_suicida = False
+        ficha_colocada = self.tablero_juego[fila][col]
+        if ficha_colocada.obt_tipo() == "x":
+            self.tablero_juego[fila][col].asignar_tipo("-")
+            self.tablero_juego = self.copia_tablero
+            self.agrupaciones = self.copia_agrupaciones
+            j_suicida = True
+        
+        return j_suicida
+        
+
+
 
     def terminar_juego(self, turnos_saltados):
         """Verifica si el juego ya acabo\n

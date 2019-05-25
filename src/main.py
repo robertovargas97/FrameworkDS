@@ -124,10 +124,14 @@ def realizar_jugada(tablero, jugador, contrincante):
         if (tablero.colocar_ficha(fila, columna, jugador) == False):
             print("\nNo puede colocar una ficha en esta posicion!!!\n")
         else:
-            movimiento_jugador = True
-            jugador.asignar_cant_piezas(-1)
-            contrincante.asignar_piezas_perdidas(
-                tablero.revisar_eliminar_agrupamientos())
+            piezas_perdidas = tablero.revisar_eliminar_agrupamientos()
+            if tablero.jugada_suicida(fila,columna) == False:
+                movimiento_jugador = True
+                jugador.asignar_cant_piezas(-1)
+                contrincante.asignar_piezas_perdidas(piezas_perdidas)
+            else:
+                print("====================================\n")
+                print("jugada suicida, escoja otra posicion\n")    
 
 #######################################################################################################################################################
 

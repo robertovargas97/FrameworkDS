@@ -45,3 +45,7 @@ class PiezaGo(Pieza):
     def asignar_indice_agrupacion(self,indice):
         """Asigna el indice del agrupamiento al que pertenece"""
         self.indice_agrupacion = indice
+    def copiar_pieza(self,):
+        """copia una pieza y retorna la copia"""
+        pieza_nueva = PiezaGo(self.obt_id(),self.obt_fila(),self.obt_columna(),self.obt_agrupacion()) 
+        return  pieza_nueva  
