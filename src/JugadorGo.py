@@ -16,7 +16,7 @@ class JugadorGo(Jugador):
         self.nombre = nombre
 
     def obt_id(self):
-        """Retorna una string que representa el identificador del jugador"""
+        """Retorna un entero que representa el identificador del jugador"""
         return self.id_jugador
 
     def obt_nombre(self):
