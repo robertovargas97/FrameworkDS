@@ -71,22 +71,23 @@ while not done:
     screen.fill(BLACK)
  
     # Draw the grid
-    for row in range(9):
-        for column in range(9):
+    for row in range(8):
+        for column in range(8):
             color = WOOD
             #if grid[row][column] == 1:
                 #color = GREEN
              #   pygame.draw.circle(screen,(0,0,0),((MARGIN + WIDTH) * column + MARGIN,(MARGIN + HEIGHT) * row + MARGIN),25)
             pygame.draw.rect(screen,
                              color,
-                             [(MARGIN + WIDTH) * column + MARGIN,
-                              (MARGIN + HEIGHT) * row + MARGIN,
+                             [(MARGIN + WIDTH) * column + MARGIN + 20,
+                              (MARGIN + HEIGHT) * row + MARGIN + 20,
                               WIDTH,
                               HEIGHT])
     for row in range(9):
         for column in range(9):
-            if grid[row][column] == 1:
-                pygame.draw.circle(screen,(0,0,0),(int(column * HEIGHT + HEIGHT / 2) + 5, int(row * HEIGHT + HEIGHT / 2) + 5), int(HEIGHT/2-5))
+          #  if grid[row][column] == 1:
+            pygame.draw.circle(screen,RED,((MARGIN + WIDTH) * column + MARGIN + 20,
+                              (MARGIN + HEIGHT) * row + MARGIN + 20), 5)
  
     # Limit to 60 frames per second
     clock.tick(60)
