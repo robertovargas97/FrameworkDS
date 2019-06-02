@@ -8,16 +8,17 @@ class Controlador:
         # Se crea la vista y el modelo en el controlador (Composition)
         self.vista = Vista(self) #Referencia a la vista
         self.model = Modelo()
+        #Estas variables creo que se pasan al modelo
         self.nombre1 = ""
         self.nombre2 = ""
         self.piedras_jugador1 = 0
         self.piedras_jugador2 = 0
         
     def iniciar_interaccion(self):
-        self.vista.mostrar_pantalla_inicial()
+        self.vista.mostrar_ventana_inicial()
         
     def boton_autores_presionado(self):
-        self.vista.mostrar_autores()
+        self.vista.mostrar_ventana_autores()
     
     def boton_reglas_presionado(self):
         self.vista.mostrar_reglas()
@@ -58,7 +59,7 @@ class Controlador:
         nombre2_valido = self.validar_nombre(len_nombre2, nom_j2 ,nombre2_valido,2)
         
         if( nombre1_valido and nombre2_valido ):
-            self.vista.deshabilitar_boton_listo()
+            self.vista.deshabilitar_boton_listo("nombres")
             self.vista.habilitar_boton_continuar(1)
             self.nombre1 = nom_j1
             self.nombre2 = nom_j2
@@ -90,7 +91,6 @@ class Controlador:
                     
         return piedras_validas
                     
-      
     def obtener_cantidad_piedras(self):
         piedras_j1_validas = False
         piedras_j2_validas = False
@@ -102,7 +102,7 @@ class Controlador:
         piedras_j2_validas = self.validar_cantidad_piedras(piedras_j2,2)
                 
         if(piedras_j1_validas and piedras_j2_validas):
-            self.vista.deshabilitar_boton_listo_nigiri()
+            self.vista.deshabilitar_boton_listo("nigiri")
             self.vista.habilitar_boton_continuar(2)
             self.piedras_jugador1 = piedras_j1
             self.piedras_jugador2 = piedras_j2
@@ -115,12 +115,10 @@ class Controlador:
     def retornar_nombre_jugador2(self):
         return self.nombre2 #Puede que sea el modelo el que devuelva esto
 
-    def main(self):
-         self.iniciar_interaccion()
         
         
 if __name__ == "__main__":
     controlador = Controlador()
-    controlador.main()
+    controlador.iniciar_interaccion()
 
 

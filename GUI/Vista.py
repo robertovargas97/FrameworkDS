@@ -202,7 +202,7 @@ class Vista(Frame):
         self.colocar_boton_volver(win, "Volver",10,590,80,30,self.color_boton_go,"","",self.color_boton_go)
         frame.pack()
 
-    def mostrar_autores(self):
+    def mostrar_ventana_autores(self):
         self.ventana_autores = tk.Toplevel()
         self.ventana_autores.title("Autores")
         self.ventana_autores.geometry('540x379+430+70')  # Ancho por alto
@@ -213,7 +213,7 @@ class Vista(Frame):
         self.colocar_boton_volver(self.ventana_autores, "Cerrar",450,340,80,30,self.color_boton,"","",self.color_boton)
         self.ventana_autores.mainloop()
 
-    def mostrar_pantalla_inicial(self):
+    def mostrar_ventana_inicial(self):
         self.ventana_principal = tk.Tk()
         self.ventana_principal.title("FRAMEWORK")
         self.ventana_principal.geometry('600x500+400+20')  # Ancho por alto
@@ -235,7 +235,7 @@ class Vista(Frame):
         reajuste = Reajustar_tamano(self.menu, self.ruta_menu)
         reajuste.pack(fill=tk.BOTH, expand=tk.YES)
         self.menu.resizable(False, False)
-        self.colocar_boton_volver(self.menu, "Volver", 340, 370, 90,40, self.color_boton_go, "r1", self.mostrar_pantalla_inicial,self.color_fuente_boton_go_press)
+        self.colocar_boton_volver(self.menu, "Volver", 340, 370, 90,40, self.color_boton_go, "r1", self.controlador.iniciar_interaccion,self.color_fuente_boton_go_press)
         self.colocar_boton_reglas(self.menu, 205, 370, 120, 40)
         self.colocar_boton_jugar(self.menu)
         self.menu.mainloop()
@@ -265,6 +265,33 @@ class Vista(Frame):
     
         self.menu_nombres.mainloop()
 
+    def mostrar_ventana_nigiri(self):
+        self.menu_nombres.destroy()
+        self.ventana_nigiri = tk.Tk()
+        self.ventana_nigiri.title("Go")
+        self.ventana_nigiri.geometry('420x320+440+70')  # Ancho por alto
+        self.ventana_nigiri.configure(background='black')
+        self.ventana_nigiri.resizable(False, False)
+        imagen_para_fondo = Image.open(self.ruta_menu)
+        imagen_fondo = ImageTk.PhotoImage(imagen_para_fondo)
+        label1 = tk.Label(self.ventana_nigiri, image=imagen_fondo)
+        label1.place(x=0, y=0, relwidth=1.0, relheight=1.0)
+        
+        placeholder = " Cantidad de piedras de " + self.controlador.retornar_nombre_jugador1()
+        placeholder2 =" Cantidad de piedras de " + self.controlador.retornar_nombre_jugador2()
+        
+        self.piedras_j1 = tk.Entry(self.ventana_nigiri, justify=tk.CENTER, width=50)
+        self.colocar_input(self.piedras_j1,25,placeholder)
+
+        self.piedras_j2 = tk.Entry(self.ventana_nigiri, justify=tk.CENTER, width=50)
+        self.colocar_input(self.piedras_j2,0, placeholder2)
+
+        self.colocar_boton_reglas(self.ventana_nigiri, 200, 280, 120, 30)
+        self.colocar_boton_nigiri_listo(self.ventana_nigiri, 170, 120, 80, 30)
+        self.colocar_boton_nigiri_continuar(self.ventana_nigiri, 100, 280, 80, 30)
+
+        self.ventana_nigiri.mainloop()
+    
     def colocar_boton_autores(self, ventana):
         self.boton_autores = tk.Button(ventana, text="Autores", font=self.fuente_boton, fg=self.color_fuente_boton,activeforeground=self.color_fuente_boton_press, background=self.color_boton, activebackground=self.color_boton_pres,command=self.controlador.boton_autores_presionado)
         self.boton_autores.place(x=490, y=self.y_boton, width=90, height=40)
@@ -316,12 +343,12 @@ class Vista(Frame):
         elif (n_input ==2 ):
             self.nombre2.config(state='disabled')
             
-    def deshabilitar_boton_listo(self):
-        self.boton_listo.config(state='disabled',bg=self.boton_des)
-        
-    def deshabilitar_boton_listo_nigiri(self):
-        self.boton_nigiri_listo.config(state='disabled',bg=self.boton_des)
-    
+    def deshabilitar_boton_listo(self,op):
+        if(op == "nombres"):
+            self.boton_listo.config(state='disabled',bg=self.boton_des)
+        elif (op == "nigiri"):
+             self.boton_nigiri_listo.config(state='disabled',bg=self.boton_des)
+             
     def deshabilitar_input_piedras(self,n_input):
         if(n_input == 1):
             self.piedras_j1.config(state='disabled')
@@ -333,33 +360,6 @@ class Vista(Frame):
             self.boton_continuar.config(state='normal',bg= self.color_boton_go)
         elif opcion == 2:
             self.boton_nigiri_continuar.config(state='normal',bg= self.color_boton_go)
-             
-    def mostrar_ventana_nigiri(self):
-        self.menu_nombres.destroy()
-        self.ventana_nigiri = tk.Tk()
-        self.ventana_nigiri.title("Go")
-        self.ventana_nigiri.geometry('420x320+440+70')  # Ancho por alto
-        self.ventana_nigiri.configure(background='black')
-        self.ventana_nigiri.resizable(False, False)
-        imagen_para_fondo = Image.open(self.ruta_menu)
-        imagen_fondo = ImageTk.PhotoImage(imagen_para_fondo)
-        label1 = tk.Label(self.ventana_nigiri, image=imagen_fondo)
-        label1.place(x=0, y=0, relwidth=1.0, relheight=1.0)
-        
-        placeholder = " Cantidad de piedras de " + self.controlador.retornar_nombre_jugador1()
-        placeholder2 =" Cantidad de piedras de " + self.controlador.retornar_nombre_jugador2()
-        
-        self.piedras_j1 = tk.Entry(self.ventana_nigiri, justify=tk.CENTER, width=50)
-        self.colocar_input(self.piedras_j1,25,placeholder)
-
-        self.piedras_j2 = tk.Entry(self.ventana_nigiri, justify=tk.CENTER, width=50)
-        self.colocar_input(self.piedras_j2,0, placeholder2)
-
-        self.colocar_boton_reglas(self.ventana_nigiri, 200, 280, 120, 30)
-        self.colocar_boton_nigiri_listo(self.ventana_nigiri, 170, 120, 80, 30)
-        self.colocar_boton_nigiri_continuar(self.ventana_nigiri, 100, 280, 80, 30)
-
-        self.ventana_nigiri.mainloop()
 
     def volver(self, ventana_matar, metodo, opcion):
         ventana_matar.destroy()
@@ -367,10 +367,7 @@ class Vista(Frame):
             metodo()
         elif (opcion == "r2"):
             metodo(0)
-
-    def validar(self):
-        messagebox.showwarning("Arial", "Password incorrecto")
-        
+            
     def error_nombre(self,num_jugador):
         msj = "Debe ingresar un nombre para el jugador " + str(num_jugador)
         messagebox.showwarning("ERROR", msj)
@@ -387,3 +384,6 @@ class Vista(Frame):
     def avisar_inicio_nigiri(self,nom1,nom2):
         msj = "Bien " + nom1 +" y " + nom2 + " ahora inicia el nigiri.\nMucha suerte."
         messagebox.showinfo("Nigiri", msj)
+        
+    def validar(self):
+        messagebox.showwarning("Arial", "Password incorrecto")
