@@ -40,7 +40,7 @@ class Controlador:
     def validar_nombre(self,len_nombre,nom_j,n_valido,num_j):
         n_valido = False
         if((len_nombre < 1 or ("Nombre del jugador") in nom_j ) and (n_valido == False) ):
-            self.vista.error_nombre(num_j)
+            self.vista.mostrar_error_nombres(num_j)
         else: 
             n_valido = True
             self.vista.deshabilitar_input_nombre(num_j)
@@ -61,6 +61,7 @@ class Controlador:
         if( nombre1_valido and nombre2_valido ):
             self.vista.deshabilitar_boton_listo("nombres")
             self.vista.habilitar_boton_continuar(1)
+            self.vista.hover_button(self.vista.boton_continuar,self.vista.color_boton_go,self.vista.color_fuente_boton)
             self.nombre1 = nom_j1
             self.nombre2 = nom_j2
             #Aqui ya se pueden dar los nombres ya sea al modelo o colocarlos en algo en 
@@ -85,9 +86,9 @@ class Controlador:
         except Exception:
             #Cambiar por si es el modelo el que debe dar los nombres
             if(num_jugador == 1):
-                    self.vista.error_piedras(self.nombre1,1)
+                    self.vista.mostrar_error_piedras(self.nombre1,1)
             elif (num_jugador == 2):
-                    self.vista.error_piedras(self.nombre2,2)
+                    self.vista.mostrar_error_piedras(self.nombre2,2)
                     
         return piedras_validas
                     
@@ -104,6 +105,7 @@ class Controlador:
         if(piedras_j1_validas and piedras_j2_validas):
             self.vista.deshabilitar_boton_listo("nigiri")
             self.vista.habilitar_boton_continuar(2)
+            self.vista.hover_button(self.vista.boton_nigiri_continuar,self.vista.color_boton_go,self.vista.color_fuente_boton)
             self.piedras_jugador1 = piedras_j1
             self.piedras_jugador2 = piedras_j2
             #Aqui ya se pueden dar las piedras ya sea al modelo o colocarlos en algo en 
