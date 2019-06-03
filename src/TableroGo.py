@@ -247,6 +247,7 @@ class TableroGo(Tablero):
             self.tablero_juego[fila][col].asignar_tipo("-")
             self.tablero_juego = self.copia_tablero
             self.agrupaciones = self.copia_agrupaciones
+            print("Me suicide")
             j_suicida = True
         
         return j_suicida
