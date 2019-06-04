@@ -1,5 +1,4 @@
 from Vista import Vista
-from Modelo import Modelo
 
 class Controlador:
 
@@ -7,7 +6,6 @@ class Controlador:
         """Class initializer."""
         # Se crea la vista y el modelo en el controlador (Composition)
         self.vista = Vista(self) #Referencia a la vista
-        self.model = Modelo()
         #Estas variables creo que se pasan al modelo
         self.nombre1 = ""
         self.nombre2 = ""
