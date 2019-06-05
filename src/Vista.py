@@ -4,7 +4,7 @@ from tkinter import Frame
 from tkinter import font
 import PIL.Image
 import PIL.ImageTk
-from PIL import Image, ImageTk
+from PIL import Image,ImageTk
 import pygame
 import queue
 
@@ -88,7 +88,7 @@ class Vista(Frame):
         self.nombre2 = None
         self.piedras_j1 = None
         self.piedras_j2 = None
-    
+        self.screen = 0
     
     #################################################################### VENTANAS DE LA VISTA ###################################################################   
     def generar_ventana(self,ventana,titulo,dimensiones,color_fondo,ruta_imagen,op):
@@ -445,7 +445,7 @@ class Vista(Frame):
     
 ################################################################### CODIGO DE PYGAME ####################################################################
 
-    def mostrar_tablero(self):
+    def iniciar_tablero(self):
         # Set row 1, cell 5 to one. (Remember rows and
         # column numbers start at zero.)
         
@@ -454,24 +454,12 @@ class Vista(Frame):
         
         # Set the HEIGHT and WIDTH of the screen
         WINDOW_SIZE = [600, 450]
-        screen = pygame.display.set_mode(WINDOW_SIZE)
+        self.screen = pygame.display.set_mode(WINDOW_SIZE)
         # Set title of screen
         pygame.display.set_caption("Go Board Game")
-        
-        # Loop until the user clicks the close button.
-        done = False
-        
-        # Used to manage how fast the screen updates
-        clock = pygame.time.Clock()
-        while not done:
-            done = self.controlador.responder_a_dibujar_tablero(screen)
-            clock.tick(60)
-            # Go ahead and update the screen with what we've drawn.
-            pygame.display.flip()
-        pygame.quit()
- 
-    def dibujar_tablero(self, screen):
-        for event in pygame.event.get():  # User did something
+               
+    def dibujar_tablero(self, tablero):
+        """for event in pygame.event.get():  # User did something
             if event.type == pygame.QUIT:  # If user clicked close
                 done = True  # Flag that we are done so we exit this loop
                 return done
@@ -487,10 +475,10 @@ class Vista(Frame):
                 
                 # Set that location to one
                 #self.tablero[row][column] = 1
-                print("Click ", pos, "Grid coordinates: ", row, column)
+                print("Click ", pos, "Grid coordinates: ", row, column)"""
  
         # Set the screen background
-        screen.fill(BROWN)
+        self.screen.fill(BROWN)
  
         # Draw the grid
         for row in range(8):
@@ -499,7 +487,7 @@ class Vista(Frame):
                 #if grid[row][column] == 1:
                     #color = GREEN
                 #   pygame.draw.circle(screen,(0,0,0),((MARGIN + WIDTH) * column + MARGIN,(MARGIN + HEIGHT) * row + MARGIN),25)
-                pygame.draw.rect(screen,
+                pygame.draw.rect(self.screen,
                                 color,
                                 [(MARGIN + WIDTH) * column + MARGIN + 20,
                                 (MARGIN + HEIGHT) * row + MARGIN + 20,
@@ -507,13 +495,14 @@ class Vista(Frame):
                                 HEIGHT])
         for row in range(9):
             for column in range(9):
-                if self.tablero[row][column] == 'N':
-                    pygame.draw.circle(screen,BLACK,((MARGIN + WIDTH) * column + MARGIN + 20,
+                if  tablero[row][column] == 'N':
+                    pygame.draw.circle(self.screen,BLACK,((MARGIN + WIDTH) * column + MARGIN + 20,
                                 (MARGIN + HEIGHT) * row + MARGIN + 20), 17)
-                elif self.tablero[row][column] == 'B':
-                    pygame.draw.circle(screen,WHITE,((MARGIN + WIDTH) * column + MARGIN + 20,
+                elif tablero[row][column] == 'B':
+                    pygame.draw.circle(self.screen,WHITE,((MARGIN + WIDTH) * column + MARGIN + 20,
                                 (MARGIN + HEIGHT) * row + MARGIN + 20), 17)
 
                 else:
-                    pygame.draw.circle(screen,RED,((MARGIN + WIDTH) * column + MARGIN + 20,
+                    pygame.draw.circle(self.screen,RED,((MARGIN + WIDTH) * column + MARGIN + 20,
                                 (MARGIN + HEIGHT) * row + MARGIN + 20), 5)
+        pygame.display.flip()

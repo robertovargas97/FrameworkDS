@@ -6,6 +6,12 @@ from tkinter import messagebox
 from _thread import *
 import queue
 import threading
+import pygame
+
+WIDTH = 44
+HEIGHT = 44 
+# This sets the margin between each cell
+MARGIN = 2
 
 
 class Controlador:
@@ -175,12 +181,15 @@ class Controlador:
         
         self.tableroGo = TableroGo()
         self.tableroGo.crear_tablero()
+        self.vista.iniciar_tablero()
+        self.vista.dibujar_tablero(self.tablero)
         
         #Inicia el que tenga color negro en las fichas
         proximo_en_jugar = self.asignar_color_jugador(negro,blanco)
       
         while True:
 
+            self.caputurar_eventos()
             if not self.eventos.empty(): #ESTA LINEA ES LA QUE HACE QUE NO SALGA DEL WHILE UNA VEZ QUE SE CIERRA CON LA X
                 coordenadas = self.eventos.get()
                 fila = coordenadas[0]
@@ -207,6 +216,7 @@ class Controlador:
                     self.convertir_tablero(self.tableroGo)
                 else:
                     self.vista.mostrar_error_fuera_tablero()
+            self.vista.dibujar_tablero(self.tablero)
     
     def iniciar_tablero(self):
         self.refrescar_eventos ()
@@ -225,8 +235,25 @@ class Controlador:
             for columna in range(9):
                 self.tablero[fila].append("-")  # Append a cell
         
-        start_new_thread(self.iniciar_tablero,())
         self.iniciar_jugadas()
+    def caputurar_eventos(self):
+        for event in pygame.event.get():  # User did something
+            if event.type == pygame.QUIT:  # If user clicked close
+                done = True  # Flag that we are done so we exit this loop
+                return done
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                # User clicks the mouse. Get the position
+                pos = pygame.mouse.get_pos()
+                # Change the x/y screen coordinates to grid coordinates
+                column = pos[0] // (WIDTH + MARGIN)
+                row = pos[1] // (HEIGHT + MARGIN)
+                #self.events_mutex.acquire()
+                self.eventos.put((row,column))
+                #self.events_mutex.release()
+                
+                # Set that location to one
+                #self.tablero[row][column] = 1
+                print("Click ", pos, "Grid coordinates: ", row, column)
         
         
 if __name__ == "__main__":
