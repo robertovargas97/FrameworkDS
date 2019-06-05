@@ -271,6 +271,9 @@ class Controlador:
                 print("Click ", pos, "Grid coordinates: ", row, column)
             elif event.type == KEYDOWN and event.key == K_ESCAPE:
                 self.cambiar_turno = 1
+            elif event.type == KEYDOWN and event.key == K_0:
+                #print("mas")
+                self.vista.mostrar_ayuda_tablero()
         return False
         
         
