@@ -247,7 +247,6 @@ class TableroGo(Tablero):
             self.tablero_juego[fila][col].asignar_tipo("-")
             self.tablero_juego = self.copia_tablero
             self.agrupaciones = self.copia_agrupaciones
-            print("Me suicide")
             j_suicida = True
         
         return j_suicida
@@ -255,7 +254,7 @@ class TableroGo(Tablero):
     def terminar_juego(self, turnos_saltados):
         """Verifica si el juego ya acabo\n
         turnos_saltados : la cantidad de turnos saltados en una ronda. Si ambos jugadores saltan turno en la misma ronda, el juego acaba"""
-        if(turnos_saltados == 2):
+        if(turnos_saltados == 2 or self.tablero_lleno() == True):
             return True
         else:
             return False

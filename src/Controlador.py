@@ -232,7 +232,7 @@ class Controlador:
                         proximo_en_jugar -= 1
                         turnos_saltados += 1
                     self.cambiar_turno = 0
-                if(turnos_saltados == 2):
+                if(self.tableroGo.terminar_juego(turnos_saltados)):
                     self.vista.mostrar_fin_juego()
                     break
             self.vista.dibujar_tablero(self.tablero)
