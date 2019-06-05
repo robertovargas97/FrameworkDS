@@ -4,6 +4,7 @@ from Vista import Vista
 from tkinter import *
 from tkinter import messagebox
 from _thread import *
+from pygame.locals import *
 import queue
 import threading
 import pygame
@@ -33,6 +34,7 @@ class Controlador:
         self.color_jugador1 = 0
         self.color_jugador2 = 0
         self.color = 1
+        self.cambiar_turno = 0
     
     ################################################## REACCIONES A EVENTOS DE LA VISTA ##########################################################################
     def iniciar_framework(self):
@@ -178,6 +180,7 @@ class Controlador:
     def iniciar_jugadas(self):
         negro = 1
         blanco = 2
+        turnos_saltados = 0
         
         self.tableroGo = TableroGo()
         self.tableroGo.crear_tablero()
@@ -194,6 +197,7 @@ class Controlador:
                 pygame.quit()
                 break
             if not self.eventos.empty(): #ESTA LINEA ES LA QUE HACE QUE NO SALGA DEL WHILE UNA VEZ QUE SE CIERRA CON LA X
+                turnos_saltados = 0
                 coordenadas = self.eventos.get()
                 fila = coordenadas[0]
                 columna = coordenadas[1]
@@ -219,6 +223,18 @@ class Controlador:
                     self.convertir_tablero(self.tableroGo)
                 else:
                     self.vista.mostrar_error_fuera_tablero()
+            else:
+                if(self.cambiar_turno == 1):
+                    if(proximo_en_jugar == 0):
+                        proximo_en_jugar += 1
+                        turnos_saltados += 1
+                    else:
+                        proximo_en_jugar -= 1
+                        turnos_saltados += 1
+                    self.cambiar_turno = 0
+                if(turnos_saltados == 2):
+                    self.vista.mostrar_fin_juego()
+                    break
             self.vista.dibujar_tablero(self.tablero)
     
     def iniciar_tablero(self):
@@ -257,6 +273,8 @@ class Controlador:
                 # Set that location to one
                 #self.tablero[row][column] = 1
                 print("Click ", pos, "Grid coordinates: ", row, column)
+            elif event.type == KEYDOWN and event.key == K_ESCAPE:
+                self.cambiar_turno = 1
         return False
         
         

@@ -255,7 +255,7 @@ class TableroGo(Tablero):
     def terminar_juego(self, turnos_saltados):
         """Verifica si el juego ya acabo\n
         turnos_saltados : la cantidad de turnos saltados en una ronda. Si ambos jugadores saltan turno en la misma ronda, el juego acaba"""
-        if(turnos_saltados == 2 or self.tablero_lleno() == True):
+        if(turnos_saltados == 2):
             return True
         else:
             return False

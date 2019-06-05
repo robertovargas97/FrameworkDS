@@ -305,6 +305,10 @@ class Vista(Frame):
         self.colocar_boton_nigiri_continuar(self.ventana_nigiri, 100, 280, 80, 30)
 
         self.ventana_nigiri.mainloop()
+    
+    def mostrar_fin_juego(self):
+        tk.Tk().wm_withdraw()
+        messagebox.showinfo('Juego terminado', 'Fin del juego')
 
     ############################################################ BOTONES SIN ALGUNA FUNCION ESPECIFICA ##########################################################
     
