@@ -189,7 +189,10 @@ class Controlador:
       
         while True:
 
-            self.caputurar_eventos()
+            salir = self.caputurar_eventos()
+            if salir:
+                pygame.quit()
+                break
             if not self.eventos.empty(): #ESTA LINEA ES LA QUE HACE QUE NO SALGA DEL WHILE UNA VEZ QUE SE CIERRA CON LA X
                 coordenadas = self.eventos.get()
                 fila = coordenadas[0]
@@ -254,6 +257,7 @@ class Controlador:
                 # Set that location to one
                 #self.tablero[row][column] = 1
                 print("Click ", pos, "Grid coordinates: ", row, column)
+        return False
         
         
 if __name__ == "__main__":
