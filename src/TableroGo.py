@@ -199,12 +199,10 @@ class TableroGo(Tablero):
     def saltar_turno(self, jugador):
         """Permite al jugador saltar su turno\n
         jugador : el jugador que ha decidido saltar el turno"""
-        proximo_en_jugar = 0
-        id = jugador.obt_id()
-        if id == 1:
-            proximo_en_jugar = 2
-        else:
+        if jugador == 0:
             proximo_en_jugar = 1
+        else:
+            proximo_en_jugar = 0
         return proximo_en_jugar
 
     def tablero_lleno(self):

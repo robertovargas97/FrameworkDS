@@ -225,12 +225,8 @@ class Controlador:
                     self.vista.mostrar_error_fuera_tablero()
             else:
                 if(self.cambiar_turno == 1):
-                    if(proximo_en_jugar == 0):
-                        proximo_en_jugar += 1
-                        turnos_saltados += 1
-                    else:
-                        proximo_en_jugar -= 1
-                        turnos_saltados += 1
+                    proximo_en_jugar = self.tableroGo.saltar_turno(proximo_en_jugar)
+                    turnos_saltados += 1
                     self.cambiar_turno = 0
                 if(self.tableroGo.terminar_juego(turnos_saltados)):
                     self.vista.mostrar_fin_juego()
