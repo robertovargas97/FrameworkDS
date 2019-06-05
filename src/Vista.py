@@ -88,8 +88,9 @@ class Vista(Frame):
         self.nombre2 = None
         self.piedras_j1 = None
         self.piedras_j2 = None
-        
-        
+    
+    
+    #################################################################### VENTANAS DE LA VISTA ###################################################################   
     def generar_ventana(self,ventana,titulo,dimensiones,color_fondo,ruta_imagen,op):
         ventana.title(titulo)
         ventana.geometry(dimensiones)  # Ancho por alto
@@ -236,24 +237,26 @@ class Vista(Frame):
     def mostrar_ventana_autores(self):
         self.ventana_autores = tk.Toplevel()
         self.generar_ventana(self.ventana_autores,"Autores",'540x379+430+70','black',self.ruta_autores,"")
-        self.colocar_boton_volver(self.ventana_autores, "Cerrar",450,340,80,30,self.color_boton,"","",self.color_boton)
+        self.colocar_boton_volver(self.ventana_autores, "Cerrar",450,340,80,30,self.color_boton,"","",self.color_boton)#Modularizar este boton
         self.ventana_autores.mainloop()
 
     def mostrar_ventana_inicial(self):
         self.ventana_principal = tk.Tk()
         self.generar_ventana(self.ventana_principal,"FRAMEWORK",'600x500+400+20','black',self.ruta_img_principal,"")
+        self.colocar_boton(self.ventana_principal,self.boton_autores, "Autores", 490, 430, 90, 40, self.color_boton,self.color_boton_pres, self.color_fuente_boton,self.color_fuente_boton_press,self.controlador.boton_autores_presionado)
         self.colocar_boton_entrar(self.ventana_principal)
-        self.colocar_boton_autores(self.ventana_principal)
         self.ventana_principal.mainloop()
 
     def mostrar_menu_inicial(self, destruir):
         if(destruir == 1):
             self.ventana_principal.destroy()
+            
         self.menu = tk.Tk()
         self.generar_ventana(self.menu ,"Juego del Go",'520x420+440+70','black',self.ruta_menu,"")
-        self.colocar_boton_volver(self.menu, "Volver", 340, 370, 90,40, self.color_boton_go, "r1", self.controlador.iniciar_framework,self.color_fuente_boton_go_press)
-        self.colocar_boton_reglas(self.menu, 205, 370, 120, 40)
-        self.colocar_boton_jugar(self.menu)
+        self.colocar_boton(self.menu,self.boton_reglas , "Reglas del juego", 205, 370, 120, 40, self.color_boton_go ,self.color_fuente_boton_go_press, self.color_fuente_boton ,self.color_boton_go ,self.controlador.boton_reglas_presionado)
+        self.colocar_boton(self.menu,self.boton_jugar , "Jugar", 100, 370, 90, 40, self.color_boton_go ,self.color_fuente_boton_go_press, self.color_fuente_boton ,self.color_boton_go ,self.controlador.boton_jugar_presionado)
+        self.colocar_boton_volver(self.menu, "Volver", 340, 370, 90,40, self.color_boton_go, "r1", self.controlador.iniciar_framework,self.color_fuente_boton_go_press) 
+
         self.menu.mainloop()
         
     def mostrar_menu_nombres(self):
@@ -267,16 +270,16 @@ class Vista(Frame):
         label1.place(x=0, y=0, relwidth=1.0, relheight=1.0)
 
         self.nombre1 = tk.Entry(self.menu_nombres, justify=tk.CENTER, width=50)
-        self.colocar_input(self.nombre1,25,"Nombre del jugador 1")
+        self.colocar_input(self.nombre1,25,"Nombre del jugador 1","")
 
         self.nombre2 = tk.Entry(self.menu_nombres, justify=tk.CENTER, width=50)
-        self.colocar_input(self.nombre2,0,"Nombre del jugador 2")
-
-        self.colocar_boton_volver(self.menu_nombres, "Volver", 290, 280,80, 30, self.color_boton_go, "r2", self.controlador.boton_entrar_presionado,self.color_fuente_boton_go_press)
-        self.colocar_boton_reglas(self.menu_nombres, 150, 280, 120, 30)
-        self.colocar_boton_listo(self.menu_nombres, 170, 120, 80, 30)
+        self.colocar_input(self.nombre2,0,"Nombre del jugador 2","")
+            
+        self.colocar_boton(self.menu_nombres,self.boton_reglas , "Reglas del juego", 150, 280, 120, 30, self.color_boton_go ,self.color_fuente_boton_go_press, self.color_fuente_boton ,self.color_boton_go ,self.controlador.boton_reglas_presionado)
+        self.colocar_boton_listo(self.menu_nombres, 170, 120, 80, 30)  
         self.colocar_boton_continuar(self.menu_nombres, 50, 280, 80, 30)
-    
+        self.colocar_boton_volver(self.menu_nombres, "Volver", 290, 280,80, 30, self.color_boton_go, "r2", self.controlador.boton_entrar_presionado,self.color_fuente_boton_go_press)
+
         self.menu_nombres.mainloop()
 
     def mostrar_ventana_nigiri(self):
@@ -292,23 +295,26 @@ class Vista(Frame):
         placeholder2 =" Cantidad de piedras de " + self.controlador.retornar_nombre_jugador2()
         
         self.piedras_j1 = tk.Entry(self.ventana_nigiri, justify=tk.CENTER, width=50)
-        self.colocar_input(self.piedras_j1,25,placeholder)
-
+        self.colocar_input(self.piedras_j1,25,placeholder,"piedras")
+        
         self.piedras_j2 = tk.Entry(self.ventana_nigiri, justify=tk.CENTER, width=50)
-        self.colocar_input(self.piedras_j2,0, placeholder2)
+        self.colocar_input(self.piedras_j2,0, placeholder2,"piedras")
 
-        self.colocar_boton_reglas(self.ventana_nigiri, 200, 280, 120, 30)
+        self.colocar_boton(self.ventana_nigiri,self.boton_reglas , "Reglas del juego",200, 280, 120, 30, self.color_boton_go ,self.color_fuente_boton_go_press, self.color_fuente_boton ,self.color_boton_go ,self.controlador.boton_reglas_presionado)
         self.colocar_boton_nigiri_listo(self.ventana_nigiri, 170, 120, 80, 30)
         self.colocar_boton_nigiri_continuar(self.ventana_nigiri, 100, 280, 80, 30)
 
         self.ventana_nigiri.mainloop()
 
-    ######################## MODULARIZAR COLOCAR_BOTON ######################################
-    def colocar_boton_autores(self, ventana):
-        self.boton_autores = tk.Button(ventana, text="Autores", font=self.fuente_boton, fg=self.color_fuente_boton,activeforeground=self.color_fuente_boton_press, background=self.color_boton, activebackground=self.color_boton_pres,command=self.controlador.boton_autores_presionado)
-        self.boton_autores.place(x=490, y=self.y_boton, width=90, height=40)
-        self.hover_button (self.boton_autores,self.color_boton,self.color_fuente_boton)
-      
+    ############################################################ BOTONES SIN ALGUNA FUNCION ESPECIFICA ##########################################################
+    
+    def colocar_boton(self, ventana,boton, texto, x, y, ancho, alto, fondo_boton,color_boton_press, color_fuente_boton,color_fuente_press,metodo):
+        boton = tk.Button(ventana, text=texto, font=self.fuente_boton, fg=color_fuente_boton,activeforeground=color_fuente_press, background=fondo_boton, activebackground=color_boton_press, command = metodo)
+        boton.place(x=x, y=y, width=ancho, height=alto)
+        self.hover_button (boton,fondo_boton,color_fuente_boton)
+    
+    ########################################################### BOTONES CON FUNCIONES ESPECIFICAS ###############################################################
+
     def colocar_boton_entrar(self,ventana):
         self.boton_entrar = tk.Button(ventana, text="Ingresar", font=self.fuente_boton, fg=self.color_fuente_boton, activeforeground=self.color_fuente_boton_press,background=self.color_boton, activebackground=self.color_boton_pres,command=lambda: self.controlador.boton_entrar_presionado(1))
         self.boton_entrar.place(x=380, y=self.y_boton, width=90, height=40)
@@ -318,46 +324,39 @@ class Vista(Frame):
         self.boton_volver = tk.Button(ventana, text=texto, font=self.fuente_boton, fg=self.color_fuente_boton, activeforeground=color_fuente_press,background=color, activebackground=self.color_boton_pres,command=lambda: self.controlador.boton_volver_presionado(ventana,metodo,opcion))
         self.boton_volver.place(x=x, y=y, width=w, height=h)
         self.hover_button(self.boton_volver,color,self.color_fuente_boton)
-
-    def colocar_boton_reglas(self, ventana, x, y, w, h):
-        self.boton_reglas = tk.Button(ventana, text="Reglas del juego", font=self.fuente_boton, fg=self.color_fuente_boton,activeforeground=self.color_boton_go, background=self.color_boton_go, activebackground=self.color_boton_pres,command=self.controlador.boton_reglas_presionado)
-        self.boton_reglas.place(x=x, y=y, width=w, height=h)
-        self.hover_button(self.boton_reglas,self.color_boton_go,self.color_fuente_boton)
-
-    def colocar_boton_jugar(self, ventana):
-        self.boton_jugar = tk.Button(ventana, text="Jugar", font=self.fuente_boton, fg=self.color_fuente_boton, activeforeground=self.color_fuente_boton_go_press,background=self.color_boton_go, activebackground=self.color_boton_pres,command=self.controlador.boton_jugar_presionado)
-        self.boton_jugar.place(x=100, y=370, width=90, height=40)
-        self.hover_button(self.boton_jugar,self.color_boton_go,self.color_fuente_boton)
-
+        
     def colocar_boton_listo(self, ventana, x, y, w, h):
         self.boton_listo = tk.Button(ventana, text="Listo", font=self.fuente_boton, fg=self.color_fuente_boton, activeforeground=self.color_fuente_boton_go_press, background=self.color_boton_go, activebackground=self.color_boton_pres , command = self.controlador.obtener_nombres)
         self.boton_listo.place(x=x, y=y, width=w, height=h)
         self.hover_button(self.boton_listo,self.color_boton_go,self.color_fuente_boton)
-
+    
     def colocar_boton_nigiri_listo(self, ventana, x, y, w, h):
         self.boton_nigiri_listo = tk.Button(ventana, text="Listo", font=self.fuente_boton, fg=self.color_fuente_boton, activeforeground=self.color_fuente_boton_go_press, background=self.color_boton_go, activebackground=self.color_boton_pres , command = self.controlador.nigiri)
         self.boton_nigiri_listo.place(x=x, y=y, width=w, height=h)
         self.hover_button(self.boton_nigiri_listo,self.color_boton_go,self.color_fuente_boton)
-
+        
     def colocar_boton_continuar(self, ventana, x, y, w, h):
         self.boton_continuar = tk.Button(ventana, text="Continuar", font=self.fuente_boton, fg=self.color_fuente_boton, activeforeground=self.color_fuente_boton_go_press, background=self.boton_des, activebackground=self.color_boton_pres , command = self.controlador.boton_continuar_presionado)
         self.boton_continuar.config(state='disabled')
         self.boton_continuar.place(x=x, y=y, width=w, height=h)
-
+        
     def colocar_boton_nigiri_continuar(self, ventana, x, y, w, h):
-        self.boton_nigiri_continuar = tk.Button(ventana, text="Continuar", font=self.fuente_boton, fg=self.color_fuente_boton, activeforeground=self.color_fuente_boton_go_press, background=self.boton_des, activebackground=self.color_boton_pres , command = lambda: ventana.destroy())
+        self.boton_nigiri_continuar = tk.Button(ventana, text="Continuar", font=self.fuente_boton, fg=self.color_fuente_boton, activeforeground=self.color_fuente_boton_go_press, background=self.boton_des, activebackground=self.color_boton_pres , command = self.controlador.cerrar_menu)
         self.boton_nigiri_continuar.config(state='disabled')
         self.boton_nigiri_continuar.place(x=x, y=y, width=w, height=h)
 
-##########################################################################################
+################################################################# INPUT DE LA VISTA #######################################################################
 
-
-    def colocar_input(self, nombre,pady,texto):
+    def colocar_input(self, nombre,pady,texto,tipo):
+        if(tipo == "piedras"):
+            nombre.bind("<Enter>" , lambda args: nombre.config(show="*"))
+            
         placeholder = texto
         nombre.insert(0, placeholder)
         nombre.bind("<FocusIn>", lambda args: nombre.delete('0', 'end'))
         nombre.pack(padx=5, pady=pady, ipadx=5, ipady=5)
     
+################################################################# ACCIONES SECUNDARIAS ###################################################################
     def deshabilitar_input_nombre(self,n_input):
         if(n_input == 1):
             self.nombre1.config(state='disabled')
@@ -372,10 +371,10 @@ class Vista(Frame):
             
     def deshabilitar_boton_listo(self,op):
         if(op == "nombres"):
-            self.boton_listo.config(state='disabled',bg=self.boton_des)
+            self.boton_listo['state'] = 'disabled',
+            self.boton_listo['bg'] = self.boton_des
         elif (op == "nigiri"):
             self.boton_nigiri_listo.config(state='disabled',bg=self.boton_des)
-    
     
     def habilitar_boton_continuar(self,opcion):
         if opcion == 1:
@@ -390,6 +389,7 @@ class Vista(Frame):
         elif (opcion == "r2"):
             metodo(0)
             
+    ############################################################## MENSAJES DE LA VISTA ##################################################################
     def mostrar_error_nombres(self,num_jugador):
         msj = "Debe ingresar un nombre para el jugador " + str(num_jugador)
         messagebox.showwarning("ERROR", msj)
@@ -411,10 +411,26 @@ class Vista(Frame):
         tk.Tk().wm_withdraw()
         messagebox.showwarning('Jugada suicida!', 'Escoja otra posicion')
         
+    def mostrar_error_fuera_tablero(self):
+        tk.Tk().wm_withdraw()
+        messagebox.showwarning('Jugada invalida', 'Debe seleccionar una posicion dentro del tablero')
+        
     def avisar_inicio_nigiri(self,nom1,nom2):
         msj = "Bien " + nom1 +" y " + nom2 + " ahora inicia el nigiri.\nMucha suerte."
         messagebox.showinfo("Nigiri", msj)
         
+    def mostrar_resultado_nigiri(self,color, piedras_j1, piedras_j2,nombre1,nombre2):
+        msj = nombre1 + " eligio " + str(piedras_j1) + " piedra(s)\n"+ nombre2 + " eligio " + str(piedras_j2) + " piedra(s).\n\n"
+        msj2 = ""
+        
+        if(color == 1):
+            msj2 = nombre1 + " juega con las piedras negras.\n" + nombre2 + " juega con las piedras blancas.\n"
+        else:
+            msj2 = nombre1 + " juega con las piedras blancas.\n" + nombre2 + " juega con las piedras negras.\n"
+            
+        messagebox.showinfo("Nigiri", msj + msj2)
+        
+    ############################################################## EFECTOS VISUALES #####################################################################
     def cambiar_color(self,event,color_fuente,color_boton,op,boton):
         if op == "dentro":
             boton.configure(bg=color_boton,fg=color_fuente)
@@ -426,11 +442,9 @@ class Vista(Frame):
         if estado_boton == 'normal':
             boton.bind( "<Enter>",lambda event: self.cambiar_color(event,color_boton,color_fuente,"dentro",boton) )
             boton.bind( "<Leave>", lambda event: self.cambiar_color(event,color_fuente,color_boton,"fuera",boton) )
-            
-    def validar(self):
-        messagebox.showwarning("Arial", "Password incorrecto") 
-        
-##############################CODIGO DE PYGAME#############################################
+    
+################################################################### CODIGO DE PYGAME ####################################################################
+
     def mostrar_tablero(self):
         # Set row 1, cell 5 to one. (Remember rows and
         # column numbers start at zero.)

@@ -1,8 +1,6 @@
-from TableroGo import TableroGo  # Se importa la clase como tal y no como modulo
+from TableroGo import TableroGo
 from JugadorGo import JugadorGo
-from PiezaGo import PiezaGo
 from Vista import Vista
-from view import View
 from tkinter import *
 from tkinter import messagebox
 from _thread import *
@@ -30,6 +28,7 @@ class Controlador:
         self.color_jugador2 = 0
         self.color = 1
     
+    ################################################## REACCIONES A EVENTOS DE LA VISTA ##########################################################################
     def iniciar_framework(self):
         self.vista.mostrar_ventana_inicial()
         
@@ -51,6 +50,9 @@ class Controlador:
     def boton_continuar_presionado(self):
         self.vista.avisar_inicio_nigiri(self.nombre1,self.nombre2)
         self.vista.mostrar_ventana_nigiri() 
+        
+    def cerrar_menu(self):
+        self.vista.ventana_nigiri.destroy()
         
     def validar_nombre(self,len_nombre,nom_j,n_valido,num_j):
         n_valido = False
@@ -118,28 +120,32 @@ class Controlador:
             self.vista.deshabilitar_boton_listo("nigiri")
             self.vista.habilitar_boton_continuar(2)
             self.vista.hover_button(self.vista.boton_nigiri_continuar,self.vista.color_boton_go,self.vista.color_fuente_boton)
-            return int(piedras_j1) , int (piedras_j2)
-        return 0 , 0 
+            return int(piedras_j1) , int (piedras_j2) , True
+        return 0 , 0 , False
             
-    def nigiri(self):
-        """Manera en la que se decide que jugador va primero,el jugador 1 elige una cantidad de piedras sin ensenarlas y\n\
-        el jugador 2 elige una para decir impar o dos para decir par si acierta entonces empieza con negras sino con blancas"""
+    def elegir_color(self):
         # Si j2 eligio una piedra y la suma es impar entonces inicia
-        self.piedras_jugador1,self.piedras_jugador2 =  self.obtener_cantidad_piedras()
         if(self.piedras_jugador2 == 1 and ((self.piedras_jugador1 + self.piedras_jugador2) % 2 != 0)):
             self.color = 2
         # Si j2 eligio dos piedras y la suma es par entonces inica
         elif (self.piedras_jugador2 == 2 and ((self.piedras_jugador1 + self.piedras_jugador2) % 2 == 0)):
             self.color = 2
-       
+              
+    def nigiri(self):
+        """Manera en la que se decide que jugador va primero,el jugador 1 elige una cantidad de piedras sin ensenarlas y\n\
+        el jugador 2 elige una para decir impar o dos para decir par, si acierta entonces empieza con las negras sino con blancas"""
+        self.piedras_jugador1,self.piedras_jugador2 , respuesta_valida =  self.obtener_cantidad_piedras()
+        if(respuesta_valida):
+            self.elegir_color()
+            self.vista.mostrar_resultado_nigiri(self.color, self.piedras_jugador1, self.piedras_jugador2,self.nombre1,self.nombre2)
+ 
     def retornar_nombre_jugador1(self):
         return self.nombre1 
     
     def retornar_nombre_jugador2(self):
         return self.nombre2 
     
-    
-    ##########################################METODOS PARA EL TABLERO EN PYGAME #######################################################################
+    ##################################################### METODOS PARA EL TABLERO EN PYGAME #######################################################################
     def responder_a_dibujar_tablero(self,pantalla):
         return self.vista.dibujar_tablero(pantalla)
     
@@ -148,14 +154,9 @@ class Controlador:
         
     def refrescar_eventos (self):
         self.vista.eventos = self.eventos
-    
-    def iniciar_jugadas(self):
-        negro = 1
-        blanco = 2
         
-        self.tableroGo = TableroGo()
-        self.tableroGo.crear_tablero()
-        turno = 0
+    def asignar_color_jugador(self,negro,blanco):
+        proximo_en_jugar = 0
         if(self.color == 1):
             self.jugador1 = JugadorGo(1, negro, self.nombre1)
             self.jugador2 = JugadorGo(2, blanco, self.nombre2)
@@ -163,34 +164,49 @@ class Controlador:
         else:
             self.jugador1 = JugadorGo(1, blanco, self.nombre1)
             self.jugador2 = JugadorGo(2, negro, self.nombre2)
-            turno = 1
+            proximo_en_jugar = 1
+            
+        return proximo_en_jugar
+        
+    
+    def iniciar_jugadas(self):
+        negro = 1
+        blanco = 2
+        
+        self.tableroGo = TableroGo()
+        self.tableroGo.crear_tablero()
+        
+        #Inicia el que tenga color negro en las fichas
+        proximo_en_jugar = self.asignar_color_jugador(negro,blanco)
       
         while True:
 
-            if not self.eventos.empty(): #si hay al
+            if not self.eventos.empty(): #ESTA LINEA ES LA QUE HACE QUE NO SALGA DEL WHILE UNA VEZ QUE SE CIERRA CON LA X
                 coordenadas = self.eventos.get()
                 fila = coordenadas[0]
                 columna = coordenadas[1]
-                if(turno == 0):
-                    if(self.tableroGo.colocar_ficha(fila, columna, self.jugador1) == False):
-                        self.vista.mostrar_error_posicion()
-                    else:
-                       # tablero.colocar_ficha(fila, columna, self.jugador1)
-                        piezas_perdidas = self.tableroGo.revisar_eliminar_agrupamientos()
-                        if (self.tableroGo.jugada_suicida(fila,columna) == True):
-                           self.vista.mostrar_error_jugada_suicida()
+                if(self.tableroGo.validar_posicion(fila,columna)):
+                    if(proximo_en_jugar == 0):
+                        if(self.tableroGo.colocar_ficha(fila, columna, self.jugador1) == False):
+                            self.vista.mostrar_error_posicion()
                         else:
-                            turno += 1                   
+                            piezas_perdidas = self.tableroGo.revisar_eliminar_agrupamientos()
+                            if (self.tableroGo.jugada_suicida(fila,columna) == True):
+                                self.vista.mostrar_error_jugada_suicida()
+                            else:
+                                proximo_en_jugar += 1                   
+                    else:
+                        if(self.tableroGo.colocar_ficha(fila, columna, self.jugador2) == False):
+                            self.vista.mostrar_error_posicion()
+                        else:
+                            piezas_perdidas = self.tableroGo.revisar_eliminar_agrupamientos()
+                            if (self.tableroGo.jugada_suicida(fila,columna) == True):
+                                self.vista.mostrar_error_jugada_suicida()
+                            else:
+                                proximo_en_jugar -= 1 
+                    self.convertir_tablero(self.tableroGo)
                 else:
-                    if(self.tableroGo.colocar_ficha(fila, columna, self.jugador2) == False):
-                        self.vista.mostrar_error_posicion()
-                    else:
-                        piezas_perdidas = self.tableroGo.revisar_eliminar_agrupamientos()
-                        if (self.tableroGo.jugada_suicida(fila,columna) == True):
-                            self.vista.mostrar_error_jugada_suicida()
-                        else:
-                            turno -= 1 
-                self.convertir_tablero(self.tableroGo)
+                    self.vista.mostrar_error_fuera_tablero()
     
     def iniciar_tablero(self):
         self.refrescar_eventos ()
