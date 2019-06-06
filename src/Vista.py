@@ -100,8 +100,9 @@ class Vista(Frame):
             reajuste.pack(fill=tk.BOTH, expand=tk.YES)
         ventana.resizable(False, False)
 
-    def mostrar_reglas(self):
+    def mostrar_info(self):
         win = tk.Toplevel()
+    
         win.title("Reglas del juego")
         win.geometry("+%d+%d" % (150, 30))
         win.resizable(False, False)
@@ -267,7 +268,7 @@ class Vista(Frame):
     def mostrar_menu_nombres(self):
         self.menu.destroy()
         self.menu_nombres = tk.Tk()
-        self.generar_ventana(self.menu_nombres,"Go",'420x320+440+70','black',self.ruta_menu,"no")
+        self.generar_ventana(self.menu_nombres,"Go",'440x340+440+70','black',self.ruta_menu,"no")
         #Se realiza de esta forma ya que los inputs no salen si se coloca el fondo como los demas
         imagen_para_fondo = Image.open(self.ruta_menu)
         imagen_fondo = ImageTk.PhotoImage(imagen_para_fondo)
@@ -280,17 +281,17 @@ class Vista(Frame):
         self.nombre2 = tk.Entry(self.menu_nombres, justify=tk.CENTER, width=50)
         self.colocar_input(self.nombre2,0,"Nombre del jugador 2","")
             
-        self.colocar_boton(self.menu_nombres,self.boton_reglas , "Reglas del juego", 150, 280, 120, 30, self.color_boton_go ,self.color_fuente_boton_go_press, self.color_fuente_boton ,self.color_boton_go ,self.controlador.boton_reglas_presionado)
-        self.colocar_boton_listo(self.menu_nombres, 170, 120, 80, 30)  
-        self.colocar_boton_continuar(self.menu_nombres, 50, 280, 80, 30)
-        self.colocar_boton_volver(self.menu_nombres, "Volver", 290, 280,80, 30, self.color_boton_go, "r2", self.controlador.boton_entrar_presionado,self.color_fuente_boton_go_press)
+        self.colocar_boton(self.menu_nombres,self.boton_reglas , "Reglas del juego", 160, 300, 120, 30, self.color_boton_go ,self.color_fuente_boton_go_press, self.color_fuente_boton ,self.color_boton_go ,self.controlador.boton_reglas_presionado)
+        self.colocar_boton_listo(self.menu_nombres, 180, 120, 80, 30)  
+        self.colocar_boton_continuar(self.menu_nombres, 60, 300, 80, 30)
+        self.colocar_boton_volver(self.menu_nombres, "Volver", 300, 300,80, 30, self.color_boton_go, "r2", self.controlador.boton_entrar_presionado,self.color_fuente_boton_go_press)
 
         self.menu_nombres.mainloop()
 
     def mostrar_ventana_nigiri(self):
         self.menu_nombres.destroy()
         self.ventana_nigiri = tk.Tk()
-        self.generar_ventana(self.ventana_nigiri,"Go",'420x320+440+70','black',self.ruta_menu,"no")
+        self.generar_ventana(self.ventana_nigiri,"Go",'440x340+440+70','black',self.ruta_menu,"no")
         imagen_para_fondo = Image.open(self.ruta_menu)
         imagen_fondo = ImageTk.PhotoImage(imagen_para_fondo)
         label1 = tk.Label(self.ventana_nigiri, image=imagen_fondo)
@@ -305,9 +306,9 @@ class Vista(Frame):
         self.piedras_j2 = tk.Entry(self.ventana_nigiri, justify=tk.CENTER, width=50)
         self.colocar_input(self.piedras_j2,0, placeholder2,"piedras")
 
-        self.colocar_boton(self.ventana_nigiri,self.boton_reglas , "Reglas del juego",200, 280, 120, 30, self.color_boton_go ,self.color_fuente_boton_go_press, self.color_fuente_boton ,self.color_boton_go ,self.controlador.boton_reglas_presionado)
-        self.colocar_boton_nigiri_listo(self.ventana_nigiri, 170, 120, 80, 30)
-        self.colocar_boton_nigiri_continuar(self.ventana_nigiri, 100, 280, 80, 30)
+        self.colocar_boton(self.ventana_nigiri,self.boton_reglas , "Reglas del juego",220, 300, 120, 30, self.color_boton_go ,self.color_fuente_boton_go_press, self.color_fuente_boton ,self.color_boton_go ,self.controlador.boton_reglas_presionado)
+        self.colocar_boton_nigiri_listo(self.ventana_nigiri, 180, 120, 80, 30)
+        self.colocar_boton_nigiri_continuar(self.ventana_nigiri, 120, 300, 80, 30)
 
         self.ventana_nigiri.mainloop()
     
@@ -358,7 +359,7 @@ class Vista(Frame):
 
     def colocar_input(self, nombre,pady,texto,tipo):
         if(tipo == "piedras"):
-            nombre.bind("<Enter>" , lambda args: nombre.config(show="*"))
+            nombre.bind("<Key>" , lambda args: nombre.config(show="*"))
             
         placeholder = texto
         nombre.insert(0, placeholder)
@@ -439,6 +440,11 @@ class Vista(Frame):
             
         messagebox.showinfo("Nigiri", msj + msj2)
         
+    def mostrar_reglas_juego(self):
+        tk.Tk().wm_withdraw()
+        msj = "• Se puede capturar una piedra o un conjunto de piedras y eliminarlas del tablero si están completamente rodeadas por piedras de otro color.\n\n• Se deben sacar las piedras rodeadas del tablero y guardarlas separadamente hasta el final de la partida.\n\n• Suicidio: No se permite hacer una jugada ocupando una posición libre en el interior de una formación enemiga (suicidio), a no ser que esta jugada capture piedras enemigas.\n\n• Cuando los dos jugadores pasan consecutivamente de turno o cuando ya no hay espacios en el tablero, se acaba la partida.\n\n• Los jugadores cuentan los puntos de cada territorio,teniendo en cuenta las piedras prisioneras y gana el jugador que controla la mayor cantidad de territorio al finalizar la partida.\n\n"
+        messagebox.showinfo("Reglas", msj)
+        
     ############################################################## EFECTOS VISUALES #####################################################################
     def cambiar_color(self,event,color_fuente,color_boton,op,boton):
         if op == "dentro":
@@ -455,9 +461,6 @@ class Vista(Frame):
 ################################################################### CODIGO DE PYGAME ####################################################################
 
     def iniciar_tablero(self):
-        # Set row 1, cell 5 to one. (Remember rows and
-        # column numbers start at zero.)
-        
         # Initialize pygame
         pygame.init()
         
@@ -468,24 +471,6 @@ class Vista(Frame):
         pygame.display.set_caption("Go Board Game")
                
     def dibujar_tablero(self, tablero):
-        """for event in pygame.event.get():  # User did something
-            if event.type == pygame.QUIT:  # If user clicked close
-                done = True  # Flag that we are done so we exit this loop
-                return done
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                # User clicks the mouse. Get the position
-                pos = pygame.mouse.get_pos()
-                # Change the x/y screen coordinates to grid coordinates
-                column = pos[0] // (WIDTH + MARGIN)
-                row = pos[1] // (HEIGHT + MARGIN)
-                #self.events_mutex.acquire()
-                self.eventos.put((row,column))
-                #self.events_mutex.release()
-                
-                # Set that location to one
-                #self.tablero[row][column] = 1
-                print("Click ", pos, "Grid coordinates: ", row, column)"""
- 
         # Set the screen background
         self.screen.fill(BROWN)
  
@@ -493,9 +478,6 @@ class Vista(Frame):
         for row in range(8):
             for column in range(8):
                 color = WOOD
-                #if grid[row][column] == 1:
-                    #color = GREEN
-                #   pygame.draw.circle(screen,(0,0,0),((MARGIN + WIDTH) * column + MARGIN,(MARGIN + HEIGHT) * row + MARGIN),25)
                 pygame.draw.rect(self.screen,
                                 color,
                                 [(MARGIN + WIDTH) * column + MARGIN + 20,
@@ -506,10 +488,10 @@ class Vista(Frame):
             for column in range(9):
                 if  tablero[row][column] == 'N':
                     pygame.draw.circle(self.screen,BLACK,((MARGIN + WIDTH) * column + MARGIN + 20,
-                                (MARGIN + HEIGHT) * row + MARGIN + 20), 17)
+                                (MARGIN + HEIGHT) * row + MARGIN + 20), 13)
                 elif tablero[row][column] == 'B':
                     pygame.draw.circle(self.screen,WHITE,((MARGIN + WIDTH) * column + MARGIN + 20,
-                                (MARGIN + HEIGHT) * row + MARGIN + 20), 17)
+                                (MARGIN + HEIGHT) * row + MARGIN + 20), 13)
 
                 else:
                     pygame.draw.circle(self.screen,RED,((MARGIN + WIDTH) * column + MARGIN + 20,

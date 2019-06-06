@@ -3,10 +3,8 @@ from JugadorGo import JugadorGo
 from Vista import Vista
 from tkinter import *
 from tkinter import messagebox
-from _thread import *
 from pygame.locals import *
 import queue
-import threading
 import pygame
 
 WIDTH = 44
@@ -35,6 +33,7 @@ class Controlador:
         self.color_jugador2 = 0
         self.color = 1
         self.cambiar_turno = 0
+        self.m_tablero = False
     
     ################################################## REACCIONES A EVENTOS DE LA VISTA ##########################################################################
     def iniciar_framework(self):
@@ -44,7 +43,7 @@ class Controlador:
         self.vista.mostrar_ventana_autores()
     
     def boton_reglas_presionado(self):
-        self.vista.mostrar_reglas()
+        self.vista.mostrar_info()
         
     def boton_entrar_presionado(self,op):
         self.vista.mostrar_menu_inicial(op)
@@ -61,6 +60,7 @@ class Controlador:
         
     def cerrar_menu(self):
         self.vista.ventana_nigiri.destroy()
+        self.m_tablero = True
         
     def validar_nombre(self,len_nombre,nom_j,n_valido,num_j):
         n_valido = False
@@ -221,8 +221,6 @@ class Controlador:
                             else:
                                 proximo_en_jugar -= 1 
                     self.convertir_tablero(self.tableroGo)
-                else:
-                    self.vista.mostrar_error_fuera_tablero()
             else:
                 if(self.cambiar_turno == 1):
                     proximo_en_jugar = self.tableroGo.saltar_turno(proximo_en_jugar)
@@ -251,6 +249,7 @@ class Controlador:
                 self.tablero[fila].append("-")  # Append a cell
         
         self.iniciar_jugadas()
+        
     def caputurar_eventos(self):
         for event in pygame.event.get():  # User did something
             if event.type == pygame.QUIT:  # If user clicked close
@@ -262,18 +261,12 @@ class Controlador:
                 # Change the x/y screen coordinates to grid coordinates
                 column = pos[0] // (WIDTH + MARGIN)
                 row = pos[1] // (HEIGHT + MARGIN)
-                #self.events_mutex.acquire()
                 self.eventos.put((row,column))
-                #self.events_mutex.release()
-                
-                # Set that location to one
-                #self.tablero[row][column] = 1
-                print("Click ", pos, "Grid coordinates: ", row, column)
+    
             elif event.type == KEYDOWN and event.key == K_ESCAPE:
                 self.cambiar_turno = 1
             elif event.type == KEYDOWN and event.key == K_0:
-                #print("mas")
-                self.vista.mostrar_ayuda_tablero()
+                self.vista.mostrar_reglas_juego()
         return False
         
         
@@ -281,4 +274,5 @@ if __name__ == "__main__":
     controlador = Controlador()
     controlador.iniciar_framework()
     #HAY QUE ARREGLAR QUE SI SE CIERRA LA VENTANA DE TKINTER CON LA "X" NO SE EJECUTE LA LINEA DE MOSTRAR TABLERO
-    controlador.mostrar_tablero()
+    if(controlador.m_tablero):
+        controlador.mostrar_tablero()
