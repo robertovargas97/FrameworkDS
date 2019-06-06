@@ -235,11 +235,6 @@ class Vista(Frame):
         self.colocar_boton_volver(win, "Volver",10,590,80,30,self.color_boton_go,"","",self.color_boton_go)
         frame.pack()
 
-    def mostrar_ayuda_tablero(self):
-        tk.Tk().wm_withdraw()
-        messagebox.showinfo('Reglas del juego', 'Aqui deberia ir la ayuda del juego')
-        
-
     def mostrar_ventana_autores(self):
         self.ventana_autores = tk.Toplevel()
         self.generar_ventana(self.ventana_autores,"Autores",'540x379+430+70','black',self.ruta_autores,"")
@@ -312,10 +307,6 @@ class Vista(Frame):
 
         self.ventana_nigiri.mainloop()
     
-    def mostrar_fin_juego(self):
-        tk.Tk().wm_withdraw()
-        messagebox.showinfo('Juego terminado', 'Fin del juego')
-
     ############################################################ BOTONES SIN ALGUNA FUNCION ESPECIFICA ##########################################################
     
     def colocar_boton(self, ventana,boton, texto, x, y, ancho, alto, fondo_boton,color_boton_press, color_fuente_boton,color_fuente_press,metodo):
@@ -412,6 +403,10 @@ class Vista(Frame):
             msj = str(nombre) + " debe ingresar 1 o 2 piedras"
             
         messagebox.showwarning("ERROR", msj)
+        
+    def mostrar_fin_juego(self):
+        tk.Tk().wm_withdraw()
+        messagebox.showinfo('Juego terminado', 'Fin del juego')
         
     def mostrar_error_posicion(self):
         tk.Tk().wm_withdraw()
