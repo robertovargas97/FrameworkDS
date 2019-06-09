@@ -43,6 +43,27 @@ class TableroGo(Tablero):
                     print(self.tablero_juego[fila][columna].obt_tipo(), " ", end="")
             print()
         print()
+    def mostrar_tablero_copia(self):
+        """Muestra en pantalla el tablero"""
+        # Este for coloca el numero de columnas para mayor facilidad a la hora de colocar una posicion
+        print()
+        for i in range(self.filas):
+            if(i == 0):
+                print("   ", i, " ", end="")
+            else:
+                print(i, " ", end="")
+        print()
+
+        # Aca se empieza a imprimir la matriz como tal
+        for fila in range(self.filas):
+            for columna in range(self.columnas):
+                if(columna == 0):
+                    print(
+                        fila, " ", self.copia_tablero[fila][columna].obt_tipo(), " ", end="")
+                else:
+                    print(self.copia_tablero[fila][columna].obt_tipo(), " ", end="")
+            print()
+        print()
 
     def limpiar_tablero(self):
         """Limpia el tablero para reiniciar el juego"""
@@ -219,8 +240,7 @@ class TableroGo(Tablero):
 
         for fil in range(self.filas):
             for col in range(self.columnas):
-                if self.tablero_juego[fil][col].obt_agrupacion() != -1:
-                    tablero_copia[fil][col] = self.tablero_juego[fil][col].copiar_pieza()
+                tablero_copia[fil][col] = self.tablero_juego[fil][col].copiar_pieza()
         return tablero_copia    
 
     def copiar_agrupciones(self):

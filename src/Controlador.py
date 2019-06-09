@@ -282,11 +282,16 @@ class Controlador:
             piezas_perdidas = tablero.revisar_eliminar_agrupamientos()
             if (tablero.jugada_suicida(fila,columna) == True):
                 vista.mostrar_error_jugada_suicida()
+                
             else:
                 if(jugador_en_turno == 0):
                     jugador_en_turno =  1
                 elif (jugador_en_turno == 1):
                     jugador_en_turno =  0 
+        #print("=======copia=========\n")
+        #tablero.mostrar_tablero_copia()
+        #print("=======actual=========\n")
+        #tablero.mostrar_tablero()
                     
         return jugador_en_turno
         
