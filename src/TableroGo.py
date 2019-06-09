@@ -262,9 +262,10 @@ class TableroGo(Tablero):
         for i in range(0, len(jugador.piezas_colocadas)):
             puntos_jugador = puntos_jugador + 1
         return puntos_jugador
+    
+    
         
-      
-
-
-
-
+        
+        
+        
+        
