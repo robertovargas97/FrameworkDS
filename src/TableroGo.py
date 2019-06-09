@@ -21,7 +21,8 @@ class TableroGo(Tablero):
         for fila in range(self.filas):
             self.tablero_juego[fila] = [PiezaGo(-1, -1,-1,-1)] * self.columnas  # Crea las columnas del tablero
         # return self.tablero_juego
-
+        
+###########################################################################################################################################
     def mostrar_tablero(self):
         """Muestra en pantalla el tablero"""
         # Este for coloca el numero de columnas para mayor facilidad a la hora de colocar una posicion
@@ -43,6 +44,7 @@ class TableroGo(Tablero):
                     print(self.tablero_juego[fila][columna].obt_tipo(), " ", end="")
             print()
         print()
+        
     def mostrar_tablero_copia(self):
         """Muestra en pantalla el tablero"""
         # Este for coloca el numero de columnas para mayor facilidad a la hora de colocar una posicion
@@ -64,6 +66,7 @@ class TableroGo(Tablero):
                     print(self.copia_tablero[fila][columna].obt_tipo(), " ", end="")
             print()
         print()
+################################################################################################################################################
 
     def limpiar_tablero(self):
         """Limpia el tablero para reiniciar el juego"""

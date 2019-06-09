@@ -253,6 +253,11 @@ class Controlador:
                     self.convertir_tablero(self.tableroGo)
             else:
                 if(self.cambiar_turno == 1):
+                    if(proximo_en_jugar == 0):
+                        self.vista.mostrar_salto_turno(self.jugador1.obt_nombre())
+                    elif (proximo_en_jugar == 1):
+                        self.vista.mostrar_salto_turno(self.jugador2.obt_nombre())
+                      
                     proximo_en_jugar = self.tableroGo.saltar_turno(proximo_en_jugar)
                     turnos_saltados += 1
                     self.cambiar_turno = 0

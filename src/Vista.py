@@ -528,6 +528,12 @@ class Vista(Frame):
         tk.Tk().wm_withdraw()
         messagebox.showinfo('Juego terminado', 'Fin del juego')
         
+    def mostrar_salto_turno(self,jugador):
+        """Muestra un msj para indicar que un jugador paso el turno"""
+        tk.Tk().wm_withdraw()
+        msj = jugador + " paso el turno.\n"
+        messagebox.showinfo('Juego terminado', msj)
+        
     def mostrar_error_posicion(self):
         """Muestra un msj para indicar un error al colocar una pieza."""
         tk.Tk().wm_withdraw()
