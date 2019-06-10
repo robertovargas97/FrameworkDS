@@ -230,13 +230,17 @@ class Controlador:
         negro = 1
         blanco = 2
         turnos_saltados = 0
-        
+    
         self.tableroGo = TableroGo()
         self.tableroGo.crear_tablero()
         self.vista.iniciar_tablero()
-        self.vista.dibujar_tablero(self.tablero)
+        
         #Inicia el que tenga color negro en las fichas
         proximo_en_jugar = self.asignar_color_jugador(negro,blanco)
+        
+        cantidad_piezas_j1 = self.jugador1.obt_total_piezas()
+        cantidad_piezas_j2 = self.jugador2.obt_total_piezas()
+        self.vista.dibujar_tablero(self.tablero,cantidad_piezas_j1,cantidad_piezas_j2,self.nombre1,self.nombre2)
         
         while True:
             
@@ -254,9 +258,11 @@ class Controlador:
                 if(self.tableroGo.validar_posicion(fila,columna)):
                     
                     if(proximo_en_jugar == 0):
-                        proximo_en_jugar = self.movimiento_jugador(self.jugador1,fila,columna,self.tableroGo,self.vista)                  
+                        proximo_en_jugar = self.movimiento_jugador(self.jugador1,fila,columna,self.tableroGo,self.vista)        
+                        cantidad_piezas_j1 -= 1
                     else:
-                        proximo_en_jugar = self.movimiento_jugador(self.jugador2,fila,columna,self.tableroGo,self.vista)                  
+                        proximo_en_jugar = self.movimiento_jugador(self.jugador2,fila,columna,self.tableroGo,self.vista)  
+                        cantidad_piezas_j2 -= 1
 
                     self.convertir_tablero(self.tableroGo)
             else:
@@ -277,7 +283,7 @@ class Controlador:
                     self.vista.mostrar_fin_juego(self.nombre1,puntos_jugador_1,self.nombre2,puntos_jugador_2,self.determinar_nombre_ganador(ganador))
                     break
                 
-            self.vista.dibujar_tablero(self.tablero)
+            self.vista.dibujar_tablero(self.tablero,cantidad_piezas_j1,cantidad_piezas_j2,self.nombre1,self.nombre2)
     
     def movimiento_jugador(self,jugador,fila,columna,tablero,vista):
         """Coloca la ficha en el tablero en la posicion que elige el jugador.
@@ -294,7 +300,7 @@ class Controlador:
         if(tablero.colocar_ficha(fila, columna, jugador) == False):
             vista.mostrar_error_posicion()
         else:
-            piezas_perdidas = tablero.revisar_eliminar_agrupamientos()
+            tablero.revisar_eliminar_agrupamientos()
             if (tablero.jugada_suicida(fila,columna) == True):
                 vista.mostrar_error_jugada_suicida()
                 
@@ -353,3 +359,11 @@ if __name__ == "__main__":
     controlador.iniciar_framework()
     if(controlador.m_tablero):
         controlador.mostrar_tablero()
+    
+    # from tkinter import filedialog
+    # from tkinter import *
+
+    # root = Tk()
+    # root.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("jpeg files","*.jpg"),("all files","*.*")))
+    # print (root.filename)
+        

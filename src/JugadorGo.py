@@ -47,3 +47,6 @@ class JugadorGo(Jugador):
     def asignar_cant_piezas(self, valor):
         """Asigna la cantidad de piezas al jugador"""
         self.cantidad_piezas += valor
+        
+    def obt_total_piezas(self):
+        return self.cantidad_piezas

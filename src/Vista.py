@@ -613,11 +613,11 @@ class Vista(Frame):
         # Se inicia pygame
         pygame.init()
         # Se coloca el ancho y alto de la pantalla
-        WINDOW_SIZE = [700, 450]
+        WINDOW_SIZE = [730, 450]
         self.screen = pygame.display.set_mode(WINDOW_SIZE)
         pygame.display.set_caption("Go Board Game")
                
-    def dibujar_tablero(self, tablero):
+    def dibujar_tablero(self, tablero,restantes_j1,restantes_j2,nombre1,nombre2):
         """Dibuja las celdas del tablero en la ventana de pygame """
         # Fondo de la pantalla
         self.screen.fill(BROWN)
@@ -646,4 +646,15 @@ class Vista(Frame):
                 else:
                     pygame.draw.circle(self.screen,RED,((MARGIN + WIDTH) * column + MARGIN + 20,
                                 (MARGIN + HEIGHT) * row + MARGIN + 20), 5)
+                    
+        msj_1 = "Piedras restantes de " + nombre1 + ": " + str(restantes_j1)
+        myfont = pygame.font.SysFont("monospace",15)            
+        label = myfont.render(msj_1, 1, (255, 255, 255))
+        self.screen.blit(label, (420, 90))
+        
+        msj_2 = "Piedras restantes de " + nombre2 + ": " + str(restantes_j2)
+        myfont = pygame.font.SysFont("monospace",15)            
+        label = myfont.render(msj_2, 1, (255, 255, 255))
+        self.screen.blit(label, (420, 120))
+        
         pygame.display.flip()
