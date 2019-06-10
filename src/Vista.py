@@ -523,16 +523,21 @@ class Vista(Frame):
             
         messagebox.showwarning("ERROR", msj)
         
-    def mostrar_fin_juego(self):
+    def mostrar_fin_juego(self,nombre1,puntos_jugador_1,nombre2,puntos_jugador_2,ganador):
         """Muestra un msj para indicar el fin del juego"""
         tk.Tk().wm_withdraw()
-        messagebox.showinfo('Juego terminado', 'Fin del juego')
+        if(ganador != "Empate"):
+            msj = nombre1 + " obtuvo " + str(puntos_jugador_1) + " puntos\n" + nombre2 + " obtuvo " + str(puntos_jugador_2) + " puntos.\n\nEl ganador es " + ganador + ".\n"
+        else:
+            msj = nombre1 + " obtuvo " + str(puntos_jugador_1) + " puntos\n" + nombre2 + " obtuvo " + str(puntos_jugador_2) + "puntos.\n\nEl juego termina empatado."
+        
+        messagebox.showinfo('Juego terminado', msj)
         
     def mostrar_salto_turno(self,jugador):
         """Muestra un msj para indicar que un jugador paso el turno"""
         tk.Tk().wm_withdraw()
         msj = jugador + " paso el turno.\n"
-        messagebox.showinfo('Juego terminado', msj)
+        messagebox.showinfo('Salto de turno', msj)
         
     def mostrar_error_posicion(self):
         """Muestra un msj para indicar un error al colocar una pieza."""

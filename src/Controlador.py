@@ -216,6 +216,14 @@ class Controlador:
             proximo_en_jugar = 1
             
         return proximo_en_jugar
+    
+    def determinar_nombre_ganador(self,ganador):
+        if (ganador == 1):
+            return self.nombre1
+        elif (ganador ==2 ):
+            return self.nombre2
+        else:
+            return "Empate"
         
     def iniciar_jugadas(self):
         """Logica principal del tablero que captura eventos y refresca la vista de acuerdo al evento que surge por un jugador"""
@@ -229,7 +237,7 @@ class Controlador:
         self.vista.dibujar_tablero(self.tablero)
         #Inicia el que tenga color negro en las fichas
         proximo_en_jugar = self.asignar_color_jugador(negro,blanco)
-      
+        
         while True:
             
             salir = self.caputurar_eventos()
@@ -238,7 +246,7 @@ class Controlador:
                 break
 
             if not self.eventos.empty(): 
-                turnos_saltados = 0
+                
                 coordenadas = self.eventos.get()
                 fila = coordenadas[0]
                 columna = coordenadas[1]
@@ -255,16 +263,18 @@ class Controlador:
                 if(self.cambiar_turno == 1):
                     if(proximo_en_jugar == 0):
                         self.vista.mostrar_salto_turno(self.jugador1.obt_nombre())
+                        
                     elif (proximo_en_jugar == 1):
                         self.vista.mostrar_salto_turno(self.jugador2.obt_nombre())
-                      
+                    
                     proximo_en_jugar = self.tableroGo.saltar_turno(proximo_en_jugar)
                     turnos_saltados += 1
                     self.cambiar_turno = 0
                     
                 if(self.tableroGo.terminar_juego(turnos_saltados)):
-                    self.vista.mostrar_fin_juego()
-                    #AQUI TALVEZ MOSTRAR VENTANA DE QUIEN GANO Y PREGUNTAR SI QUIEREN JUGAR OTRA VEZ
+                    puntos_jugador_1,puntos_jugador_2 =  self.tableroGo.contar_puntos()
+                    ganador = self.tableroGo.determinar_ganador(puntos_jugador_1,puntos_jugador_2)
+                    self.vista.mostrar_fin_juego(self.nombre1,puntos_jugador_1,self.nombre2,puntos_jugador_2,self.determinar_nombre_ganador(ganador))
                     break
                 
             self.vista.dibujar_tablero(self.tablero)
@@ -292,12 +302,7 @@ class Controlador:
                 if(jugador_en_turno == 0):
                     jugador_en_turno =  1
                 elif (jugador_en_turno == 1):
-                    jugador_en_turno =  0 
-        #print("=======copia=========\n")
-        #tablero.mostrar_tablero_copia()
-        #print("=======actual=========\n")
-        #tablero.mostrar_tablero()
-                    
+                    jugador_en_turno =  0      
         return jugador_en_turno
         
     def iniciar_tablero(self):

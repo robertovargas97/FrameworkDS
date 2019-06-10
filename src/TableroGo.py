@@ -280,11 +280,28 @@ class TableroGo(Tablero):
         else:
             return False
     
-    def contar_puntos(self, jugador):
-        puntos_jugador = 0
-        for i in range(0, len(jugador.piezas_colocadas)):
-            puntos_jugador = puntos_jugador + 1
-        return puntos_jugador
+    def contar_puntos(self):
+        puntos_jugador_1 = 0
+        puntos_jugador_2 = 0
+        for i in range(len(self.tablero_juego)):
+            for j in range (len(self.tablero_juego[i])):
+                if(self.tablero_juego[i][j].obt_tipo() == "N"):
+                    puntos_jugador_1 = puntos_jugador_1 + 1
+                    
+                elif(self.tablero_juego[i][j].obt_tipo() == "B"):
+                    puntos_jugador_2 = puntos_jugador_2 + 1
+                
+        return puntos_jugador_1,puntos_jugador_2
+    
+    def determinar_ganador(self,puntos_jugador_1,puntos_jugador_2):
+        ganador = 0
+        
+        if(puntos_jugador_1 > puntos_jugador_2) :
+            ganador = 1
+        elif (puntos_jugador_2 > puntos_jugador_1):
+            ganador = 2
+            
+        return ganador
     
     
         
