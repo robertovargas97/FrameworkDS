@@ -230,6 +230,7 @@ class Controlador:
         negro = 1
         blanco = 2
         turnos_saltados = 0
+        jugador_en_turno = ""
     
         self.tableroGo = TableroGo()
         self.tableroGo.crear_tablero()
@@ -240,7 +241,12 @@ class Controlador:
         
         cantidad_piezas_j1 = self.jugador1.obt_total_piezas()
         cantidad_piezas_j2 = self.jugador2.obt_total_piezas()
-        self.vista.dibujar_tablero(self.tablero,cantidad_piezas_j1,cantidad_piezas_j2,self.nombre1,self.nombre2)
+        if(proximo_en_jugar == 0):
+            jugador_en_turno = self.nombre1
+        else:
+            jugador_en_turno = self.nombre2
+            
+        self.vista.dibujar_tablero(self.tablero,cantidad_piezas_j1,cantidad_piezas_j2,self.nombre1,self.nombre2,jugador_en_turno)
         
         while True:
             
@@ -258,9 +264,11 @@ class Controlador:
                 if(self.tableroGo.validar_posicion(fila,columna)):
                     
                     if(proximo_en_jugar == 0):
+                        jugador_en_turno = self.nombre2
                         proximo_en_jugar = self.movimiento_jugador(self.jugador1,fila,columna,self.tableroGo,self.vista)        
                         cantidad_piezas_j1 -= 1
                     else:
+                        jugador_en_turno = self.nombre1
                         proximo_en_jugar = self.movimiento_jugador(self.jugador2,fila,columna,self.tableroGo,self.vista)  
                         cantidad_piezas_j2 -= 1
 
@@ -268,9 +276,11 @@ class Controlador:
             else:
                 if(self.cambiar_turno == 1):
                     if(proximo_en_jugar == 0):
+                        jugador_en_turno = self.nombre2
                         self.vista.mostrar_salto_turno(self.jugador1.obt_nombre())
                         
                     elif (proximo_en_jugar == 1):
+                        jugador_en_turno = self.nombre1
                         self.vista.mostrar_salto_turno(self.jugador2.obt_nombre())
                     
                     proximo_en_jugar = self.tableroGo.saltar_turno(proximo_en_jugar)
@@ -283,7 +293,7 @@ class Controlador:
                     self.vista.mostrar_fin_juego(self.nombre1,puntos_jugador_1,self.nombre2,puntos_jugador_2,self.determinar_nombre_ganador(ganador))
                     break
                 
-            self.vista.dibujar_tablero(self.tablero,cantidad_piezas_j1,cantidad_piezas_j2,self.nombre1,self.nombre2)
+            self.vista.dibujar_tablero(self.tablero,cantidad_piezas_j1,cantidad_piezas_j2,self.nombre1,self.nombre2,jugador_en_turno)
     
     def movimiento_jugador(self,jugador,fila,columna,tablero,vista):
         """Coloca la ficha en el tablero en la posicion que elige el jugador.

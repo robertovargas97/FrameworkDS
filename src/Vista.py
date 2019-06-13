@@ -613,11 +613,16 @@ class Vista(Frame):
         # Se inicia pygame
         pygame.init()
         # Se coloca el ancho y alto de la pantalla
-        WINDOW_SIZE = [730, 450]
+        WINDOW_SIZE = [750, 450]
         self.screen = pygame.display.set_mode(WINDOW_SIZE)
         pygame.display.set_caption("Go Board Game")
-               
-    def dibujar_tablero(self, tablero,restantes_j1,restantes_j2,nombre1,nombre2):
+             
+    def colocar_label_pygame(self,color,msj,x,y):
+        myfont = pygame.font.SysFont('Times New Roman', 16, 'bold')           
+        label = myfont.render(msj, 1,color)
+        self.screen.blit(label, (x,y))
+        
+    def dibujar_tablero(self, tablero,restantes_j1,restantes_j2,nombre1,nombre2,jugador_en_turno):
         """Dibuja las celdas del tablero en la ventana de pygame """
         # Fondo de la pantalla
         self.screen.fill(BROWN)
@@ -647,14 +652,29 @@ class Vista(Frame):
                     pygame.draw.circle(self.screen,RED,((MARGIN + WIDTH) * column + MARGIN + 20,
                                 (MARGIN + HEIGHT) * row + MARGIN + 20), 5)
                     
+                    
+        ayuda = "Para ayuda presione 0."
+        self.colocar_label_pygame((255,255,255),ayuda,410,20)
+        
+        ayuda = "Para saltar turno presione <esc>."
+        self.colocar_label_pygame((255,255,255),ayuda,410,50) 
+        
+        div = "************************************"
+        self.colocar_label_pygame((255, 255, 255),div,410,80)
+            
         msj_1 = "Piedras restantes de " + nombre1 + ": " + str(restantes_j1)
-        myfont = pygame.font.SysFont("monospace",15)            
-        label = myfont.render(msj_1, 1, (255, 255, 255))
-        self.screen.blit(label, (420, 90))
+        self.colocar_label_pygame((255, 255, 255),msj_1,410,130)
         
         msj_2 = "Piedras restantes de " + nombre2 + ": " + str(restantes_j2)
-        myfont = pygame.font.SysFont("monospace",15)            
-        label = myfont.render(msj_2, 1, (255, 255, 255))
-        self.screen.blit(label, (420, 120))
+        self.colocar_label_pygame((255, 255, 255),msj_2,410,180)
+   
+        j_turno = "Jugador en turno: " + jugador_en_turno + "."
+        self.colocar_label_pygame((73,169,69),j_turno,410,230)
         
+        div2 = "************************************"
+        self.colocar_label_pygame((255, 255, 255),div2,410,280)
+        
+        
+    
+    
         pygame.display.flip()
