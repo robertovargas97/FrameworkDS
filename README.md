@@ -2,7 +2,7 @@
 
 #### Integrantes:
     Aaron Gutierrez B63241
-    Denisee Alfaro	B50220
+    Denisse Alfaro	B50220
     Roberto Vargas 	B57617
 
 #### Familia Elegida:
