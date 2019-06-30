@@ -2,7 +2,7 @@ import abc
 from abc import ABC
 
 class I_Pieza(ABC):
-    """Representa la piezas que posee cada jugador"""
+    """Representa una interfaz de piezas que posee cada jugador"""
     
     def __init__(self,color,fila,columna):
     #Atributo de clase que podran usar las clases hijas

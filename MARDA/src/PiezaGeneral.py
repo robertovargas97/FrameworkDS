@@ -3,8 +3,9 @@ from PiezaGo import PiezaGo
 
 #Si se quieren usar metodos de la clase concreta simplemente deben heredar de esa clase
 class Pieza_General(PiezaGo,I_Pieza):
-    """Representa la piezas que posee cada jugador"""
-    
+    """Representa la piezas que posee cada jugador\nHereda de una pieza abstracta,pero tambien realiza la herencia multiple\n
+    para que herede de una pieza concreta y pueda utilizar sus metodos"""
+
     def __init__(self,pieza_concreta):
     #Atributo de clase que podran usar las clases hijas
         self.pieza_concr = pieza_concreta
@@ -22,6 +23,7 @@ class Pieza_General(PiezaGo,I_Pieza):
         return self.pieza_concr.obt_id()
     
     def obt_pieza_general(self):
+        """Retorna la instancia de la pieza concreta para hacer uso de sus metodos propios"""
         return self.pieza_concr
     
 if __name__ == "__main__":
