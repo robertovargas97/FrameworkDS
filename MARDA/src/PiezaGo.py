@@ -1,9 +1,7 @@
 from I_Pieza import I_Pieza
 
-
 class PiezaGo(I_Pieza):
     """Representa las piezas de Go que posee cada jugador"""
-
 
     def __init__(self,id,fila,columna,agrupacion):
         if(id == 1):

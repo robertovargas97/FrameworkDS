@@ -25,4 +25,3 @@ class I_Pieza(ABC):
         """Retorna un entero con el identificador de la pieza"""
         pass   
  
-     

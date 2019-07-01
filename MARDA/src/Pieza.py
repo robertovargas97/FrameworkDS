@@ -1,41 +1,40 @@
-from I_Pieza import I_Pieza
-from PiezaGo import PiezaGo
-
-#Si se quieren usar metodos de la clase concreta simplemente deben heredar de esa clase
-class Pieza_General(PiezaGo,I_Pieza):
+class Pieza():
     """Representa la piezas que posee cada jugador\nHereda de una pieza abstracta,pero tambien realiza la herencia multiple\n
     para que herede de una pieza concreta y pueda utilizar sus metodos"""
 
-    def __init__(self,pieza_concreta):
+    def __init__(self,pieza_T):
     #Atributo de clase que podran usar las clases hijas
-        self.pieza_concr = pieza_concreta
+        self.pieza_contreta_t = pieza_T
 
     def obt_fila(self):
         """Retorna la fila donde se encuentra la pieza"""
-        return self.pieza_concr.obt_fila()
+        return self.pieza_contreta_t.obt_fila()
         
     def obt_columna(self):
         """Retorna la columna donde se encuentra la pieza"""
-        return self.pieza_concr.obt_columna()
+        return self.pieza_contreta_t.obt_columna()
     
     def obt_id(self):
         """Retorna un entero con el identificador de la pieza"""
-        return self.pieza_concr.obt_id()
+        return self.pieza_contreta_t.obt_id()
     
-    def obt_pieza_general(self):
+    def obt_pieza_concreta(self):
         """Retorna la instancia de la pieza concreta para hacer uso de sus metodos propios"""
-        return self.pieza_concr
+        return self.pieza_contreta_t
     
 if __name__ == "__main__":
-    pieza = PiezaGo(0,5,3,1)
-    pieza_gene = Pieza_General(pieza)
     
-    print( pieza_gene.obt_fila() )
-    print( pieza_gene.obt_columna() )
-    print( pieza_gene.obt_id() )
+    from PiezaGo import PiezaGo
     
+    pieza_T = PiezaGo(0,5,3,1)
     
-    print( pieza_gene.obt_pieza_general().obt_agrupacion())
+    pieza_concreta = Pieza(pieza_T)
+    
+    print( pieza_concreta.obt_fila() )
+    print( pieza_concreta.obt_columna() )
+    print( pieza_concreta.obt_id() )
+    
+    print( pieza_concreta.obt_pieza_concreta().obt_agrupacion())
 
     
     

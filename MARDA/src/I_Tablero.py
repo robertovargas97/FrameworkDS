@@ -12,27 +12,11 @@ class I_Tablero(ABC):
         pass
 
     @abc.abstractmethod
-    def mostrar_tablero(self):
-        """Muestra en pantalla el tablero"""
-        pass
-
-    @abc.abstractmethod
-    def limpiar_tablero(self):
-        """Limpia el tablero para reiniciar el juego"""
-        pass
-
-    @abc.abstractmethod
     def colocar_ficha(self, fila, columna, jugador):
         """fila , columna : posicion en el tablero\n
         jugador: instancia del jugador que coloca la pieza\n
         Retorno: True si se puede colocar la pieza, False en caso contrario"""
         pass
-
-    # @abc.abstractmethod
-    # def esta_libre(self, fila, columna):
-    #     """fila , columna : posicion en el tablero\n
-    #     Retorno : True en caso de que la posicion para colocar la ficha este libre,False en caso contrario"""
-    #     pass
     
     @abc.abstractmethod
     def validar_posicion(self,fila,columna):
@@ -40,16 +24,3 @@ class I_Tablero(ABC):
         fila: fila en el tablero\n
         columna: columna en el tablero\n"""
         pass
-    
-    # @abc.abstractmethod
-    # def validar_fila(self,fila):
-    #     """fila: fila en el tablero\n
-    #     retorno : True si la fila es valida, False en caso contrario"""
-    #     pass
-    
-    # @abc.abstractmethod
-    # def validar_columna(self,columna):
-    #     """columna: columna en el tablero\n
-    #     retorno : True si la columna es valida, False en caso contrario"""
-    #     pass
-    
