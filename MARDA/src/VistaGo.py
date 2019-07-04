@@ -1,3 +1,4 @@
+from I_Vista import I_Vista
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import Frame
@@ -45,8 +46,7 @@ class Reajustar_tamano(Frame):
         self.imagen_fondo = ImageTk.PhotoImage(self.imagen_para_fondo)
         self.fondo.configure(image=self.imagen_fondo)
 
-
-class Vista(Frame):
+class VistaGo(Frame,I_Vista):
     """Representacion grafica del framework"""
 
     def __init__(self,controlador):
@@ -273,9 +273,7 @@ class Vista(Frame):
         self.generar_ventana(self.menu ,"Juego del Go",'520x420+440+70','black',self.ruta_menu,"")
         self.colocar_boton(self.menu,self.boton_reglas , "Reglas del juego", 260, 370, 120, 40, self.color_boton_go ,self.color_fuente_boton_go_press, self.color_fuente_boton ,self.color_boton_go ,self.controlador.boton_reglas_presionado)
         self.colocar_boton(self.menu,self.boton_jugar , "Jugar", 30, 370, 90, 40, self.color_boton_go ,self.color_fuente_boton_go_press, self.color_fuente_boton ,self.color_boton_go ,self.controlador.boton_jugar_presionado)
-        self.colocar_boton_volver(self.menu, "Volver", 390, 370, 90,40, self.color_boton_go, "r1", self.controlador.iniciar_framework,self.color_fuente_boton_go_press) 
-        self.colocar_boton_cargar(self.menu, 130, 370, 120, 40)
-          
+        self.colocar_boton_volver(self.menu, "Volver", 390, 370, 90,40, self.color_boton_go, "r1", self.controlador.iniciar_framework,self.color_fuente_boton_go_press)           
         self.menu.mainloop()
         
     def mostrar_menu_nombres(self):
@@ -350,7 +348,6 @@ class Vista(Frame):
         self.hover_button (boton,fondo_boton,color_fuente_boton)
     
     ########################################################### BOTONES CON FUNCIONES ESPECIFICAS ###############################################################
-
 
     def colocar_boton_cargar(self,ventana,x,y,w,h):
         """Permite colocar el boton para cargar el jurgo.
@@ -686,7 +683,4 @@ class Vista(Frame):
         div2 = "************************************"
         self.colocar_label_pygame((255, 255, 255),div2,410,280)
         
-        
-    
-    
         pygame.display.flip()

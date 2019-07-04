@@ -6,7 +6,6 @@ class I_Jugador(ABC):
 
     def __init__(self):
         #Atributo de clase que podran usar las clases hijas
-        
         self.id_jugador = '0'
         self.cantidad_piezas = 0 
         self.nombre = "" 

@@ -1,6 +1,5 @@
 class Pieza():
-    """Representa la piezas que posee cada jugador\nHereda de una pieza abstracta,pero tambien realiza la herencia multiple\n
-    para que herede de una pieza concreta y pueda utilizar sus metodos"""
+   
 
     def __init__(self,pieza_T):
     #Atributo de clase que podran usar las clases hijas

@@ -1,6 +1,5 @@
 class Jugador():
-    """Representa un jugador.\nHereda de un jugador abstracto,pero tambien se realiza la herencia multiple\n
-    para que herede de un jugador concreto y pueda utilizar sus metodos"""
+
 
     def __init__(self,jugador_T):
         #Instancia de jugador concreto para realizar puente
@@ -19,14 +18,14 @@ class Jugador():
         return self.jugador_concreto_t
     
     
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
-    from JugadorGo import JugadorGo
+#     from JugadorGo import JugadorGo
     
     
-    jugador = JugadorGo(0,"N","Roberto")
-    jugador_concreto = Jugador(jugador)
+#     jugador = JugadorGo(0,"N","Roberto")
+#     jugador_concreto = Jugador(jugador)
     
-    print(jugador_concreto.obt_jugador_concreto().obt_color_pieza())
+#     print(jugador_concreto.obt_jugador_concreto().obt_color_pieza())
     
-    print( jugador_concreto.obt_nombre() )
+#     print( jugador_concreto.obt_nombre() )

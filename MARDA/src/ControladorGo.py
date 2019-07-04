@@ -1,6 +1,6 @@
 from TableroGo import TableroGo
 from JugadorGo import JugadorGo
-from Vista import Vista
+from VistaGo import VistaGo
 from tkinter import *
 from tkinter import messagebox
 from pygame.locals import *
@@ -12,13 +12,13 @@ HEIGHT = 44
 MARGIN = 2
 
 
-class Controlador:
+class ControladorGo():
     """Se encarga de toda la interaccion entre la vista y el modelo"""
 
     def __init__(self):
         """Inicializador de la clase."""
         # Se crea la vista en el controlador para poder interactuar , ademas de instancias del modelo para poder actualizar datos por detras (Composition)
-        self.vista = Vista(self)
+        self.vista = VistaGo(self)
         self.tableroGo = None
         self.jugador1 = None
         self.jugador2 = None
@@ -365,7 +365,7 @@ class Controlador:
         
         
 if __name__ == "__main__":
-    controlador = Controlador()
+    controlador = ControladorGo()
     controlador.iniciar_framework()
     if(controlador.m_tablero):
         controlador.mostrar_tablero()

@@ -1,8 +1,5 @@
 class Tablero():
-    """Representa el tablerodel juego\nHereda de un tablero abstract,pero tambien realiza la herencia multiple\n
-    para que herede de una pieza concreta y pueda utilizar sus metodos"""
-    #No contiene atributos en comun ya que cada tablero especifico contendra los suyos
-
+   
     def __init__(self,tablero_T):
     #Atributo de clase que podran usar las clases hijas
         self.tablero_concreto_t = tablero_T
@@ -33,15 +30,15 @@ class Tablero():
         return self.tablero_concreto_t
   
   
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
-    from TableroGo import TableroGo 
+#     from TableroGo import TableroGo 
     
-    tablero_T = TableroGo()
+#     tablero_T = TableroGo()
     
-    tablero_concreto = Tablero(tablero_T)
+#     tablero_concreto = Tablero(tablero_T)
     
-    tablero_concreto.crear_tablero()
+#     tablero_concreto.crear_tablero()
     
-    tablero_concreto.obt_tablero_concreto().mostrar_tablero()
+#     tablero_concreto.obt_tablero_concreto().mostrar_tablero()
     
