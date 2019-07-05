@@ -1,5 +1,7 @@
 from Tablero import Tablero
 from PiezaGo import PiezaGo
+from ArbitroGo import ArbitroGo
+
 import random
 
 
@@ -14,6 +16,7 @@ class TableroGo(Tablero):
         self.agrupaciones = []
         self.copia_tablero = []
         self.copia_agrupaciones = []
+        self.arbitro = ArbitroGo(self)
 
     def crear_tablero(self):
         """Crea el tablero del juego especifico con las respectivas dimensiones"""
@@ -105,33 +108,6 @@ class TableroGo(Tablero):
             posicion_valida = True 
         
         return posicion_valida
-                    
-    def validar_fila(self,fila):
-        """fila: fila en el tablero\n
-        retorno : True si la fila es valida, False en caso contrario"""
-        posicion_valida = True
-        # Posicion no existe en el tablero
-        if ((fila < 0) or (fila >= self.filas)):
-            posicion_valida = False
-        return posicion_valida
-        
-    def validar_columna(self,columna):
-        """columna: columna en el tablero\n
-        retorno : True si la columna es valida, False en caso contrario"""
-        posicion_valida = True
-        # Posicion no existe en el tablero
-        if ((columna < 0) or (columna >= self.columnas)):
-            posicion_valida = False
-        return posicion_valida    
-    
-    def validar_posicion(self,fila,columna):
-        """Valida si la posicion ingresada existe\n
-        fila: fila en el tablero\n
-        columna: columna en el tablero\n"""
-        pos_valida = True 
-        if (self.validar_fila(fila) == False)  or (self.validar_columna(columna) == False):
-            pos_valida = False
-        return pos_valida
 
     def verificar_agrupamientos_vecinos(self,ficha):
         """Verifica si es posible agruparse con grupos vecinos\n
@@ -139,22 +115,22 @@ class TableroGo(Tablero):
         fila = ficha.obt_fila()
         columna = ficha.obt_columna()
 
-        if self.validar_posicion(fila-1,columna) and self.tablero_juego[fila-1][columna].obt_tipo() == ficha.obt_tipo():
+        if self.arbitro.validar_posicion(fila-1,columna) and self.tablero_juego[fila-1][columna].obt_tipo() == ficha.obt_tipo():
             ficha_arriba = self.tablero_juego[fila-1][columna]
             if ficha.obt_agrupacion() != ficha_arriba.obt_agrupacion():
                 self.agrupar(ficha.obt_agrupacion(),ficha_arriba.obt_agrupacion())
         
-        if self.validar_posicion(fila+1,columna) and self.tablero_juego[fila+1][columna].obt_tipo() == ficha.obt_tipo():
+        if self.arbitro.validar_posicion(fila+1,columna) and self.tablero_juego[fila+1][columna].obt_tipo() == ficha.obt_tipo():
             ficha_abajo = self.tablero_juego[fila+1][columna]
             if ficha.obt_agrupacion() != ficha_abajo.obt_agrupacion():
                 self.agrupar(ficha.obt_agrupacion(),ficha_abajo.obt_agrupacion())
         
-        if self.validar_posicion(fila,columna+1) and self.tablero_juego[fila][columna+1].obt_tipo() == ficha.obt_tipo():
+        if self.arbitro.validar_posicion(fila,columna+1) and self.tablero_juego[fila][columna+1].obt_tipo() == ficha.obt_tipo():
             ficha_der = self.tablero_juego[fila][columna+1]
             if ficha.obt_agrupacion() != ficha_der.obt_agrupacion():
                 self.agrupar(ficha.obt_agrupacion(),ficha_der.obt_agrupacion())
             
-        if self.validar_posicion(fila,columna-1) and self.tablero_juego[fila][columna-1].obt_tipo() == ficha.obt_tipo():
+        if self.arbitro.validar_posicion(fila,columna-1) and self.tablero_juego[fila][columna-1].obt_tipo() == ficha.obt_tipo():
             ficha_izq = self.tablero_juego[fila][columna-1]
             if ficha.obt_agrupacion() != ficha_izq.obt_agrupacion():
                 self.agrupar(ficha.obt_agrupacion(),ficha_izq.obt_agrupacion())
@@ -203,13 +179,13 @@ class TableroGo(Tablero):
         fila = ficha.obt_fila()
         columna = ficha.obt_columna()
 
-        if self.validar_posicion(fila-1,columna) and (self.tablero_juego[fila-1][columna].obt_tipo() == "-" or self.tablero_juego[fila-1][columna].obt_tipo() == "x"):
+        if self.arbitro.validar_posicion(fila-1,columna) and (self.tablero_juego[fila-1][columna].obt_tipo() == "-" or self.tablero_juego[fila-1][columna].obt_tipo() == "x"):
             return 1  
-        if self.validar_posicion(fila+1,columna) and (self.tablero_juego[fila+1][columna].obt_tipo() == "-" or self.tablero_juego[fila+1][columna].obt_tipo() == "x"):
+        if self.arbitro.validar_posicion(fila+1,columna) and (self.tablero_juego[fila+1][columna].obt_tipo() == "-" or self.tablero_juego[fila+1][columna].obt_tipo() == "x"):
             return 1
-        if self.validar_posicion(fila,columna+1) and (self.tablero_juego[fila][columna+1].obt_tipo() == "-" or self.tablero_juego[fila][columna+1].obt_tipo() == "x"):
+        if self.arbitro.validar_posicion(fila,columna+1) and (self.tablero_juego[fila][columna+1].obt_tipo() == "-" or self.tablero_juego[fila][columna+1].obt_tipo() == "x"):
             return 1
-        if self.validar_posicion(fila,columna-1) and (self.tablero_juego[fila][columna-1].obt_tipo() == "-" or self.tablero_juego[fila][columna-1].obt_tipo() == "x"):
+        if self.arbitro.validar_posicion(fila,columna-1) and (self.tablero_juego[fila][columna-1].obt_tipo() == "-" or self.tablero_juego[fila][columna-1].obt_tipo() == "x"):
             return 1 
         return 0
     
@@ -219,24 +195,6 @@ class TableroGo(Tablero):
         for index in range(len(agrupamiento)):
             agrupamiento[index].asignar_tipo("x") 
         return len(agrupamiento)       
-
-    def saltar_turno(self, jugador):
-        """Permite al jugador saltar su turno\n
-        jugador : el jugador que ha decidido saltar el turno"""
-        if jugador == 0:
-            proximo_en_jugar = 1
-        else:
-            proximo_en_jugar = 0
-        return proximo_en_jugar
-
-    def tablero_lleno(self):
-        """Verifica si ya no hay espacios en el tablero"""
-        lleno = True
-        for fila in range(self.filas):
-            for columna in range(self.columnas):
-                if(self.tablero_juego[fila][columna].obt_tipo() == "-"):
-                    lleno = False
-        return lleno
 
     def copiar_tablero(self):
         tablero_copia = [[PiezaGo(-1,-1,-1,-1) for j in range(self.columnas)] for i in range(self.filas)]
@@ -260,51 +218,6 @@ class TableroGo(Tablero):
             copia_agrups.append(lista)
 
         return copia_agrups
-
-    def jugada_suicida(self,fila,col):
-        j_suicida = False
-        ficha_colocada = self.tablero_juego[fila][col]
-        if ficha_colocada.obt_tipo() == "x":
-            self.tablero_juego[fila][col].asignar_tipo("-")
-            self.tablero_juego = self.copia_tablero
-            self.agrupaciones = self.copia_agrupaciones
-            j_suicida = True
-        
-        return j_suicida
-        
-    def terminar_juego(self, turnos_saltados):
-        """Verifica si el juego ya acabo\n
-        turnos_saltados : la cantidad de turnos saltados en una ronda. Si ambos jugadores saltan turno en la misma ronda, el juego acaba"""
-        if(turnos_saltados == 2 or self.tablero_lleno() == True):
-            return True
-        else:
-            return False
-    
-    def contar_puntos(self):
-        puntos_jugador_1 = 0
-        puntos_jugador_2 = 0
-        for i in range(len(self.tablero_juego)):
-            for j in range (len(self.tablero_juego[i])):
-                if(self.tablero_juego[i][j].obt_tipo() == "N"):
-                    puntos_jugador_1 = puntos_jugador_1 + 1
-                    
-                elif(self.tablero_juego[i][j].obt_tipo() == "B"):
-                    puntos_jugador_2 = puntos_jugador_2 + 1
-                
-        return puntos_jugador_1,puntos_jugador_2
-    
-    def determinar_ganador(self,puntos_jugador_1,puntos_jugador_2):
-        ganador = 0
-        
-        if(puntos_jugador_1 > puntos_jugador_2) :
-            ganador = 1
-        elif (puntos_jugador_2 > puntos_jugador_1):
-            ganador = 2
-            
-        return ganador
-    
-    
-        
         
         
         

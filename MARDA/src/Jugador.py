@@ -16,16 +16,3 @@ class Jugador():
     def obt_jugador_concreto(self):
         """Retorna la instancia del jugador concreto para hacer uso de sus metodos propios"""
         return self.jugador_concreto_t
-    
-    
-# if __name__ == "__main__":
-    
-#     from JugadorGo import JugadorGo
-    
-    
-#     jugador = JugadorGo(0,"N","Roberto")
-#     jugador_concreto = Jugador(jugador)
-    
-#     print(jugador_concreto.obt_jugador_concreto().obt_color_pieza())
-    
-#     print( jugador_concreto.obt_nombre() )

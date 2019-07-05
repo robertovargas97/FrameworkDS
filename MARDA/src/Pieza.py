@@ -20,20 +20,6 @@ class Pieza():
     def obt_pieza_concreta(self):
         """Retorna la instancia de la pieza concreta para hacer uso de sus metodos propios"""
         return self.pieza_contreta_t
-    
-if __name__ == "__main__":
-    
-    from PiezaGo import PiezaGo
-    
-    pieza_T = PiezaGo(0,5,3,1)
-    
-    pieza_concreta = Pieza(pieza_T)
-    
-    print( pieza_concreta.obt_fila() )
-    print( pieza_concreta.obt_columna() )
-    print( pieza_concreta.obt_id() )
-    
-    print( pieza_concreta.obt_pieza_concreta().obt_agrupacion())
 
     
     

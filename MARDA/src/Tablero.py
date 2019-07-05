@@ -16,29 +16,17 @@ class Tablero():
         """fila , columna : posicion en el tablero\n
         jugador: instancia del jugador que coloca la pieza\n
         Retorno: True si se puede colocar la pieza, False en caso contrario"""
-        self.tablero_concreto_t.colocar_ficha(fila,columna,jugador)
+        return self.tablero_concreto_t.colocar_ficha(fila,columna,jugador)
 
 
     def validar_posicion(self,fila,columna):
         """Valida si la posicion ingresada existe\n
         fila: fila en el tablero\n
         columna: columna en el tablero\n"""
-        self.tablero_concreto_t.validar_posicion(fila,columna)
+        return self.tablero_concreto_t.validar_posicion(fila,columna)
         
     def obt_tablero_concreto(self):
         """Retorna la instancia de la pieza concreta para hacer uso de sus metodos propios"""
         return self.tablero_concreto_t
   
-  
-# if __name__ == "__main__":
-    
-#     from TableroGo import TableroGo 
-    
-#     tablero_T = TableroGo()
-    
-#     tablero_concreto = Tablero(tablero_T)
-    
-#     tablero_concreto.crear_tablero()
-    
-#     tablero_concreto.obt_tablero_concreto().mostrar_tablero()
     
