@@ -19,10 +19,10 @@ MARGIN = 2
 
 
 class Controlador():
-    """Se encarga de toda la interaccion entre la vista y el modelo"""
+    """Clase encargada de toda la interaccion entre la vista y el modelo."""
 
     def __init__(self):
-        """Inicializador de la clase."""
+        """Contructor de la clase."""
         # Se crea la vista en el controlador para poder interactuar , ademas de instancias del modelo para poder actualizar datos por detras (Composition)
         self.vista = Vista ( VistaGo(self) ) ################
         self.tablero = None
@@ -44,47 +44,47 @@ class Controlador():
     
     ################################################## REACCIONES A EVENTOS DE LA VISTA ##########################################################################
     def iniciar_framework(self):
-        """Inicia la interaccion entre el modelo y la vista para mostrar el framework"""
+        """Inicia la interaccion entre el modelo y la vista para mostrar el framework."""
         self.vista.obt_vista_concreta().mostrar_ventana_inicial()
         
     def boton_autores_presionado(self):
-        """Responde al evento de presionar el boton de autores para indicarle a la vista que debe mostrar una nueva ventana"""
+        """Responde al evento de presionar el boton de autores para indicarle a la vista que debe mostrar una nueva ventana."""
         self.vista.mostrar_ventana_autores()
     
     def boton_reglas_presionado(self):
-        """Responde al evento de presionar el boton de reglas para indicarle a la vista que debe mostrar una nueva ventana"""
+        """Responde al evento de presionar el boton de reglas para indicarle a la vista que debe mostrar una nueva ventana."""
         self.vista.obt_vista_concreta().mostrar_info()
         
     def boton_entrar_presionado(self,op):
-        """Responde al evento de presionar el boton de entrar para indicarle a la vista que debe mostrar una nueva ventana"""
+        """Responde al evento de presionar el boton de entrar para indicarle a la vista que debe mostrar una nueva ventana."""
         self.vista.obt_vista_concreta().mostrar_menu_inicial(op)
 
     def boton_volver_presionado(self,ventana, metodo, opcion):
-        """Responde al evento de presionar el boton de volver para indicarle a la vista que debe devolverse a una nueva anterior"""
+        """Responde al evento de presionar el boton de volver para indicarle a la vista que debe devolverse a una nueva anterior."""
         self.vista.obt_vista_concreta().volver(ventana, metodo, opcion)
         
     def boton_jugar_presionado(self):
-        """Responde al evento de presionar el boton de jugar para indicarle a la vista que debe mostrar una nueva ventana"""
+        """Responde al evento de presionar el boton de jugar para indicarle a la vista que debe mostrar una nueva ventana."""
         self.vista.mostrar_menu_nombres()
         
     def boton_continuar_presionado(self):
-        """Responde al evento de presionar el boton de continuar para indicarle a la vista que debe mostrar una nueva ventana"""
+        """Responde al evento de presionar el boton de continuar para indicarle a la vista que debe mostrar una nueva ventana."""
         self.vista.obt_vista_concreta().avisar_inicio_nigiri(self.nombre1,self.nombre2)
         self.vista.obt_vista_concreta().mostrar_ventana_nigiri() 
         
     def cerrar_menu(self):
-        """Responde al evento de presionar el boton de continuar en el nigiri para indicarle a la vista que cierre el menu para poder desplegar el tablero"""
+        """Responde al evento de presionar el boton de continuar en el nigiri para indicarle a la vista que cierre el menu para poder desplegar el tablero."""
         self.vista.obt_vista_concreta().ventana_nigiri.destroy()
         self.m_tablero = True
         
     def validar_nombre(self,len_nombre,nom_j,num_j):
-        """Verifica que se ingrese algun nombre en los inputs de texto
+        """Verifica que se ingrese algun nombre en los inputs de texto.
         
-        Parametros:     len_nombre: longitud del nombre ingresado
-                        nom_j: input en el que se validara
-                        nun_j : numero del jugador al que se le esta validando el nombre
+        Parametros:     len_nombre: longitud del nombre ingresado.
+                        nom_j: input en el que se validara.
+                        nun_j : numero del jugador al que se le esta validando el nombre.
                         
-        Retorno:    True si los nombres son validos,False en caso contrario
+        Retorno:    True si los nombres son validos,False en caso contrario.
         """            
         n_valido = False
         if((len_nombre < 1 or ("Nombre del jugador") in nom_j ) and (n_valido == False) ):
@@ -95,8 +95,9 @@ class Controlador():
             
         return n_valido
         
+
     def obtener_nombres(self):
-        """Obtiene los nombres de los jugadores de las entradas de texto en la ventana correspondiente"""
+        """Obtiene los nombres de los jugadores de las entradas de texto en la ventana correspondiente."""
         nom_j1 = str(self.vista.obt_vista_concreta().nombre1.get())
         nom_j2 = str(self.vista.obt_vista_concreta().nombre2.get())
         len_nombre1 = len(nom_j1)
@@ -117,10 +118,10 @@ class Controlador():
     def validar_cantidad_piedras(self,piedras_jugador,num_jugador):
         """Valida que se ingrese una cantidad de piedras correcta en las entradas de texto de la ventana correspondiente.
         
-            Parametros: piedras_jugador: cantidad de piedras ingresada en la entrada de texto
-                        num_jugador: numero de jugador que ingreso la cantidad de piedras
+            Parametros: piedras_jugador: cantidad de piedras ingresada en la entrada de texto.
+                        num_jugador: numero de jugador que ingreso la cantidad de piedras.
                     
-            Retorno:    True si la cantidad de piedras ingresada es valida,False en caso contrario
+            Retorno:    True si la cantidad de piedras ingresada es valida,False en caso contrario.
             """    
         piedras_validas = False
         try:
@@ -146,9 +147,9 @@ class Controlador():
         return piedras_validas
                     
     def obtener_cantidad_piedras(self):
-        """Obtiene la cantidad de piedras que ingresaron los jugadores en las entradas de texto de la ventana correspondiente
+        """Obtiene la cantidad de piedras que ingresaron los jugadores en las entradas de texto de la ventana correspondiente.
             
-            Retorno: la cantidad de piedras para cada jugador si ingresaron una cantidad valida, (0 , 0) en caso contrario"""
+            Retorno: la cantidad de piedras para cada jugador si ingresaron una cantidad valida, (0 , 0) en caso contrario."""
         piedras_j1_validas = False
         piedras_j2_validas = False
         
@@ -166,7 +167,7 @@ class Controlador():
         return 0 , 0 , False
             
     def elegir_color(self):
-        """Se elije el color para cada jugador de acuerdo al resultado del nigiri"""
+        """Se elije el color para cada jugador de acuerdo al resultado del nigiri."""
         # Si j2 eligio una piedra y la suma es impar entonces inicia
         if(self.piedras_jugador2 == 1 and ((self.piedras_jugador1 + self.piedras_jugador2) % 2 != 0)):
             self.color = 2
@@ -176,7 +177,7 @@ class Controlador():
               
     def nigiri(self):
         """Manera en la que se decide que jugador va primero,el jugador 1 elige una cantidad de piedras sin ensenarlas y\n\
-        el jugador 2 elige una para decir impar o dos para decir par, si acierta entonces empieza con las negras sino con blancas"""
+        el jugador 2 elige una para decir impar o dos para decir par, si acierta entonces empieza con las negras sino con blancas."""
         self.piedras_jugador1,self.piedras_jugador2 , respuesta_valida =  self.obtener_cantidad_piedras()
         if(respuesta_valida):
             self.elegir_color()
@@ -192,25 +193,26 @@ class Controlador():
     
     ##################################################### METODOS PARA EL TABLERO EN PYGAME #######################################################################
     def responder_a_dibujar_tablero(self,pantalla):
-        """Se responde al evento para dibujar el tablero
-            Retorno: True si hay algun evento en el tablero,False en caso de que se cierre el tablero en la X de la ventana"""
+        """Se responde al evento para dibujar el tablero.
+        
+            Retorno: True si hay algun evento en el tablero,False en caso de que se cierre el tablero en la X de la ventana."""
         return self.vista.dibujar_tablero(pantalla)
     
     def asignar_tablero (self):
-        """Refresca el tablero de la vista con el que resulta de algun evento en el controlador"""
+        """Refresca el tablero de la vista con el que resulta de algun evento en el controlador."""
         self.vista.obt_vista_concreta().tablero = self.tablero_logico
         
     def iniciar_eventos (self):
-        """Refresca la cola de eventos con la resultante de algun evento en el controlador"""
+        """Refresca la cola de eventos con la resultante de algun evento en el controlador."""
         self.vista.obt_vista_concreta().eventos = self.eventos
         
     def asignar_color_jugador(self,negro,blanco):
-        """Se le asigna color a cada jugador de acuerdo al resultado del nigiri
+        """Se le asigna color a cada jugador de acuerdo al resultado del nigiri.
             
-            Parametros: negro: color de fichas para el jugador que inicia
-                        blanco: color de fichas para el jugador que va de segundo
+            Parametros: negro: color de fichas para el jugador que inicia.
+                        blanco: color de fichas para el jugador que va de segundo.
                         
-            Retorno:    Un entero que identifica que jugador inicia"""
+            Retorno:    Un entero que identifica que jugador inicia."""
         proximo_en_jugar = 0
         if(self.color == 1):
             self.jugador1 = Jugador( JugadorGo(1, negro, self.nombre1) ) #############
@@ -224,6 +226,11 @@ class Controlador():
         return proximo_en_jugar
     
     def asignar_nombre_ganador(self,ganador):
+        """Asigna el nombre del jugador ganador.
+        
+        Parametros: ganador: numero que identifica al jugador ganador.
+        
+        Retorno: nombre del ganador (string)."""
         if (ganador == 1):
             return self.nombre1
         elif (ganador ==2 ):
@@ -232,7 +239,7 @@ class Controlador():
             return "Empate"
         
     def iniciar_jugadas(self):
-        """Logica principal del tablero que captura eventos y refresca la vista de acuerdo al evento que surge por un jugador"""
+        """Logica principal del tablero que captura eventos y refresca la vista de acuerdo al evento que surge por un jugador."""
         negro = 1
         blanco = 2
         turnos_saltados = 0
@@ -307,10 +314,10 @@ class Controlador():
             Parametros: jugador: instancia que representa al jugador en turno.
                         fila: fila donde se desea colocar una ficha.
                         columna : columna donde se desea colocar una ficha.
-                        tablero: instancia de tablero donde se colocara la ficha
-                        vista:  instancia de la vista para refrescar el tablero mostrado
+                        tablero: instancia de tablero donde se colocara la ficha.
+                        vista:  instancia de la vista para refrescar el tablero mostrado.
                         
-            Retorno:    Un entero que representa el proximo jugado en turno
+            Retorno:    Un entero que representa el proximo jugado en turno.
             """
 
         jugador_en_turno = ( jugador.obt_id() - 1 )  
@@ -330,14 +337,12 @@ class Controlador():
         return jugador_en_turno
         
     def iniciar_tablero(self):
-        """Se inicia la interaccion con el tablero grafico"""
-
+        """Inicia la interaccion con el tablero grafico."""
         self.iniciar_eventos ()
         self.asignar_tablero()
         self.vista.mostrar_tablero()
 
     def convertir_tablero(self,tablero):
-
         """Castea el tablero grafico con el tablero del modelo para poder representarlo por medio de la vista"""      
         for i in range(9):
             for j in range(9):
@@ -345,8 +350,7 @@ class Controlador():
                 self.tablero_logico[i][j] = pieza.obt_tipo() 
 
     def mostrar_tablero(self):
-
-        """Muestra el tablero grafico en pantalla"""
+        """Muestra el tablero grafico en pantalla por primera vez"""
         for fila in range(9):
             self.tablero_logico.append([])
             for columna in range(9):
@@ -355,7 +359,6 @@ class Controlador():
         self.iniciar_jugadas()
         
     def caputurar_eventos(self):
-    
         """Captura los eventos producidos por cada jugador para interactuar con la vista"""
         for event in pygame.event.get():  # Obtiene el evento que produce el jugador
             if event.type == pygame.QUIT:  # En caso de que el jugador cierre la ventana
@@ -377,9 +380,12 @@ class Controlador():
         
         
 if __name__ == "__main__":
-    controlador = Controlador()
-    controlador.iniciar_framework()
-    if(controlador.m_tablero):
-        controlador.mostrar_tablero()
+    # controlador = Controlador()
+    # controlador.iniciar_framework()
+    
+    # if(controlador.m_tablero):
+    #     controlador.mostrar_tablero()
+    
+    pydoc myModule.thefilename
     
         

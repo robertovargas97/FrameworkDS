@@ -533,7 +533,13 @@ class VistaGo(Frame,I_Vista):
         messagebox.showwarning("ERROR", msj)
         
     def mostrar_fin_juego(self,nombre1,puntos_jugador_1,nombre2,puntos_jugador_2,ganador):
-        """Muestra un msj para indicar el fin del juego"""
+        """Muestra un msj para indicar el fin del juego.
+        
+        Parametros :    nombre1 : nombre del jugador 1.
+                        nombre2 : nombre del jugador 2.
+                        puntos_jugador_1 : puntos del jugador 1.
+                        puntos_jugador_2 : puntos del jugador 2.
+                        ganador : ganador del juego."""
         tk.Tk().wm_withdraw()
         if(ganador != "Empate"):
             msj = nombre1 + " obtuvo " + str(puntos_jugador_1) + " puntos\n" + nombre2 + " obtuvo " + str(puntos_jugador_2) + " puntos.\n\nEl ganador es " + ganador + ".\n"
@@ -543,7 +549,9 @@ class VistaGo(Frame,I_Vista):
         messagebox.showinfo('Juego terminado', msj)
         
     def mostrar_salto_turno(self,jugador):
-        """Muestra un msj para indicar que un jugador paso el turno"""
+        """Muestra un msj para indicar que un jugador paso el turno.
+        
+        Parametros :    jugado : nombre del jugador que paso el turno."""
         tk.Tk().wm_withdraw()
         msj = jugador + " paso el turno.\n"
         messagebox.showinfo('Salto de turno', msj)
@@ -559,7 +567,10 @@ class VistaGo(Frame,I_Vista):
         messagebox.showwarning('Jugada suicida!', 'Escoja otra posicion')
         
     def avisar_inicio_nigiri(self,nom1,nom2):
-        """Muestra un msj para indicar el inicio del nigiri"""
+        """Muestra un msj para indicar el inicio del nigiri.
+        
+        Parametros :    nom1 : nombre del jugador 1.
+                        nom2 : nombre del jugador 2."""
         msj = "Bien " + nom1 +" y " + nom2 + " ahora inicia el nigiri.\nMucha suerte."
         messagebox.showinfo("Nigiri", msj)
         
@@ -627,12 +638,24 @@ class VistaGo(Frame,I_Vista):
         pygame.display.set_caption("Go Board Game")
              
     def colocar_label_pygame(self,color,msj,x,y):
+        """Coloca un label de texto en la ventana de pygame.
+        
+        Parametros :    color : color del texto.
+                        msj : mensaje que tendra el texti.
+                        x : posicion en el eje x.
+                        y : posicion en el eje y."""
         myfont = pygame.font.SysFont('Times New Roman', 16, 'bold')           
         label = myfont.render(msj, 1,color)
         self.screen.blit(label, (x,y))
         
     def dibujar_tablero(self, tablero,restantes_j1,restantes_j2,nombre1,nombre2,jugador_en_turno):
-        """Dibuja las celdas del tablero en la ventana de pygame """
+        """Dibuja las celdas del tablero en la ventana de pygame.
+        
+        Parametros: restantes_j1 : piezas restantes del jugador 1.
+                    restantes_j2 : piezas restantes del jugador 1.
+                    nombre1:    nombre del jugador 1.
+                    nombre2:    nombre del jugador 2.
+                    jugador_en_turno : jugador que esta jugando actualmente."""
         # Fondo de la pantalla
         self.screen.fill(BROWN)
         #Se dibuja el tablero

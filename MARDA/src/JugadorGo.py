@@ -5,7 +5,12 @@ class JugadorGo(I_Jugador):
     """Representa un jugador de Go"""
 
     def __init__(self, id, color_pieza, nombre):
-        """Se construye un jugador"""
+        """Constructor de la clase.
+        
+        Parametros: id : identificador del jugador.
+                    color_pieza = color de pieza del jugador.
+                    nombre : nombre del jugador. """
+                    
         self.id_jugador = id
         self.piezas_perdidas = 0
         self.piezas_colocadas = []
@@ -16,36 +21,44 @@ class JugadorGo(I_Jugador):
         self.nombre = nombre
 
     def obt_id(self):
-        """Retorna un entero que representa el identificador del jugador"""
+        """Retorno : entero que representa el identificador del jugador"""
         return self.id_jugador
 
     def obt_nombre(self):
-        """Retorna una string que representa el nombre del jugador"""
+        """Retorno : string que representa el nombre del jugador"""
         return self.nombre
 
     def obt_piezas_restantes(self):
-        """Retorna la cantidad de piezas que le quedan al jugador"""
+        """Retorno : cantidad de piezas que le quedan al jugador"""
         return (self.cantidad_piezas - self.piezas_perdidas)
 
     def eliminar_pieza(self, cantidad_a_eliminar):
-        """Disminuye en cantidad_a_eliminar las piezas del jugador"""
+        """Disminuye las piezas del jugador
+        
+        Paramteros : cantidad_eliminar : numero de piedras que se le deben quitar al jugador"""
         self.cantidad_piezas -= cantidad_a_eliminar
 
     def obt_piezas_perdidas(self):
-        """Retorna la cantidad de piezas perdidas"""
+        """Retorno : cantidad de piezas perdidas"""
         return self.piezas_perdidas
 
     def obt_color_pieza(self):
-        """Retorna el color de pieza del jugador"""
+        """Retorno : color de pieza del jugador"""
         return self.color_pieza
 
     def asignar_piezas_perdidas(self, piezas_perdidas):
-        """Asigna la cantidad de piezas perdidas por turno al jugador"""
+        """Asigna la cantidad de piezas perdidas por turno al jugador
+        
+        Parametros : piezas_perdidas : cantidad de piezas que pierde un jugador or turno
+        """
         self.piezas_perdidas += piezas_perdidas
 
     def asignar_cant_piezas(self, valor):
-        """Asigna la cantidad de piezas al jugador"""
+        """Asigna la cantidad de piezas al jugador
+        
+        Parametros : valor: cantidad de piezas que posee un jugador"""
         self.cantidad_piezas += valor
         
     def obt_total_piezas(self):
+        """Retorno : cantidad total de piezas que posee un jugador"""
         return self.cantidad_piezas

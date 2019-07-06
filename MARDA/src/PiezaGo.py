@@ -1,9 +1,15 @@
 from I_Pieza import I_Pieza
 
 class PiezaGo(I_Pieza):
-    """Representa las piezas de Go que posee cada jugador"""
+    """Representa una pieza del juego Go"""
 
     def __init__(self,id,fila,columna,agrupacion):
+        """Constructor de la clase.
+        
+        Parametros: id : identificador de la pieza.
+                    fila : fila donde se coloca la pieza.
+                    columna : columna donde se agrega la pieza.
+                    agrupacion : agrupacion a la que pertenece una pieza."""
         if(id == 1):
             self.tipo_pieza = "N"   # String con el tipo de pieza que tiene un jugador N para pieza Negra, B para pieza Blanca
         elif(id == 2 ):
@@ -17,27 +23,27 @@ class PiezaGo(I_Pieza):
         
 
     def obt_fila(self):
-        """Retorna la fila donde se encuentra la pieza"""
+        """Retorno : fila donde se encuentra la pieza"""
         return self.fila
 
     def obt_columna(self):
-        """Retorna la columna donde se encuentra la pieza"""
+        """Retorno : columna donde se encuentra la pieza"""
         return self.columna
 
     def obt_id(self):
-        """Retorna un entero con el identificador de la pieza"""
+        """Retorno : entero con el identificador de la pieza"""
         return self.id
     
     def obt_tipo(self):
-        """Retorna un string con el tipo de pieza a la que corresponde"""
+        """Retorno : string con el tipo de pieza a la que corresponde"""
         return self.tipo_pieza
     
     def asignar_tipo(self,tipo):
-        """Retorna un string con el tipo de pieza a la que corresponde"""
+        """Retorno : string con el tipo de pieza a la que corresponde"""
         self.tipo_pieza = tipo
     
     def obt_agrupacion(self):
-        """Retorna un entero con el indice de la agrupacion"""
+        """Retorno : entero con el indice de la agrupacion"""
         return self.indice_agrupacion    
     
     def asignar_indice_agrupacion(self,indice):
@@ -45,7 +51,9 @@ class PiezaGo(I_Pieza):
         self.indice_agrupacion = indice
         
     def copiar_pieza(self):
-        """copia una pieza y retorna la copia"""
+        """Copia una pieza del juego.
+        
+        Retorno : copia de una instancia de pieza"""
         pieza_nueva = PiezaGo(self.obt_id(),self.obt_fila(),self.obt_columna(),self.obt_agrupacion())
         pieza_nueva.tipo_pieza = self.tipo_pieza 
         return  pieza_nueva  

@@ -1,15 +1,21 @@
 from Tablero import Tablero
 from PiezaGo import PiezaGo
 from ArbitroGo import ArbitroGo
+from I_Tablero import I_Tablero
 
 import random
 
 
-class TableroGo(Tablero):
+class TableroGo(I_Tablero):
     """Implementacion especifica de un tablero de Go"""
 
     # Las filas y columnas se toman como valores por defecto
     def __init__(self, filas=9, columnas=9):
+        """Constructor de la clase.
+        
+        Parametros: filas : cantidad de filas del tablero.
+                    columnas : cantidadde columnas del tablero.
+        """
         self.filas = filas
         self.columnas = columnas
         self.tablero_juego = []
@@ -23,7 +29,6 @@ class TableroGo(Tablero):
         self.tablero_juego = [PiezaGo(-1,-1,-1,-1)] * self.filas  # Crea las filas del tablero
         for fila in range(self.filas):
             self.tablero_juego[fila] = [PiezaGo(-1, -1,-1,-1)] * self.columnas  # Crea las columnas del tablero
-        # return self.tablero_juego
         
 ###########################################################################################################################################
     def mostrar_tablero(self):
@@ -78,17 +83,21 @@ class TableroGo(Tablero):
                 self.tablero_juego[fila][columna] = '-'
                 
     def esta_libre(self, fila, columna):
-        """fila , columna : posicion en el tablero\n
-        Retorno : True en caso de que la posicion para colocar la ficha este libre,False en caso contrario"""
+        """Verifica si la posicion del tablero esta libre.
+        
+        Parametros : fila , columna : posicion en el tablero.
+        
+        Retorno : True en caso de que la posicion para colocar la ficha este libre,False en caso contrario."""
         posicion_valida = True
         if (self.tablero_juego[fila][columna].obt_tipo() != '-'):
             posicion_valida = False       
         return posicion_valida
                 
     def colocar_ficha(self, fila, columna, jugador):
-        """fila , columna : posicion en el tablero\n
-        jugador: instancia del jugador que coloca la pieza\n
-        Retorno: True si se puede colocar la pieza, False en caso contrario"""
+        """Parametros:  fila , columna : posicion en el tablero.
+                        jugador: instancia del jugador que coloca la pieza.
+                        
+        Retorno: True si se puede colocar la pieza, False en caso contrario."""
         posicion_valida = False
         if(self.esta_libre(fila,columna) == True):
             pieza_nueva = PiezaGo(jugador.obt_color_pieza(), fila, columna,len(self.agrupaciones))
@@ -110,8 +119,9 @@ class TableroGo(Tablero):
         return posicion_valida
 
     def verificar_agrupamientos_vecinos(self,ficha):
-        """Verifica si es posible agruparse con grupos vecinos\n
-        ficha: instancia de ficha que se va a colocar en el tablero"""
+        """Verifica si es posible agruparse con grupos vecinos.
+        
+        Parametros: ficha: instancia de ficha que se va a colocar en el tablero"""
         fila = ficha.obt_fila()
         columna = ficha.obt_columna()
 
@@ -136,9 +146,10 @@ class TableroGo(Tablero):
                 self.agrupar(ficha.obt_agrupacion(),ficha_izq.obt_agrupacion())
     
     def agrupar(self,indiceA,indiceB):
-        """Agrupa las fichas vecinas en caso de que sea posible,puede agrupar agrupamientos\n
-        indiceA : indice del agrupamiento de la ficha recien colocada\n
-        indiceB : indice del agrupamiento que va a anadir"""
+        """Agrupa las fichas vecinas en caso de que sea posible,puede agrupar agrupamientos.
+        
+        Parametros :    indiceA : indice del agrupamiento de la ficha recien colocada.
+                        indiceB : indice del agrupamiento que va a anadir"""
         agrupA = self.agrupaciones[indiceA]
         agrupB = self.agrupaciones[indiceB]
         inicio_corrimiento = indiceB+1
@@ -151,14 +162,17 @@ class TableroGo(Tablero):
         self.agrupaciones.remove(agrupB)
     
     def actualizar_indice_agrupamiento(self,agrupamiento,indice_nuevo):
-        """Actualiza el indice del agrupamiento de la ficha que se acaba de colocar\n
-        agrupamiento : agrupamiento al que se le actualiza el indice\n
-        indice_nuevo : nuevo valor de indice del agrupamiento"""
+        """Actualiza el indice del agrupamiento de la ficha que se acaba de colocar.
+        
+        Parametros :    agrupamiento : agrupamiento al que se le actualiza el indice.
+                        indice_nuevo : nuevo valor de indice del agrupamiento."""
         for i in range(len(agrupamiento)):
             agrupamiento[i].indice_agrupacion = indice_nuevo
     
     def revisar_eliminar_agrupamientos(self):
-        """Verifica si algun agrupamiento tiene inidice invalido para eliminarlo del tablero"""
+        """Verifica si algun agrupamiento tiene inidice invalido para eliminarlo del tablero.
+        
+        Retorno : cantidad de fichas eliminadas."""
         fichas_eliminadas=0
         for index in range(len(self.agrupaciones)):
             if self.libertades_agrupamiento(self.agrupaciones[index]) == 0:
@@ -167,15 +181,20 @@ class TableroGo(Tablero):
         return fichas_eliminadas        
 
     def libertades_agrupamiento(self,agrupamiento):
-        """Retorna si un grupo tiene grados de libertad"""
+        """Verifica si un grupo de piezas tiene grados de libertad.
+        
+        Retorno : 1 si tiene grados de libertad,0 en caso contrario."""
         for index in range(len(agrupamiento)):
             if self.libertades_ficha(agrupamiento[index]) >=1:
                 return 1
         return 0
 
     def libertades_ficha(self,ficha):
-        """Retorna si una ficha tiene grados de libertad\n
-        ficha : la ficha a la que se le revisan los grados de libertad"""
+        """Verifica si una ficha tiene grados de libertad.
+        
+        Parametros :    ficha : ficha a la que se le revisan los grados de libertad
+        
+        Retorno : 1 si la ficha tiene grados de libertad, 0 en caso contrario."""
         fila = ficha.obt_fila()
         columna = ficha.obt_columna()
 
@@ -190,13 +209,18 @@ class TableroGo(Tablero):
         return 0
     
     def invalidar_agrupamiento(self,agrupamiento):
-        """Invalida un agrupamiento\n
-        agrupamiento : agrupamiento que se invalidara"""
+        """Invalida un agrupamiento.
+        Parametro:  agrupamiento : agrupamiento que se invalidara,
+        
+        Retorno : cantidad de piezas que se encuentran en el agrupamiento."""
         for index in range(len(agrupamiento)):
             agrupamiento[index].asignar_tipo("x") 
         return len(agrupamiento)       
 
     def copiar_tablero(self):
+        """Copia el tablero original.
+        
+        Retorno : copia del tablero original."""
         tablero_copia = [[PiezaGo(-1,-1,-1,-1) for j in range(self.columnas)] for i in range(self.filas)]
 
         for fil in range(self.filas):
@@ -205,6 +229,9 @@ class TableroGo(Tablero):
         return tablero_copia    
 
     def copiar_agrupciones(self):
+        """Copia una arreglo de agrupaciones. 
+        
+        Retorno : copia del arreglo de agrupaciones."""
         copia_agrups = []
         for i in range(len(self.agrupaciones)):
             lista = []
