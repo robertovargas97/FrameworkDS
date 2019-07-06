@@ -378,13 +378,6 @@ class Controlador():
                 self.vista.mostrar_reglas_juego()
         return False
         
-        
-if __name__ == "__main__":
-    controlador = Controlador()
-    controlador.iniciar_framework()
-    
-    if(controlador.m_tablero):
-        controlador.mostrar_tablero()
     
 
     
