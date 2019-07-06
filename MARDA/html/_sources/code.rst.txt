@@ -1,0 +1,10 @@
+Arbitro
+=================================
+Entrega final Diseño de Software
+
+.. automodule:: Arbitro
+   :members:
+.. automodule:: ArbitroGo
+   :members:
+.. automodule:: I_Arbitro
+   :members:

@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Arbitro &#8212; MARDA 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Controlador" href="code2.html" />
+    <link rel="prev" title="Welcome to MARDA’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="arbitro">
+<h1>Arbitro<a class="headerlink" href="#arbitro" title="Permalink to this headline">¶</a></h1>
+<p>Entrega final Diseño de Software</p>
+<span class="target" id="module-Arbitro"></span><dl class="class">
+<dt id="Arbitro.Arbitro">
+<em class="property">class </em><code class="sig-prename descclassname">Arbitro.</code><code class="sig-name descname">Arbitro</code><span class="sig-paren">(</span><em class="sig-param">arbitro_T</em><span class="sig-paren">)</span><a class="headerlink" href="#Arbitro.Arbitro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clase general encargada de toda la validacion y reglamentacion del juego.</p>
+<dl class="method">
+<dt id="Arbitro.Arbitro.obt_arbitro_concreto">
+<code class="sig-name descname">obt_arbitro_concreto</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Arbitro.Arbitro.obt_arbitro_concreto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno: instancia concreta de arbitro para hacer uso de sus metodos especificos.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Arbitro.Arbitro.validar_posicion">
+<code class="sig-name descname">validar_posicion</code><span class="sig-paren">(</span><em class="sig-param">fila</em>, <em class="sig-param">columna</em><span class="sig-paren">)</span><a class="headerlink" href="#Arbitro.Arbitro.validar_posicion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Valida si la posicion ingresada existe.</p>
+<dl class="simple">
+<dt>Parametros:     fila: fila en el tablero.</dt><dd><p>columna: columna en el tablero.</p>
+</dd>
+</dl>
+<p>Retorno : True si la posicion es valida, False en caso contrario.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-ArbitroGo"></span><dl class="class">
+<dt id="ArbitroGo.ArbitroGo">
+<em class="property">class </em><code class="sig-prename descclassname">ArbitroGo.</code><code class="sig-name descname">ArbitroGo</code><span class="sig-paren">(</span><em class="sig-param">tablero</em><span class="sig-paren">)</span><a class="headerlink" href="#ArbitroGo.ArbitroGo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clase encargada de realizar toda la validacion y reglamentacion del juego GO.</p>
+<dl class="method">
+<dt id="ArbitroGo.ArbitroGo.contar_puntos">
+<code class="sig-name descname">contar_puntos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ArbitroGo.ArbitroGo.contar_puntos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Realiza el conteo de puntos para cada jugador.</p>
+<p>Retorno: la cantidad de puntos del jugador 1 del jugador 2 (una tupla) (int).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ArbitroGo.ArbitroGo.determinar_ganador">
+<code class="sig-name descname">determinar_ganador</code><span class="sig-paren">(</span><em class="sig-param">puntos_jugador_1</em>, <em class="sig-param">puntos_jugador_2</em><span class="sig-paren">)</span><a class="headerlink" href="#ArbitroGo.ArbitroGo.determinar_ganador" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determina el jugador ganador de acuerdo a la cantidad de puntos.</p>
+<p>Retorno: el jugador ganador (int).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ArbitroGo.ArbitroGo.jugada_suicida">
+<code class="sig-name descname">jugada_suicida</code><span class="sig-paren">(</span><em class="sig-param">fila</em>, <em class="sig-param">col</em><span class="sig-paren">)</span><a class="headerlink" href="#ArbitroGo.ArbitroGo.jugada_suicida" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifica si el movimiento del jugador corresponde a una jugada suicida.</p>
+<p>Parametros: fila,col: posicion donde el jugador coloca una ficha.</p>
+<p>Retorno : True si corresponde a una jugada suicida,False en caso contrario.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ArbitroGo.ArbitroGo.saltar_turno">
+<code class="sig-name descname">saltar_turno</code><span class="sig-paren">(</span><em class="sig-param">jugador</em><span class="sig-paren">)</span><a class="headerlink" href="#ArbitroGo.ArbitroGo.saltar_turno" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite al jugador saltar su turno.</p>
+<p>Parametros: jugador : el jugador que ha decidido saltar el turno.</p>
+<p>Retorno: el siguiente jugadir en turno (int).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ArbitroGo.ArbitroGo.terminar_juego">
+<code class="sig-name descname">terminar_juego</code><span class="sig-paren">(</span><em class="sig-param">turnos_saltados</em><span class="sig-paren">)</span><a class="headerlink" href="#ArbitroGo.ArbitroGo.terminar_juego" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifica si el juego ya acabo.Si ambos jugadores saltan turno en la misma ronda, el juego acaba.</p>
+<p>Parametros: turnos_saltados : la cantidad de turnos saltados en una ronda.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ArbitroGo.ArbitroGo.validar_columna">
+<code class="sig-name descname">validar_columna</code><span class="sig-paren">(</span><em class="sig-param">columna</em><span class="sig-paren">)</span><a class="headerlink" href="#ArbitroGo.ArbitroGo.validar_columna" title="Permalink to this definition">¶</a></dt>
+<dd><p>Valida si la columna ingresada existe.</p>
+<p>Parametros:  columna: columna en el tablero.</p>
+<p>Retorno : True si la columna es valida, False en caso contrario.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ArbitroGo.ArbitroGo.validar_fila">
+<code class="sig-name descname">validar_fila</code><span class="sig-paren">(</span><em class="sig-param">fila</em><span class="sig-paren">)</span><a class="headerlink" href="#ArbitroGo.ArbitroGo.validar_fila" title="Permalink to this definition">¶</a></dt>
+<dd><p>Valida si la fila ingresada existe.</p>
+<p>Parametros:       fila: fila en el tablero.</p>
+<p>Retorno : True si la fila es valida, False en caso contrario.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ArbitroGo.ArbitroGo.validar_posicion">
+<code class="sig-name descname">validar_posicion</code><span class="sig-paren">(</span><em class="sig-param">fila</em>, <em class="sig-param">columna</em><span class="sig-paren">)</span><a class="headerlink" href="#ArbitroGo.ArbitroGo.validar_posicion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Valida si la posicion ingresada existe.</p>
+<dl class="simple">
+<dt>Parametros: fila: fila en el tablero.</dt><dd><p>columna: columna en el tablero.</p>
+</dd>
+</dl>
+<p>Retorno : True si la posicion es valida, False en caso contrario.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ArbitroGo.ArbitroGo.verificar_tablero_lleno">
+<code class="sig-name descname">verificar_tablero_lleno</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ArbitroGo.ArbitroGo.verificar_tablero_lleno" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifica si ya no hay espacios disponibles en el tablero.</p>
+<p>Retorno : True si es tablero esta lleno,False en caso contrario.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-I_Arbitro"></span><dl class="class">
+<dt id="I_Arbitro.I_Arbitro">
+<em class="property">class </em><code class="sig-prename descclassname">I_Arbitro.</code><code class="sig-name descname">I_Arbitro</code><a class="headerlink" href="#I_Arbitro.I_Arbitro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interfaz abstracta de arbitro.</p>
+<dl class="method">
+<dt id="I_Arbitro.I_Arbitro.validar_posicion">
+<em class="property">abstract </em><code class="sig-name descname">validar_posicion</code><span class="sig-paren">(</span><em class="sig-param">tablero</em>, <em class="sig-param">fila</em>, <em class="sig-param">columna</em><span class="sig-paren">)</span><a class="headerlink" href="#I_Arbitro.I_Arbitro.validar_posicion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Valida si la posicion ingresada existe.</p>
+<dl class="simple">
+<dt>Parametros:     fila: fila en el tablero.</dt><dd><p>columna: columna en el tablero.</p>
+</dd>
+</dl>
+<p>Retorno : True si la posicion es valida, False en caso contrario.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">MARDA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Arbitro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code2.html">Controlador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code3.html">Jugador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code4.html">Pieza</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code5.html">Tablero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code6.html">Vista</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to MARDA’s documentation!</a></li>
+      <li>Next: <a href="code2.html" title="next chapter">Controlador</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Denisse Alfaro, Aaron Gutierrez, Roberto Vargas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/code.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

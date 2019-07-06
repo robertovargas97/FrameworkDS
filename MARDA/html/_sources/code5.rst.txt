@@ -1,0 +1,11 @@
+Tablero
+=================================
+Entrega final Diseño de Software
+
+.. automodule:: Tablero
+   :members:
+.. automodule:: TableroGo
+   :members:
+.. automodule:: I_Tablero
+   :members:
+

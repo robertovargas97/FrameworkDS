@@ -1,0 +1,11 @@
+Jugador
+=================================
+Entrega final Diseño de Software
+
+.. automodule:: Jugador
+   :members:
+.. automodule:: JugadorGo
+   :members:
+.. automodule:: I_Jugador
+   :members:
+

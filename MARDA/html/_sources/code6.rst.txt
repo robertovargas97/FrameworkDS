@@ -1,0 +1,11 @@
+Vista
+=================================
+Entrega final Diseño de Software
+
+.. automodule:: Vista
+   :members:
+.. automodule:: VistaGo
+   :members:
+.. automodule:: I_Vista
+   :members:
+

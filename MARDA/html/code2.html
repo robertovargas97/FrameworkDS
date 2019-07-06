@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Controlador &#8212; MARDA 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Jugador" href="code3.html" />
+    <link rel="prev" title="Arbitro" href="code.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="controlador">
+<h1>Controlador<a class="headerlink" href="#controlador" title="Permalink to this headline">¶</a></h1>
+<p>Entrega final Diseño de Software</p>
+<span class="target" id="module-Controlador"></span><dl class="class">
+<dt id="Controlador.Controlador">
+<em class="property">class </em><code class="sig-prename descclassname">Controlador.</code><code class="sig-name descname">Controlador</code><a class="headerlink" href="#Controlador.Controlador" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clase encargada de toda la interaccion entre la vista y el modelo.</p>
+<dl class="method">
+<dt id="Controlador.Controlador.asignar_color_jugador">
+<code class="sig-name descname">asignar_color_jugador</code><span class="sig-paren">(</span><em class="sig-param">negro</em>, <em class="sig-param">blanco</em><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.asignar_color_jugador" title="Permalink to this definition">¶</a></dt>
+<dd><p>Se le asigna color a cada jugador de acuerdo al resultado del nigiri.</p>
+<dl class="simple">
+<dt>Parametros: negro: color de fichas para el jugador que inicia.</dt><dd><p>blanco: color de fichas para el jugador que va de segundo.</p>
+</dd>
+</dl>
+<p>Retorno:    Un entero que identifica que jugador inicia.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.asignar_nombre_ganador">
+<code class="sig-name descname">asignar_nombre_ganador</code><span class="sig-paren">(</span><em class="sig-param">ganador</em><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.asignar_nombre_ganador" title="Permalink to this definition">¶</a></dt>
+<dd><p>Asigna el nombre del jugador ganador.</p>
+<p>Parametros: ganador: numero que identifica al jugador ganador.</p>
+<p>Retorno: nombre del ganador (string).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.asignar_tablero">
+<code class="sig-name descname">asignar_tablero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.asignar_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refresca el tablero de la vista con el que resulta de algun evento en el controlador.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.boton_autores_presionado">
+<code class="sig-name descname">boton_autores_presionado</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.boton_autores_presionado" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responde al evento de presionar el boton de autores para indicarle a la vista que debe mostrar una nueva ventana.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.boton_continuar_presionado">
+<code class="sig-name descname">boton_continuar_presionado</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.boton_continuar_presionado" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responde al evento de presionar el boton de continuar para indicarle a la vista que debe mostrar una nueva ventana.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.boton_entrar_presionado">
+<code class="sig-name descname">boton_entrar_presionado</code><span class="sig-paren">(</span><em class="sig-param">op</em><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.boton_entrar_presionado" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responde al evento de presionar el boton de entrar para indicarle a la vista que debe mostrar una nueva ventana.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.boton_jugar_presionado">
+<code class="sig-name descname">boton_jugar_presionado</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.boton_jugar_presionado" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responde al evento de presionar el boton de jugar para indicarle a la vista que debe mostrar una nueva ventana.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.boton_reglas_presionado">
+<code class="sig-name descname">boton_reglas_presionado</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.boton_reglas_presionado" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responde al evento de presionar el boton de reglas para indicarle a la vista que debe mostrar una nueva ventana.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.boton_volver_presionado">
+<code class="sig-name descname">boton_volver_presionado</code><span class="sig-paren">(</span><em class="sig-param">ventana</em>, <em class="sig-param">metodo</em>, <em class="sig-param">opcion</em><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.boton_volver_presionado" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responde al evento de presionar el boton de volver para indicarle a la vista que debe devolverse a una nueva anterior.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.caputurar_eventos">
+<code class="sig-name descname">caputurar_eventos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.caputurar_eventos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Captura los eventos producidos por cada jugador para interactuar con la vista</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.cerrar_menu">
+<code class="sig-name descname">cerrar_menu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.cerrar_menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responde al evento de presionar el boton de continuar en el nigiri para indicarle a la vista que cierre el menu para poder desplegar el tablero.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.convertir_tablero">
+<code class="sig-name descname">convertir_tablero</code><span class="sig-paren">(</span><em class="sig-param">tablero</em><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.convertir_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Castea el tablero grafico con el tablero del modelo para poder representarlo por medio de la vista</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.elegir_color">
+<code class="sig-name descname">elegir_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.elegir_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Se elije el color para cada jugador de acuerdo al resultado del nigiri.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.iniciar_eventos">
+<code class="sig-name descname">iniciar_eventos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.iniciar_eventos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refresca la cola de eventos con la resultante de algun evento en el controlador.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.iniciar_framework">
+<code class="sig-name descname">iniciar_framework</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.iniciar_framework" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inicia la interaccion entre el modelo y la vista para mostrar el framework.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.iniciar_jugadas">
+<code class="sig-name descname">iniciar_jugadas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.iniciar_jugadas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logica principal del tablero que captura eventos y refresca la vista de acuerdo al evento que surge por un jugador.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.iniciar_tablero">
+<code class="sig-name descname">iniciar_tablero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.iniciar_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inicia la interaccion con el tablero grafico.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.mostrar_tablero">
+<code class="sig-name descname">mostrar_tablero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.mostrar_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra el tablero grafico en pantalla por primera vez</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.movimiento_jugador">
+<code class="sig-name descname">movimiento_jugador</code><span class="sig-paren">(</span><em class="sig-param">jugador</em>, <em class="sig-param">fila</em>, <em class="sig-param">columna</em>, <em class="sig-param">tablero</em>, <em class="sig-param">vista</em><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.movimiento_jugador" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coloca la ficha en el tablero en la posicion que elige el jugador.</p>
+<dl class="simple">
+<dt>Parametros: jugador: instancia que representa al jugador en turno.</dt><dd><p>fila: fila donde se desea colocar una ficha.
+columna : columna donde se desea colocar una ficha.
+tablero: instancia de tablero donde se colocara la ficha.
+vista:  instancia de la vista para refrescar el tablero mostrado.</p>
+</dd>
+</dl>
+<p>Retorno:    Un entero que representa el proximo jugado en turno.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.nigiri">
+<code class="sig-name descname">nigiri</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.nigiri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manera en la que se decide que jugador va primero,el jugador 1 elige una cantidad de piedras sin ensenarlas y
+el jugador 2 elige una para decir impar o dos para decir par, si acierta entonces empieza con las negras sino con blancas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.obtener_cantidad_piedras">
+<code class="sig-name descname">obtener_cantidad_piedras</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.obtener_cantidad_piedras" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtiene la cantidad de piedras que ingresaron los jugadores en las entradas de texto de la ventana correspondiente.</p>
+<p>Retorno: la cantidad de piedras para cada jugador si ingresaron una cantidad valida, (0 , 0) en caso contrario.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.obtener_nombres">
+<code class="sig-name descname">obtener_nombres</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.obtener_nombres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtiene los nombres de los jugadores de las entradas de texto en la ventana correspondiente.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.responder_a_dibujar_tablero">
+<code class="sig-name descname">responder_a_dibujar_tablero</code><span class="sig-paren">(</span><em class="sig-param">pantalla</em><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.responder_a_dibujar_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Se responde al evento para dibujar el tablero.</p>
+<p>Retorno: True si hay algun evento en el tablero,False en caso de que se cierre el tablero en la X de la ventana.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.retornar_nombre_jugador1">
+<code class="sig-name descname">retornar_nombre_jugador1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.retornar_nombre_jugador1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno: el nombre del jugador 1</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.retornar_nombre_jugador2">
+<code class="sig-name descname">retornar_nombre_jugador2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.retornar_nombre_jugador2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno: el nombre del jugador 2</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.validar_cantidad_piedras">
+<code class="sig-name descname">validar_cantidad_piedras</code><span class="sig-paren">(</span><em class="sig-param">piedras_jugador</em>, <em class="sig-param">num_jugador</em><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.validar_cantidad_piedras" title="Permalink to this definition">¶</a></dt>
+<dd><p>Valida que se ingrese una cantidad de piedras correcta en las entradas de texto de la ventana correspondiente.</p>
+<dl class="simple">
+<dt>Parametros: piedras_jugador: cantidad de piedras ingresada en la entrada de texto.</dt><dd><p>num_jugador: numero de jugador que ingreso la cantidad de piedras.</p>
+</dd>
+</dl>
+<p>Retorno:    True si la cantidad de piedras ingresada es valida,False en caso contrario.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Controlador.Controlador.validar_nombre">
+<code class="sig-name descname">validar_nombre</code><span class="sig-paren">(</span><em class="sig-param">len_nombre</em>, <em class="sig-param">nom_j</em>, <em class="sig-param">num_j</em><span class="sig-paren">)</span><a class="headerlink" href="#Controlador.Controlador.validar_nombre" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifica que se ingrese algun nombre en los inputs de texto.</p>
+<dl class="simple">
+<dt>Parametros:     len_nombre: longitud del nombre ingresado.</dt><dd><p>nom_j: input en el que se validara.
+nun_j : numero del jugador al que se le esta validando el nombre.</p>
+</dd>
+</dl>
+<p>Retorno:    True si los nombres son validos,False en caso contrario.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">MARDA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="code.html">Arbitro</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Controlador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code3.html">Jugador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code4.html">Pieza</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code5.html">Tablero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code6.html">Vista</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="code.html" title="previous chapter">Arbitro</a></li>
+      <li>Next: <a href="code3.html" title="next chapter">Jugador</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Denisse Alfaro, Aaron Gutierrez, Roberto Vargas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/code2.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

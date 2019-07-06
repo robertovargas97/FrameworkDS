@@ -1,0 +1,541 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Vista &#8212; MARDA 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tablero" href="code5.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="vista">
+<h1>Vista<a class="headerlink" href="#vista" title="Permalink to this headline">¶</a></h1>
+<p>Entrega final Diseño de Software</p>
+<span class="target" id="module-Vista"></span><dl class="class">
+<dt id="Vista.Vista">
+<em class="property">class </em><code class="sig-prename descclassname">Vista.</code><code class="sig-name descname">Vista</code><span class="sig-paren">(</span><em class="sig-param">vista_T</em><span class="sig-paren">)</span><a class="headerlink" href="#Vista.Vista" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clase general encargada de representar una vista</p>
+<dl class="method">
+<dt id="Vista.Vista.dibujar_tablero">
+<code class="sig-name descname">dibujar_tablero</code><span class="sig-paren">(</span><em class="sig-param">tablero</em>, <em class="sig-param">restantes_j1</em>, <em class="sig-param">restantes_j2</em>, <em class="sig-param">nombre1</em>, <em class="sig-param">nombre2</em>, <em class="sig-param">jugador_en_turno</em><span class="sig-paren">)</span><a class="headerlink" href="#Vista.Vista.dibujar_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dibuja las celdas del tablero en la ventana de pygame.</p>
+<dl class="simple">
+<dt>Parametros: restantes_j1<span class="classifier">piezas restantes del jugador 1.</span></dt><dd><p>restantes_j2 : piezas restantes del jugador 1.
+nombre1:    nombre del jugador 1.
+nombre2:    nombre del jugador 2.
+jugador_en_turno : jugador que esta jugando actualmente.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vista.Vista.mostrar_menu_nombres">
+<code class="sig-name descname">mostrar_menu_nombres</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Vista.Vista.mostrar_menu_nombres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra la ventana para ingresar los nombres de cada jugador</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vista.Vista.mostrar_reglas_juego">
+<code class="sig-name descname">mostrar_reglas_juego</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Vista.Vista.mostrar_reglas_juego" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra un msj que indica las reglas mas importates a la hora de jugar</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vista.Vista.mostrar_ventana_autores">
+<code class="sig-name descname">mostrar_ventana_autores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Vista.Vista.mostrar_ventana_autores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra la ventana de los autores del framework</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vista.Vista.obt_vista_concreta">
+<code class="sig-name descname">obt_vista_concreta</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Vista.Vista.obt_vista_concreta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : instancia de la vista concreta para hacer uso de sus metodos propios</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-VistaGo"></span><dl class="class">
+<dt id="VistaGo.Reajustar_tamano">
+<em class="property">class </em><code class="sig-prename descclassname">VistaGo.</code><code class="sig-name descname">Reajustar_tamano</code><span class="sig-paren">(</span><em class="sig-param">master</em>, <em class="sig-param">ruta</em>, <em class="sig-param">*pargs</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.Reajustar_tamano" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clase que permite ajustar una imagen al tamano de ventana cada vez que esta crezca o se haga pequena</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="VistaGo.VistaGo">
+<em class="property">class </em><code class="sig-prename descclassname">VistaGo.</code><code class="sig-name descname">VistaGo</code><span class="sig-paren">(</span><em class="sig-param">controlador</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representacion grafica del framework</p>
+<dl class="method">
+<dt id="VistaGo.VistaGo.avisar_inicio_nigiri">
+<code class="sig-name descname">avisar_inicio_nigiri</code><span class="sig-paren">(</span><em class="sig-param">nom1</em>, <em class="sig-param">nom2</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.avisar_inicio_nigiri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra un msj para indicar el inicio del nigiri.</p>
+<dl class="simple">
+<dt>Parametros<span class="classifier">nom1</span><span class="classifier">nombre del jugador 1.</span></dt><dd><p>nom2 : nombre del jugador 2.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.cambiar_color">
+<code class="sig-name descname">cambiar_color</code><span class="sig-paren">(</span><em class="sig-param">event</em>, <em class="sig-param">color_fuente</em>, <em class="sig-param">color_boton</em>, <em class="sig-param">op</em>, <em class="sig-param">boton</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.cambiar_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce un efecto de color al colocar el mouse dentro de un boton y al retirarlo</p>
+<dl class="simple">
+<dt>Parametros: event:  reaccion al widget.</dt><dd><p>color_fuente:   color de la letra al aplicar el efecto.
+color_boton:    color del boton al aplicar el efecto.
+op: representa si se esta dentro o fuera del boton.
+boton:  boton al que se le aplica el efecto visual.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.colocar_boton">
+<code class="sig-name descname">colocar_boton</code><span class="sig-paren">(</span><em class="sig-param">ventana</em>, <em class="sig-param">boton</em>, <em class="sig-param">texto</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">ancho</em>, <em class="sig-param">alto</em>, <em class="sig-param">fondo_boton</em>, <em class="sig-param">color_boton_press</em>, <em class="sig-param">color_fuente_boton</em>, <em class="sig-param">color_fuente_press</em>, <em class="sig-param">metodo</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.colocar_boton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite colocar un boton que no tenga alguna funcion en especifica</p>
+<dl class="simple">
+<dt>Parametros: ventana:    ventana donde sera colocado el boton</dt><dd><p>boton:  nombre del boton que se va a generar
+texto:  titulo que tendra el boton.
+x:  posicion horizontal en la ventana.
+y:  posiciopn vertical en la ventana.
+ancho:  ancho del boton
+alto:   alto del boton
+fondo_boton:    color de fondo del boton
+color_boton_press:  color del boton al ser presionado
+color_fuente_boton: color de las letras del boton
+color_fuente_press: color de las letras cuando se presiona el boton
+metodo: funcion que ejecutara el boton al ser presionado</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.colocar_boton_cargar">
+<code class="sig-name descname">colocar_boton_cargar</code><span class="sig-paren">(</span><em class="sig-param">ventana</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">w</em>, <em class="sig-param">h</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.colocar_boton_cargar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite colocar el boton para cargar el jurgo.</p>
+<p>Parametros: ventana:    ventana donde sera colocado el boton.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.colocar_boton_continuar">
+<code class="sig-name descname">colocar_boton_continuar</code><span class="sig-paren">(</span><em class="sig-param">ventana</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">w</em>, <em class="sig-param">h</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.colocar_boton_continuar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite colocar un boton que permite continuar una vez que se ingresaron los nombres correctamente en la ventana de nombres.</p>
+<dl class="simple">
+<dt>Parametros: ventana:    ventana donde sera colocado el boton</dt><dd><p>x:  posicion horizontal en la ventana.
+y:  posiciopn vertical en la ventana.
+w:  ancho del boton
+h:   alto del boton</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.colocar_boton_entrar">
+<code class="sig-name descname">colocar_boton_entrar</code><span class="sig-paren">(</span><em class="sig-param">ventana</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.colocar_boton_entrar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite colocar el boton para entrar al framnework.</p>
+<p>Parametros: ventana:    ventana donde sera colocado el boton.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.colocar_boton_listo">
+<code class="sig-name descname">colocar_boton_listo</code><span class="sig-paren">(</span><em class="sig-param">ventana</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">w</em>, <em class="sig-param">h</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.colocar_boton_listo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite colocar un boton que acepta los nombres ingresados en la ventana de nombres.</p>
+<dl class="simple">
+<dt>Parametros: ventana:    ventana donde sera colocado el boton</dt><dd><p>x:  posicion horizontal en la ventana.
+y:  posiciopn vertical en la ventana.
+w:  ancho del boton
+h:   alto del boton</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.colocar_boton_nigiri_continuar">
+<code class="sig-name descname">colocar_boton_nigiri_continuar</code><span class="sig-paren">(</span><em class="sig-param">ventana</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">w</em>, <em class="sig-param">h</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.colocar_boton_nigiri_continuar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite colocar un boton que permite continuar una vez que se ingreso la cantidad de piedras correctamente en la ventana de nigiri.</p>
+<dl class="simple">
+<dt>Parametros: ventana:    ventana donde sera colocado el boton</dt><dd><p>x:  posicion horizontal en la ventana.
+y:  posiciopn vertical en la ventana.
+w:  ancho del boton
+h:   alto del boton</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.colocar_boton_nigiri_listo">
+<code class="sig-name descname">colocar_boton_nigiri_listo</code><span class="sig-paren">(</span><em class="sig-param">ventana</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">w</em>, <em class="sig-param">h</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.colocar_boton_nigiri_listo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite colocar un boton que acepta la cantidad de piedra ingresada en la ventana de nigiri.</p>
+<dl class="simple">
+<dt>Parametros: ventana:    ventana donde sera colocado el boton</dt><dd><p>x:  posicion horizontal en la ventana.
+y:  posiciopn vertical en la ventana.
+w:  ancho del boton
+h:   alto del boton</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.colocar_boton_volver">
+<code class="sig-name descname">colocar_boton_volver</code><span class="sig-paren">(</span><em class="sig-param">ventana</em>, <em class="sig-param">texto</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">w</em>, <em class="sig-param">h</em>, <em class="sig-param">color</em>, <em class="sig-param">opcion</em>, <em class="sig-param">metodo</em>, <em class="sig-param">color_fuente_press</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.colocar_boton_volver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite colocar un boton para devolverse de ventana.</p>
+<dl class="simple">
+<dt>Parametros: ventana:    ventana donde sera colocado el boton.</dt><dd><p>texto:  titulo que tendra el boton.
+x:  posicion horizontal en la ventana.
+y:  posiciopn vertical en la ventana.
+w:  ancho del boton.
+h:   alto del boton.
+opcion: entero que representa una opcion para que el boton cierre o no una ventana principal.
+color_fuente_press: color de las letras cuando se presiona el boton.
+metodo: funcion que ejecutara el boton al ser presionado.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.colocar_input">
+<code class="sig-name descname">colocar_input</code><span class="sig-paren">(</span><em class="sig-param">nombre</em>, <em class="sig-param">pady</em>, <em class="sig-param">texto</em>, <em class="sig-param">tipo</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.colocar_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite colocar una entrada de texto en la ventana correspondiente.</p>
+<dl class="simple">
+<dt>Parametros: nombre: nombre del input que se desea colocar.</dt><dd><p>pady:   distancia en el eje vertical con otro widget.
+texto: placeholder del input.
+tipo:   representa el tipo de input que se quiere colocar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.colocar_label_pygame">
+<code class="sig-name descname">colocar_label_pygame</code><span class="sig-paren">(</span><em class="sig-param">color</em>, <em class="sig-param">msj</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.colocar_label_pygame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coloca un label de texto en la ventana de pygame.</p>
+<dl class="simple">
+<dt>Parametros<span class="classifier">color</span><span class="classifier">color del texto.</span></dt><dd><p>msj : mensaje que tendra el texti.
+x : posicion en el eje x.
+y : posicion en el eje y.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.deshabilitar_boton_listo">
+<code class="sig-name descname">deshabilitar_boton_listo</code><span class="sig-paren">(</span><em class="sig-param">op</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.deshabilitar_boton_listo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite deshabilitar el boton de listo una vez que se ingreso un valor valido en los inputs de la ventana correspondiente.</p>
+<p>Parametros: op: identifica el boton que se quiere deshabiliar.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.deshabilitar_input_nombre">
+<code class="sig-name descname">deshabilitar_input_nombre</code><span class="sig-paren">(</span><em class="sig-param">n_input</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.deshabilitar_input_nombre" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite deshabilitar el input de nombre una vez que se ingreso un nombre valido.</p>
+<p>Parametros: n_input:    numero del input que se quiere deshabilitar</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.deshabilitar_input_piedras">
+<code class="sig-name descname">deshabilitar_input_piedras</code><span class="sig-paren">(</span><em class="sig-param">n_input</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.deshabilitar_input_piedras" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite deshabilitar el input de piedras una vez que se ingreso una cantidad valida.</p>
+<p>Parametros: n_input:    numero del input que se quiere deshabilitar</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.dibujar_tablero">
+<code class="sig-name descname">dibujar_tablero</code><span class="sig-paren">(</span><em class="sig-param">tablero</em>, <em class="sig-param">restantes_j1</em>, <em class="sig-param">restantes_j2</em>, <em class="sig-param">nombre1</em>, <em class="sig-param">nombre2</em>, <em class="sig-param">jugador_en_turno</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.dibujar_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dibuja las celdas del tablero en la ventana de pygame.</p>
+<dl class="simple">
+<dt>Parametros: restantes_j1<span class="classifier">piezas restantes del jugador 1.</span></dt><dd><p>restantes_j2 : piezas restantes del jugador 1.
+nombre1:    nombre del jugador 1.
+nombre2:    nombre del jugador 2.
+jugador_en_turno : jugador que esta jugando actualmente.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.generar_ventana">
+<code class="sig-name descname">generar_ventana</code><span class="sig-paren">(</span><em class="sig-param">ventana</em>, <em class="sig-param">titulo</em>, <em class="sig-param">dimensiones</em>, <em class="sig-param">color_fondo</em>, <em class="sig-param">ruta_imagen</em>, <em class="sig-param">op</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.generar_ventana" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite generar una ventana grafica.</p>
+<dl class="simple">
+<dt>Parametros: ventana: ventana que se dibujara.</dt><dd><p>titulo: titulo que tendra la ventana.
+dimensiones: dimensiones de la ventana.
+color_fondo: color de fondo de la ventana en caso de que no cargue la imagen.
+ruta_imagen: ruta de la imagen para el fondo.
+op : indica si se desea reajustar la imagen de fondo o no.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.habilitar_boton_continuar">
+<code class="sig-name descname">habilitar_boton_continuar</code><span class="sig-paren">(</span><em class="sig-param">opcion</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.habilitar_boton_continuar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite habilitar el boton de continuar una vez que se ingreso un valor valido en los inputs de la ventana correspondiente.</p>
+<p>Parametros: opcion: identifica el boton que se quiere habiliar.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.hover_button">
+<code class="sig-name descname">hover_button</code><span class="sig-paren">(</span><em class="sig-param">boton</em>, <em class="sig-param">color_boton</em>, <em class="sig-param">color_fuente</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.hover_button" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce un efecto hover a un boton al producirse un evento</p>
+<dl class="simple">
+<dt>Parametros: boton:  boton al que se le aplica el efecto visual.</dt><dd><p>color_boton:    color del boton al aplicar el efecto.
+color_fuente:   color de la letra al aplicar el efecto.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.iniciar_tablero">
+<code class="sig-name descname">iniciar_tablero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.iniciar_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Se construye la ventana donde estara el tablero</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_error_jugada_suicida">
+<code class="sig-name descname">mostrar_error_jugada_suicida</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_error_jugada_suicida" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra un msj para indicar una jugada invalida</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_error_nombres">
+<code class="sig-name descname">mostrar_error_nombres</code><span class="sig-paren">(</span><em class="sig-param">num_jugador</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_error_nombres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra un msj de error en caso de que se ingrese un nombre invalido</p>
+<p>Parametros: num_jugador:    indica el numero de jugador que ingreso un nombre invalido</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_error_piedras">
+<code class="sig-name descname">mostrar_error_piedras</code><span class="sig-paren">(</span><em class="sig-param">nombre</em>, <em class="sig-param">num_j</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_error_piedras" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra un msj de error en caso de que se ingrese una cantidad de piedras invalida.</p>
+<dl class="simple">
+<dt>Parametros: nombre:    indica el nombre del jugador que ingreso una cantidad de piedras invalida.</dt><dd><p>num_jugador:    indica el numero de jugador que ingreso un nombre invalido.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_error_posicion">
+<code class="sig-name descname">mostrar_error_posicion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_error_posicion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra un msj para indicar un error al colocar una pieza.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_fin_juego">
+<code class="sig-name descname">mostrar_fin_juego</code><span class="sig-paren">(</span><em class="sig-param">nombre1</em>, <em class="sig-param">puntos_jugador_1</em>, <em class="sig-param">nombre2</em>, <em class="sig-param">puntos_jugador_2</em>, <em class="sig-param">ganador</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_fin_juego" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra un msj para indicar el fin del juego.</p>
+<dl class="simple">
+<dt>Parametros<span class="classifier">nombre1</span><span class="classifier">nombre del jugador 1.</span></dt><dd><p>nombre2 : nombre del jugador 2.
+puntos_jugador_1 : puntos del jugador 1.
+puntos_jugador_2 : puntos del jugador 2.
+ganador : ganador del juego.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_info">
+<code class="sig-name descname">mostrar_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Genera la ventana con toda la informacion del juego</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_menu_inicial">
+<code class="sig-name descname">mostrar_menu_inicial</code><span class="sig-paren">(</span><em class="sig-param">destruir</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_menu_inicial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra la ventana de menu inicial del juego</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_menu_nombres">
+<code class="sig-name descname">mostrar_menu_nombres</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_menu_nombres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra la ventana para ingresar los nombres de cada jugador</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_reglas_juego">
+<code class="sig-name descname">mostrar_reglas_juego</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_reglas_juego" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra un msj que indica las reglas mas importates a la hora de jugar</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_resultado_nigiri">
+<code class="sig-name descname">mostrar_resultado_nigiri</code><span class="sig-paren">(</span><em class="sig-param">color</em>, <em class="sig-param">piedras_j1</em>, <em class="sig-param">piedras_j2</em>, <em class="sig-param">nombre1</em>, <em class="sig-param">nombre2</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_resultado_nigiri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra el resultado del nigiri.</p>
+<dl class="simple">
+<dt>Parametros: color:  indica el color que tendra el jugador.</dt><dd><p>piedras_j1 :    indica la canridad de piedras que eligio el jugador 1.
+piedras_j2 :    indica la canridad de piedras que eligio el jugador 2.
+nombre1:    nombre del jugador 1.
+nombre2:    nombre del jugador 2.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_salto_turno">
+<code class="sig-name descname">mostrar_salto_turno</code><span class="sig-paren">(</span><em class="sig-param">jugador</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_salto_turno" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra un msj para indicar que un jugador paso el turno.</p>
+<p>Parametros :    jugado : nombre del jugador que paso el turno.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_ventana_autores">
+<code class="sig-name descname">mostrar_ventana_autores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_ventana_autores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra la ventana de los autores del framework</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_ventana_inicial">
+<code class="sig-name descname">mostrar_ventana_inicial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_ventana_inicial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra la ventana inicial del framework</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.mostrar_ventana_nigiri">
+<code class="sig-name descname">mostrar_ventana_nigiri</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.mostrar_ventana_nigiri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra la ventana para ingresar la cantidad de piedras de cada jugador</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="VistaGo.VistaGo.volver">
+<code class="sig-name descname">volver</code><span class="sig-paren">(</span><em class="sig-param">ventana_matar</em>, <em class="sig-param">metodo</em>, <em class="sig-param">opcion</em><span class="sig-paren">)</span><a class="headerlink" href="#VistaGo.VistaGo.volver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permite devolverse a la ventana anterior</p>
+<dl class="simple">
+<dt>Parametros: ventana_matar:  ventana que se quiere cerrar para devolverse</dt><dd><p>metodo: funcion que se ejecuta al cerrar una ventana
+opcion: indica la ventana a la que se quiere devolver cuando se esta en las reglas.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-I_Vista"></span><dl class="class">
+<dt id="I_Vista.I_Vista">
+<em class="property">class </em><code class="sig-prename descclassname">I_Vista.</code><code class="sig-name descname">I_Vista</code><a class="headerlink" href="#I_Vista.I_Vista" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="I_Vista.I_Vista.dibujar_tablero">
+<em class="property">abstract </em><code class="sig-name descname">dibujar_tablero</code><span class="sig-paren">(</span><em class="sig-param">tablero</em>, <em class="sig-param">restantes_j1</em>, <em class="sig-param">restantes_j2</em>, <em class="sig-param">nombre1</em>, <em class="sig-param">nombre2</em>, <em class="sig-param">jugador_en_turno</em><span class="sig-paren">)</span><a class="headerlink" href="#I_Vista.I_Vista.dibujar_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dibuja las celdas del tablero en la ventana de pygame.</p>
+<dl class="simple">
+<dt>Parametros: tablero: representacion logica de lo que se debe dibujar.</dt><dd><p>restantes_j1 : piezas restantes jugador 1.
+restantes_j2 : piezas restantes jugador 2.
+nombre1 : nombre jugador 1.
+nombre2 : nombre jugador 1.
+jugador_en_turno : jugador que esta jugando en ese momento.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="I_Vista.I_Vista.mostrar_menu_nombres">
+<em class="property">abstract </em><code class="sig-name descname">mostrar_menu_nombres</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#I_Vista.I_Vista.mostrar_menu_nombres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra la ventana para ingresar los nombres de cada jugador</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="I_Vista.I_Vista.mostrar_reglas_juego">
+<em class="property">abstract </em><code class="sig-name descname">mostrar_reglas_juego</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#I_Vista.I_Vista.mostrar_reglas_juego" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra un msj que indica las reglas mas importates a la hora de jugar</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="I_Vista.I_Vista.mostrar_ventana_autores">
+<em class="property">abstract </em><code class="sig-name descname">mostrar_ventana_autores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#I_Vista.I_Vista.mostrar_ventana_autores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra la ventana de los autores del framework</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">MARDA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="code.html">Arbitro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code2.html">Controlador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code3.html">Jugador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code4.html">Pieza</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code5.html">Tablero</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Vista</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="code5.html" title="previous chapter">Tablero</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Denisse Alfaro, Aaron Gutierrez, Roberto Vargas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/code6.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

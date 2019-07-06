@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pieza &#8212; MARDA 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tablero" href="code5.html" />
+    <link rel="prev" title="Jugador" href="code3.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="pieza">
+<h1>Pieza<a class="headerlink" href="#pieza" title="Permalink to this headline">¶</a></h1>
+<p>Entrega final Diseño de Software</p>
+<span class="target" id="module-Pieza"></span><dl class="class">
+<dt id="Pieza.Pieza">
+<em class="property">class </em><code class="sig-prename descclassname">Pieza.</code><code class="sig-name descname">Pieza</code><span class="sig-paren">(</span><em class="sig-param">pieza_T</em><span class="sig-paren">)</span><a class="headerlink" href="#Pieza.Pieza" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clase general encargada de representar una pieza</p>
+<dl class="method">
+<dt id="Pieza.Pieza.obt_columna">
+<code class="sig-name descname">obt_columna</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Pieza.Pieza.obt_columna" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno :  columna donde se encuentra la pieza</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pieza.Pieza.obt_fila">
+<code class="sig-name descname">obt_fila</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Pieza.Pieza.obt_fila" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retoro : fila donde se encuentra la pieza</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pieza.Pieza.obt_id">
+<code class="sig-name descname">obt_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Pieza.Pieza.obt_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : entero con el identificador de la pieza</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pieza.Pieza.obt_pieza_concreta">
+<code class="sig-name descname">obt_pieza_concreta</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Pieza.Pieza.obt_pieza_concreta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : instancia de la pieza concreta para hacer uso de sus metodos propios</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-PiezaGo"></span><dl class="class">
+<dt id="PiezaGo.PiezaGo">
+<em class="property">class </em><code class="sig-prename descclassname">PiezaGo.</code><code class="sig-name descname">PiezaGo</code><span class="sig-paren">(</span><em class="sig-param">id</em>, <em class="sig-param">fila</em>, <em class="sig-param">columna</em>, <em class="sig-param">agrupacion</em><span class="sig-paren">)</span><a class="headerlink" href="#PiezaGo.PiezaGo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representa una pieza del juego Go</p>
+<dl class="method">
+<dt id="PiezaGo.PiezaGo.asignar_indice_agrupacion">
+<code class="sig-name descname">asignar_indice_agrupacion</code><span class="sig-paren">(</span><em class="sig-param">indice</em><span class="sig-paren">)</span><a class="headerlink" href="#PiezaGo.PiezaGo.asignar_indice_agrupacion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Asigna el indice del agrupamiento al que pertenece</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiezaGo.PiezaGo.asignar_tipo">
+<code class="sig-name descname">asignar_tipo</code><span class="sig-paren">(</span><em class="sig-param">tipo</em><span class="sig-paren">)</span><a class="headerlink" href="#PiezaGo.PiezaGo.asignar_tipo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : string con el tipo de pieza a la que corresponde</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiezaGo.PiezaGo.copiar_pieza">
+<code class="sig-name descname">copiar_pieza</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PiezaGo.PiezaGo.copiar_pieza" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copia una pieza del juego.</p>
+<p>Retorno : copia de una instancia de pieza</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiezaGo.PiezaGo.obt_agrupacion">
+<code class="sig-name descname">obt_agrupacion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PiezaGo.PiezaGo.obt_agrupacion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : entero con el indice de la agrupacion</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiezaGo.PiezaGo.obt_columna">
+<code class="sig-name descname">obt_columna</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PiezaGo.PiezaGo.obt_columna" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : columna donde se encuentra la pieza</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiezaGo.PiezaGo.obt_fila">
+<code class="sig-name descname">obt_fila</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PiezaGo.PiezaGo.obt_fila" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : fila donde se encuentra la pieza</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiezaGo.PiezaGo.obt_id">
+<code class="sig-name descname">obt_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PiezaGo.PiezaGo.obt_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : entero con el identificador de la pieza</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="PiezaGo.PiezaGo.obt_tipo">
+<code class="sig-name descname">obt_tipo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PiezaGo.PiezaGo.obt_tipo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : string con el tipo de pieza a la que corresponde</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-I_Pieza"></span><dl class="class">
+<dt id="I_Pieza.I_Pieza">
+<em class="property">class </em><code class="sig-prename descclassname">I_Pieza.</code><code class="sig-name descname">I_Pieza</code><a class="headerlink" href="#I_Pieza.I_Pieza" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interfaz abstracta de pieza.</p>
+<dl class="method">
+<dt id="I_Pieza.I_Pieza.obt_columna">
+<em class="property">abstract </em><code class="sig-name descname">obt_columna</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#I_Pieza.I_Pieza.obt_columna" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : columna donde se encuentra la pieza</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="I_Pieza.I_Pieza.obt_fila">
+<em class="property">abstract </em><code class="sig-name descname">obt_fila</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#I_Pieza.I_Pieza.obt_fila" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : fila donde se encuentra la pieza</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="I_Pieza.I_Pieza.obt_id">
+<em class="property">abstract </em><code class="sig-name descname">obt_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#I_Pieza.I_Pieza.obt_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : entero con el identificador de la pieza</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">MARDA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="code.html">Arbitro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code2.html">Controlador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code3.html">Jugador</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pieza</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code5.html">Tablero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code6.html">Vista</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="code3.html" title="previous chapter">Jugador</a></li>
+      <li>Next: <a href="code5.html" title="next chapter">Tablero</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Denisse Alfaro, Aaron Gutierrez, Roberto Vargas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/code4.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

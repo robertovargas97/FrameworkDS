@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Jugador &#8212; MARDA 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pieza" href="code4.html" />
+    <link rel="prev" title="Controlador" href="code2.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="jugador">
+<h1>Jugador<a class="headerlink" href="#jugador" title="Permalink to this headline">¶</a></h1>
+<p>Entrega final Diseño de Software</p>
+<span class="target" id="module-Jugador"></span><dl class="class">
+<dt id="Jugador.Jugador">
+<em class="property">class </em><code class="sig-prename descclassname">Jugador.</code><code class="sig-name descname">Jugador</code><span class="sig-paren">(</span><em class="sig-param">jugador_T</em><span class="sig-paren">)</span><a class="headerlink" href="#Jugador.Jugador" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clase general encargada de representar un jugador.</p>
+<dl class="method">
+<dt id="Jugador.Jugador.obt_id">
+<code class="sig-name descname">obt_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Jugador.Jugador.obt_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno: un entero que representa el identificador del jugador</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Jugador.Jugador.obt_jugador_concreto">
+<code class="sig-name descname">obt_jugador_concreto</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Jugador.Jugador.obt_jugador_concreto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno: instancia del jugador concreto para hacer uso de sus metodos propios</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Jugador.Jugador.obt_nombre">
+<code class="sig-name descname">obt_nombre</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Jugador.Jugador.obt_nombre" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno: string que representa el nombre del jugador</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-JugadorGo"></span><dl class="class">
+<dt id="JugadorGo.JugadorGo">
+<em class="property">class </em><code class="sig-prename descclassname">JugadorGo.</code><code class="sig-name descname">JugadorGo</code><span class="sig-paren">(</span><em class="sig-param">id</em>, <em class="sig-param">color_pieza</em>, <em class="sig-param">nombre</em><span class="sig-paren">)</span><a class="headerlink" href="#JugadorGo.JugadorGo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representa un jugador de Go</p>
+<dl class="method">
+<dt id="JugadorGo.JugadorGo.asignar_cant_piezas">
+<code class="sig-name descname">asignar_cant_piezas</code><span class="sig-paren">(</span><em class="sig-param">valor</em><span class="sig-paren">)</span><a class="headerlink" href="#JugadorGo.JugadorGo.asignar_cant_piezas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Asigna la cantidad de piezas al jugador</p>
+<p>Parametros : valor: cantidad de piezas que posee un jugador</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="JugadorGo.JugadorGo.asignar_piezas_perdidas">
+<code class="sig-name descname">asignar_piezas_perdidas</code><span class="sig-paren">(</span><em class="sig-param">piezas_perdidas</em><span class="sig-paren">)</span><a class="headerlink" href="#JugadorGo.JugadorGo.asignar_piezas_perdidas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Asigna la cantidad de piezas perdidas por turno al jugador</p>
+<p>Parametros : piezas_perdidas : cantidad de piezas que pierde un jugador or turno</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="JugadorGo.JugadorGo.eliminar_pieza">
+<code class="sig-name descname">eliminar_pieza</code><span class="sig-paren">(</span><em class="sig-param">cantidad_a_eliminar</em><span class="sig-paren">)</span><a class="headerlink" href="#JugadorGo.JugadorGo.eliminar_pieza" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disminuye las piezas del jugador</p>
+<p>Paramteros : cantidad_eliminar : numero de piedras que se le deben quitar al jugador</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="JugadorGo.JugadorGo.obt_color_pieza">
+<code class="sig-name descname">obt_color_pieza</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#JugadorGo.JugadorGo.obt_color_pieza" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : color de pieza del jugador</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="JugadorGo.JugadorGo.obt_id">
+<code class="sig-name descname">obt_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#JugadorGo.JugadorGo.obt_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : entero que representa el identificador del jugador</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="JugadorGo.JugadorGo.obt_nombre">
+<code class="sig-name descname">obt_nombre</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#JugadorGo.JugadorGo.obt_nombre" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : string que representa el nombre del jugador</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="JugadorGo.JugadorGo.obt_piezas_perdidas">
+<code class="sig-name descname">obt_piezas_perdidas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#JugadorGo.JugadorGo.obt_piezas_perdidas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : cantidad de piezas perdidas</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="JugadorGo.JugadorGo.obt_piezas_restantes">
+<code class="sig-name descname">obt_piezas_restantes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#JugadorGo.JugadorGo.obt_piezas_restantes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : cantidad de piezas que le quedan al jugador</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="JugadorGo.JugadorGo.obt_total_piezas">
+<code class="sig-name descname">obt_total_piezas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#JugadorGo.JugadorGo.obt_total_piezas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : cantidad total de piezas que posee un jugador</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-I_Jugador"></span><dl class="class">
+<dt id="I_Jugador.I_Jugador">
+<em class="property">class </em><code class="sig-prename descclassname">I_Jugador.</code><code class="sig-name descname">I_Jugador</code><a class="headerlink" href="#I_Jugador.I_Jugador" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interfaz abstracta de un jugador.</p>
+<dl class="method">
+<dt id="I_Jugador.I_Jugador.obt_id">
+<em class="property">abstract </em><code class="sig-name descname">obt_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#I_Jugador.I_Jugador.obt_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : string que representa el identificador del jugador</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="I_Jugador.I_Jugador.obt_nombre">
+<em class="property">abstract </em><code class="sig-name descname">obt_nombre</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#I_Jugador.I_Jugador.obt_nombre" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : string que representa el nombre del jugador</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">MARDA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="code.html">Arbitro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code2.html">Controlador</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Jugador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code4.html">Pieza</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code5.html">Tablero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code6.html">Vista</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="code2.html" title="previous chapter">Controlador</a></li>
+      <li>Next: <a href="code4.html" title="next chapter">Pieza</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Denisse Alfaro, Aaron Gutierrez, Roberto Vargas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/code3.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

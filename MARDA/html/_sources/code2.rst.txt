@@ -1,0 +1,7 @@
+Controlador
+=================================
+Entrega final Diseño de Software
+
+.. automodule:: Controlador
+   :members:
+

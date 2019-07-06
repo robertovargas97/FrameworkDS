@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tablero &#8212; MARDA 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Vista" href="code6.html" />
+    <link rel="prev" title="Pieza" href="code4.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="tablero">
+<h1>Tablero<a class="headerlink" href="#tablero" title="Permalink to this headline">¶</a></h1>
+<p>Entrega final Diseño de Software</p>
+<span class="target" id="module-Tablero"></span><dl class="class">
+<dt id="Tablero.Tablero">
+<em class="property">class </em><code class="sig-prename descclassname">Tablero.</code><code class="sig-name descname">Tablero</code><span class="sig-paren">(</span><em class="sig-param">tablero_T</em><span class="sig-paren">)</span><a class="headerlink" href="#Tablero.Tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clase general encargada de representar una tablero.</p>
+<dl class="method">
+<dt id="Tablero.Tablero.colocar_ficha">
+<code class="sig-name descname">colocar_ficha</code><span class="sig-paren">(</span><em class="sig-param">fila</em>, <em class="sig-param">columna</em>, <em class="sig-param">jugador</em><span class="sig-paren">)</span><a class="headerlink" href="#Tablero.Tablero.colocar_ficha" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Parametros: fila , columna<span class="classifier">posicion en el tablero.</span></dt><dd><p>jugador: instancia del jugador que coloca la pieza.</p>
+</dd>
+</dl>
+<p>Retorno: True si se puede colocar la pieza, False en caso contrario.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Tablero.Tablero.crear_tablero">
+<code class="sig-name descname">crear_tablero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Tablero.Tablero.crear_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crea el tablero del juego con las respectivas dimensiones.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Tablero.Tablero.limpiar_tablero">
+<code class="sig-name descname">limpiar_tablero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Tablero.Tablero.limpiar_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Limpia el tablero para reiniciar el juego</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Tablero.Tablero.obt_tablero_concreto">
+<code class="sig-name descname">obt_tablero_concreto</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Tablero.Tablero.obt_tablero_concreto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorno : instancia de tablero concreto para hacer uso de sus metodos propios</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Tablero.Tablero.validar_posicion">
+<code class="sig-name descname">validar_posicion</code><span class="sig-paren">(</span><em class="sig-param">fila</em>, <em class="sig-param">columna</em><span class="sig-paren">)</span><a class="headerlink" href="#Tablero.Tablero.validar_posicion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Valida si la posicion ingresada existe.</p>
+<dl class="simple">
+<dt>Parametros<span class="classifier">fila: fila en el tablero.</span></dt><dd><p>columna: columna en el tablero.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-TableroGo"></span><dl class="class">
+<dt id="TableroGo.TableroGo">
+<em class="property">class </em><code class="sig-prename descclassname">TableroGo.</code><code class="sig-name descname">TableroGo</code><span class="sig-paren">(</span><em class="sig-param">filas=9</em>, <em class="sig-param">columnas=9</em><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementacion especifica de un tablero de Go</p>
+<dl class="method">
+<dt id="TableroGo.TableroGo.actualizar_indice_agrupamiento">
+<code class="sig-name descname">actualizar_indice_agrupamiento</code><span class="sig-paren">(</span><em class="sig-param">agrupamiento</em>, <em class="sig-param">indice_nuevo</em><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.actualizar_indice_agrupamiento" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actualiza el indice del agrupamiento de la ficha que se acaba de colocar.</p>
+<dl class="simple">
+<dt>Parametros<span class="classifier">agrupamiento</span><span class="classifier">agrupamiento al que se le actualiza el indice.</span></dt><dd><p>indice_nuevo : nuevo valor de indice del agrupamiento.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.agrupar">
+<code class="sig-name descname">agrupar</code><span class="sig-paren">(</span><em class="sig-param">indiceA</em>, <em class="sig-param">indiceB</em><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.agrupar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Agrupa las fichas vecinas en caso de que sea posible,puede agrupar agrupamientos.</p>
+<dl class="simple">
+<dt>Parametros<span class="classifier">indiceA</span><span class="classifier">indice del agrupamiento de la ficha recien colocada.</span></dt><dd><p>indiceB : indice del agrupamiento que va a anadir</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.colocar_ficha">
+<code class="sig-name descname">colocar_ficha</code><span class="sig-paren">(</span><em class="sig-param">fila</em>, <em class="sig-param">columna</em>, <em class="sig-param">jugador</em><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.colocar_ficha" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Parametros:  fila , columna<span class="classifier">posicion en el tablero.</span></dt><dd><p>jugador: instancia del jugador que coloca la pieza.</p>
+</dd>
+</dl>
+<p>Retorno: True si se puede colocar la pieza, False en caso contrario.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.copiar_agrupciones">
+<code class="sig-name descname">copiar_agrupciones</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.copiar_agrupciones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copia una arreglo de agrupaciones.</p>
+<p>Retorno : copia del arreglo de agrupaciones.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.copiar_tablero">
+<code class="sig-name descname">copiar_tablero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.copiar_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copia el tablero original.</p>
+<p>Retorno : copia del tablero original.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.crear_tablero">
+<code class="sig-name descname">crear_tablero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.crear_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crea el tablero del juego especifico con las respectivas dimensiones</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.esta_libre">
+<code class="sig-name descname">esta_libre</code><span class="sig-paren">(</span><em class="sig-param">fila</em>, <em class="sig-param">columna</em><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.esta_libre" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifica si la posicion del tablero esta libre.</p>
+<p>Parametros : fila , columna : posicion en el tablero.</p>
+<p>Retorno : True en caso de que la posicion para colocar la ficha este libre,False en caso contrario.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.invalidar_agrupamiento">
+<code class="sig-name descname">invalidar_agrupamiento</code><span class="sig-paren">(</span><em class="sig-param">agrupamiento</em><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.invalidar_agrupamiento" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalida un agrupamiento.
+Parametro:  agrupamiento : agrupamiento que se invalidara,</p>
+<p>Retorno : cantidad de piezas que se encuentran en el agrupamiento.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.libertades_agrupamiento">
+<code class="sig-name descname">libertades_agrupamiento</code><span class="sig-paren">(</span><em class="sig-param">agrupamiento</em><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.libertades_agrupamiento" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifica si un grupo de piezas tiene grados de libertad.</p>
+<p>Retorno : 1 si tiene grados de libertad,0 en caso contrario.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.libertades_ficha">
+<code class="sig-name descname">libertades_ficha</code><span class="sig-paren">(</span><em class="sig-param">ficha</em><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.libertades_ficha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifica si una ficha tiene grados de libertad.</p>
+<p>Parametros :    ficha : ficha a la que se le revisan los grados de libertad</p>
+<p>Retorno : 1 si la ficha tiene grados de libertad, 0 en caso contrario.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.limpiar_tablero">
+<code class="sig-name descname">limpiar_tablero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.limpiar_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Limpia el tablero para reiniciar el juego</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.mostrar_tablero">
+<code class="sig-name descname">mostrar_tablero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.mostrar_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra en pantalla el tablero</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.mostrar_tablero_copia">
+<code class="sig-name descname">mostrar_tablero_copia</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.mostrar_tablero_copia" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra en pantalla el tablero</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.revisar_eliminar_agrupamientos">
+<code class="sig-name descname">revisar_eliminar_agrupamientos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.revisar_eliminar_agrupamientos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifica si algun agrupamiento tiene inidice invalido para eliminarlo del tablero.</p>
+<p>Retorno : cantidad de fichas eliminadas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TableroGo.TableroGo.verificar_agrupamientos_vecinos">
+<code class="sig-name descname">verificar_agrupamientos_vecinos</code><span class="sig-paren">(</span><em class="sig-param">ficha</em><span class="sig-paren">)</span><a class="headerlink" href="#TableroGo.TableroGo.verificar_agrupamientos_vecinos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifica si es posible agruparse con grupos vecinos.</p>
+<p>Parametros: ficha: instancia de ficha que se va a colocar en el tablero</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-I_Tablero"></span><dl class="class">
+<dt id="I_Tablero.I_Tablero">
+<em class="property">class </em><code class="sig-prename descclassname">I_Tablero.</code><code class="sig-name descname">I_Tablero</code><a class="headerlink" href="#I_Tablero.I_Tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interfaz abstracta del tablero en el que se jugara.</p>
+<dl class="method">
+<dt id="I_Tablero.I_Tablero.colocar_ficha">
+<em class="property">abstract </em><code class="sig-name descname">colocar_ficha</code><span class="sig-paren">(</span><em class="sig-param">fila</em>, <em class="sig-param">columna</em>, <em class="sig-param">jugador</em><span class="sig-paren">)</span><a class="headerlink" href="#I_Tablero.I_Tablero.colocar_ficha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coloca una ficha en el tablero.</p>
+<dl class="simple">
+<dt>Parametros:  fila , columna<span class="classifier">posicion en el tablero.</span></dt><dd><p>jugador: instancia del jugador que coloca la pieza.</p>
+</dd>
+</dl>
+<p>Retorno:        True si se puede colocar la pieza, False en caso contrario.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="I_Tablero.I_Tablero.crear_tablero">
+<em class="property">abstract </em><code class="sig-name descname">crear_tablero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#I_Tablero.I_Tablero.crear_tablero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crea el tablero del juego especifico con las respectivas dimensiones.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">MARDA</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="code.html">Arbitro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code2.html">Controlador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code3.html">Jugador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code4.html">Pieza</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tablero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code6.html">Vista</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="code4.html" title="previous chapter">Pieza</a></li>
+      <li>Next: <a href="code6.html" title="next chapter">Vista</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Denisse Alfaro, Aaron Gutierrez, Roberto Vargas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/code5.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
