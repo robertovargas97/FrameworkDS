@@ -296,11 +296,11 @@ class Controlador():
                         jugador_en_turno = self.nombre1
                         self.vista.obt_vista_concreta().mostrar_salto_turno(self.jugador2.obt_nombre())
                     
-                    proximo_en_jugar = self.arbitro.obt_arbitro_concreto().saltar_turno(proximo_en_jugar) ###ARBITRO
+                    proximo_en_jugar = self.arbitro.saltar_turno(proximo_en_jugar) ###ARBITRO
                     turnos_saltados += 1
                     self.cambiar_turno = 0
                     
-                if(self.arbitro.obt_arbitro_concreto().terminar_juego(turnos_saltados)): ####ARBITRO
+                if(self.arbitro.terminar_juego(turnos_saltados)): ####ARBITRO
                     puntos_jugador_1,puntos_jugador_2 =  self.arbitro.obt_arbitro_concreto().contar_puntos() #####ARBITRO
                     ganador = self.arbitro.obt_arbitro_concreto().determinar_ganador(puntos_jugador_1,puntos_jugador_2) ##ARBITRO
                     self.vista.obt_vista_concreta().mostrar_fin_juego(self.nombre1,puntos_jugador_1,self.nombre2,puntos_jugador_2,self.asignar_nombre_ganador(ganador))

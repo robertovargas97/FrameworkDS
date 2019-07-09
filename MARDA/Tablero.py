@@ -23,13 +23,6 @@ class Tablero():
         Retorno: True si se puede colocar la pieza, False en caso contrario."""
         return self.tablero_concreto_t.colocar_ficha(fila,columna,jugador)
 
-    def validar_posicion(self,fila,columna):
-        """Valida si la posicion ingresada existe.
-        
-        Parametros :    fila: fila en el tablero.
-                        columna: columna en el tablero."""
-        return self.tablero_concreto_t.validar_posicion(fila,columna)
-        
     def obt_tablero_concreto(self):
         """Retorno : instancia de tablero concreto para hacer uso de sus metodos propios"""
         return self.tablero_concreto_t

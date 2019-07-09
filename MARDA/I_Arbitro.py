@@ -13,3 +13,19 @@ class I_Arbitro(ABC):
                         
         Retorno : True si la posicion es valida, False en caso contrario."""
         pass
+    
+    @abc.abstractmethod
+    def saltar_turno(self, jugador):
+        """Permite al jugador saltar su turno.
+        
+        Parametros: jugador : el jugador que ha decidido saltar el turno.
+        
+        Retorno: el siguiente jugadir en turno (int)."""
+        pass
+    
+    @abc.abstractmethod
+    def terminar_juego(self, turnos_saltados):
+        """Verifica si el juego ya acabo.Si ambos jugadores saltan turno en la misma ronda, el juego acaba.
+        
+        Parametros: turnos_saltados : la cantidad de turnos saltados en una ronda."""
+        pass

@@ -30,3 +30,4 @@ class I_Vista(ABC):
     def mostrar_menu_nombres(self):
         """Muestra la ventana para ingresar los nombres de cada jugador"""
         pass
+    
